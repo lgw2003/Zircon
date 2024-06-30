@@ -3294,7 +3294,7 @@ namespace Client.Scenes.Views
         public NPCQuestDialog()
         {
             LibraryFile = LibraryFile.Interface;
-            Index = 212;
+            Index = 241;
             Movable = false;
             Sort = true;
             Location = new Point(GameScene.Game.NPCBox.Size.Width, 0);

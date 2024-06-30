@@ -325,7 +325,7 @@ namespace Client.Scenes.Views
 
         public GuildDialog()
         {
-            Index = 260;
+            Index = 244;
             LibraryFile = LibraryFile.Interface;
             Movable = true;
             Sort = true;

@@ -32,7 +32,7 @@ namespace Client.Scenes.Views
         public ExitDialog()
         {
             LibraryFile = LibraryFile.Interface;
-            Index = 281;
+            Index = 242;
             Sort = true;
             Modal = true;
 

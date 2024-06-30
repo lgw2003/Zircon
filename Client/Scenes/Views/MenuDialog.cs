@@ -82,7 +82,7 @@ namespace Client.Scenes.Views
         public MenuDialog()
         {
             LibraryFile = LibraryFile.Interface;
-            Index = 280;
+            Index = 243;
             Sort = true;
             Movable = true;
 
