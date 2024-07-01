@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 using Client.Controls;
 using Client.Envir;
 using Client.UserModels;
@@ -13,6 +14,27 @@ namespace Client.Scenes.Views
 {
     public sealed class AutoPotionDialog : DXWindow
     {
+        // feature: 设置tag，用作自动喝药，辅助功能，挂机的分页
+        private DXTabControl SupportTabControl;
+        private DXTab AutoPotionTab, AutoSkillTab, AutoBattleTab;
+        private DXControl WarriorSkillPanel;
+        private DXLabel WarriorSkillPanelTitle;
+        private DXControl WizardSkillPanel;
+        private DXLabel WizardSkillPanelTitle;
+        private DXControl TaoistSkillPanel;
+        private DXLabel TaoistSkillPanelTitle;
+        private DXControl AssassinSkillPanel;
+        private DXLabel AssassinSkillPanelTitle;
+        public DXCheckBox AutoBladeStormSkillCheckBox;
+        public DXCheckBox AutoFlamingSwordSkillCheckBox;
+        public DXCheckBox AutoMightSkillCheckBox;
+        public DXCheckBox AutoMagicShieldSkillCheckBox;
+        public DXCheckBox AutoRenounceSkillCheckBox;
+        public DXCheckBox AutoCelestialLightSkillCheckBox;
+        public DXCheckBox AutoFourFlowerSkillCheckBox;
+        public DXCheckBox AutoRagingWindSkillCheckBox;
+        public DXCheckBox AutoEvasionSkillCheckBox;
+        // feature end
         #region Properties
         public ClientAutoPotionLink[] Links;
 
@@ -27,10 +49,193 @@ namespace Client.Scenes.Views
 
         public AutoPotionDialog()
         {
+
+
             TitleLabel.Text = "辅助功能";
             HasFooter = true;
 
-            SetClientSize(new Size(280, 398));
+            SetClientSize(new Size(280, 418));
+
+
+            // feature: 设置tag，用作自动喝药，辅助功能，挂机的分页
+            HasTitle = true;
+            SupportTabControl = new DXTabControl
+            {
+                Parent = this,
+                Location = ClientArea.Location,
+                Size = ClientArea.Size,
+            };
+
+            AutoPotionTab = new DXTab
+            {
+                Parent = SupportTabControl,
+                Border = true,
+                TabButton = { Label = { Text = "自动喝药设置" } },
+            };
+            AutoSkillTab = new DXTab
+            {
+                Parent = SupportTabControl,
+                Border = true,
+                TabButton = { Label = { Text = "技能设置" } },
+            };
+            AutoBattleTab = new DXTab
+            {
+                Parent = SupportTabControl,
+                Border = true,
+                TabButton = { Label = { Text = "挂机设置" } },
+            };
+
+            SupportTabControl.SelectedTab = AutoPotionTab;
+
+            WarriorSkillPanel = new DXControl
+            {
+                Parent = AutoSkillTab,
+                Border = true,
+                BorderSize = 3,
+                BorderColour = Color.FromArgb(198, 166, 99),
+                Size = new Size(AutoSkillTab.Size.Width - 6, 80), // 固定高度
+                Location = new Point(3, 10),
+
+            };
+
+            WarriorSkillPanelTitle = new DXLabel
+            {
+                Parent = WarriorSkillPanel,
+                ForeColour = Color.FromArgb(198, 166, 99),
+                Location = new Point(5, 5),
+                Text = "战士技能"
+            };
+
+            AutoBladeStormSkillCheckBox = new DXCheckBox
+            {
+                Parent = WarriorSkillPanel,
+                Label = { Text = "自动莲月" },
+                Checked = false,
+                Location = new Point(5, WarriorSkillPanelTitle.Size.Height + 5)
+            };
+
+            AutoFlamingSwordSkillCheckBox = new DXCheckBox
+            {
+                Parent = WarriorSkillPanel,
+                Label = { Text = "自动烈火" },
+                Checked = false,
+                Location = new Point(WarriorSkillPanel.Size.Width / 2 + 5, WarriorSkillPanelTitle.Size.Height + 5)
+            };
+
+            AutoMightSkillCheckBox = new DXCheckBox
+            {
+                Parent = WarriorSkillPanel,
+                Label = { Text = "自动破血狂杀" },
+                Checked = false,
+                Location = new Point(5, WarriorSkillPanelTitle.Size.Height + 23)
+            };
+
+            WizardSkillPanel = new DXControl
+            {
+                Parent = AutoSkillTab,
+                Border = true,
+                BorderSize = 3,
+                BorderColour = Color.FromArgb(198, 166, 99),
+                Size = new Size(AutoSkillTab.Size.Width - 6, 80), // 固定高度
+                Location = new Point(3, 90),
+
+            };
+
+            WizardSkillPanelTitle = new DXLabel
+            {
+                Parent = WizardSkillPanel,
+                ForeColour = Color.FromArgb(198, 166, 99),
+                Location = new Point(5, 5),
+                Text = "法师技能"
+            };
+
+            AutoMagicShieldSkillCheckBox = new DXCheckBox
+            {
+                Parent = WizardSkillPanel,
+                Label = { Text = "自动魔法盾" },
+                Checked = false,
+                Location = new Point(5, WizardSkillPanelTitle.Size.Height + 5)
+            };
+
+            AutoRenounceSkillCheckBox = new DXCheckBox
+            {
+                Parent = WizardSkillPanel,
+                Label = { Text = "自动凝血离魄" },
+                Checked = false,
+                Location = new Point(WizardSkillPanel.Size.Width / 2 + 5, WizardSkillPanelTitle.Size.Height + 5)
+            };
+
+            TaoistSkillPanel = new DXControl
+            {
+                Parent = AutoSkillTab,
+                Border = true,
+                BorderSize = 3,
+                BorderColour = Color.FromArgb(198, 166, 99),
+                Size = new Size(AutoSkillTab.Size.Width - 6, 80), // 固定高度
+                Location = new Point(3, 170),
+            };
+
+            TaoistSkillPanelTitle = new DXLabel
+            {
+                Parent = TaoistSkillPanel,
+                ForeColour = Color.FromArgb(198, 166, 99),
+                Location = new Point(5, 5),
+                Text = "道士技能"
+            };
+
+
+            AutoCelestialLightSkillCheckBox = new DXCheckBox
+            {
+                Parent = TaoistSkillPanel,
+                Label = { Text = "自动阴阳法环" },
+                Checked = false,
+                Location = new Point(5, TaoistSkillPanelTitle.Size.Height + 5)
+            };
+
+
+            AssassinSkillPanel = new DXControl
+            {
+                Parent = AutoSkillTab,
+                Border = true,
+                BorderSize = 3,
+                BorderColour = Color.FromArgb(198, 166, 99),
+                Size = new Size(AutoSkillTab.Size.Width - 6, 80), // 固定高度
+                Location = new Point(3, 250),
+
+            };
+
+            AssassinSkillPanelTitle = new DXLabel
+            {
+                Parent = AssassinSkillPanel,
+                ForeColour = Color.FromArgb(198, 166, 99),
+                Location = new Point(5, 5),
+                Text = "刺客技能"
+            };
+
+            AutoFourFlowerSkillCheckBox = new DXCheckBox
+            {
+                Parent = AssassinSkillPanel,
+                Label = { Text = "自动四花" },
+                Checked = false,
+                Location = new Point(5, AssassinSkillPanelTitle.Size.Height + 5)
+            };
+
+            AutoRagingWindSkillCheckBox = new DXCheckBox
+            {
+                Parent = AssassinSkillPanel,
+                Label = { Text = "自动风之守护" },
+                Checked = false,
+                Location = new Point(AssassinSkillPanel.Size.Width / 2 + 5, AssassinSkillPanelTitle.Size.Height + 5)
+            };
+
+            AutoEvasionSkillCheckBox = new DXCheckBox
+            {
+                Parent = AssassinSkillPanel,
+                Label = { Text = "自动风之闪避" },
+                Checked = false,
+                Location = new Point(5, AssassinSkillPanelTitle.Size.Height + 23)
+            };
+            // feature end
 
             Links = new ClientAutoPotionLink[Globals.MaxAutoPotionCount];
             Rows = new AutoPotionRow[Globals.MaxAutoPotionCount];
@@ -38,18 +243,18 @@ namespace Client.Scenes.Views
 
             ScrollBar = new DXVScrollBar
             {
-                Parent = this,
-                Size = new Size(14, ClientArea.Height - 2),
-                Location = new Point(ClientArea.Right - 14, ClientArea.Top + 1),
-                VisibleSize = ClientArea.Height,
+                Parent = AutoPotionTab,
+                Size = new Size(14, AutoPotionTab.Size.Height - 2),
+                Location = new Point(AutoPotionTab.Size.Width - 14, ClientArea.Top + 1),
+                VisibleSize = AutoPotionTab.Size.Height,
                 MaxValue = Rows.Length * 50 - 2
 
             };
             DXControl panel = new DXControl
             {
-                Parent = this,
-                Size = new Size(ClientArea.Size.Width - 16, ClientArea.Size.Height),
-                Location = ClientArea.Location,
+                Parent = AutoPotionTab,
+                Size = new Size(AutoPotionTab.Size.Width - 16, AutoPotionTab.Size.Height),
+                Location = AutoPotionTab.Location,
             };
             panel.MouseWheel += ScrollBar.DoMouseWheel;
 
@@ -92,7 +297,6 @@ namespace Client.Scenes.Views
             }
             Updating = false;
         }
-
         #endregion
 
         #region IDisposable
@@ -103,6 +307,54 @@ namespace Client.Scenes.Views
 
             if (disposing)
             {
+                if (SupportTabControl != null)
+                {
+                    if (!SupportTabControl.IsDisposed)
+                        SupportTabControl.Dispose();
+
+                    SupportTabControl = null;
+                }
+
+                if (AutoPotionTab != null)
+                {
+                    if (!AutoPotionTab.IsDisposed)
+                        AutoPotionTab.Dispose();
+
+                    AutoPotionTab = null;
+                }
+
+                if (AutoSkillTab != null)
+                {
+                    if (!AutoSkillTab.IsDisposed)
+                        AutoSkillTab.Dispose();
+
+                    AutoSkillTab = null;
+                }
+
+                if (AutoBattleTab != null)
+                {
+                    if (!AutoBattleTab.IsDisposed)
+                        AutoBattleTab.Dispose();
+
+                    AutoBattleTab = null;
+                }
+
+                if (WarriorSkillPanel != null)
+                {
+                    if (!WarriorSkillPanel.IsDisposed)
+                        WarriorSkillPanel.Dispose();
+
+                    WarriorSkillPanel = null;
+                }
+
+                if (WarriorSkillPanelTitle != null)
+                {
+                    if (!WarriorSkillPanelTitle.IsDisposed)
+                        WarriorSkillPanelTitle.Dispose();
+
+                    WarriorSkillPanelTitle = null;
+                }
+
                 if (Links != null)
                 {
                     for (int i = 0; i < Links.Length; i++)
@@ -322,7 +574,7 @@ namespace Client.Scenes.Views
             {
                 Parent = this,
                 IsControl = false,
-                Text = "生命值" + ":"
+                Text = "生命值:"
             };
             HealthLabel.Location = new Point(HealthTargetBox.Location.X - HealthLabel.Size.Width, HealthTargetBox.Location.Y + (HealthTargetBox.Size.Height - HealthLabel.Size.Height) / 2);
 
@@ -331,13 +583,13 @@ namespace Client.Scenes.Views
             {
                 Parent = this,
                 IsControl = false,
-                Text = "魔法值" + ":"
+                Text = "魔法值:"
             };
             ManaLabel.Location = new Point(ManaTargetBox.Location.X - ManaLabel.Size.Width, ManaTargetBox.Location.Y + (ManaTargetBox.Size.Height - ManaLabel.Size.Height) / 2);
 
             EnabledCheckBox = new DXCheckBox
             {
-                Label = { Text = "开启" },
+                Label = { Text = "启动" },
                 Parent = this,
             };
             EnabledCheckBox.CheckedChanged += (o, e) => SendUpdate();

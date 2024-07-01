@@ -235,6 +235,13 @@ namespace Client.Scenes
         }
         private bool _AutoRun;
 
+        #region AutoSkills
+        private DateTime nextAutoSkillTime;
+        private int _AutoSkillCoolDown;
+        private MagicType autoUseSkillType;
+        private MagicType[] autoSkillList;
+        #endregion
+
         #region StorageSize
 
         public int StorageSize
@@ -971,6 +978,177 @@ namespace Client.Scenes
                         item.ExpireTime -= ticks;
                     }
                 }
+            }
+
+            // feature 辅助功能：自动释放技能
+            _AutoSkillCoolDown = 2; // 每次自动释放技能后，等待的ticks
+            if (Game.nextAutoSkillTime < CEnvir.Now)
+            {
+                // Game.ReceiveChat("初始化nextAutoSkillTime", MessageType.Announcement);
+                Game.nextAutoSkillTime = CEnvir.Now;
+            }
+            if (CEnvir.Now >= Game.nextAutoSkillTime)
+            {
+                switch (User.Class)
+                {
+                    case MirClass.Warrior:
+                        if (autoSkillList == null)
+                        {
+                            autoSkillList = new MagicType[3] { MagicType.BladeStorm, MagicType.FlamingSword, MagicType.Might };
+                        }
+                        foreach (KeyValuePair<MagicInfo, ClientUserMagic> pair in User.Magics)
+                        {
+                            // 如果都没勾选就退出, 不用浪费循环
+                            if (!Game.AutoPotionBox.AutoBladeStormSkillCheckBox.Checked && !Game.AutoPotionBox.AutoFlamingSwordSkillCheckBox.Checked && !Game.AutoPotionBox.AutoMightSkillCheckBox.Checked)
+                            {
+                                break;
+                            }
+                            // 如果不是指定可以自动化的技能，退出，不用浪费循环
+                            if (!autoSkillList.Contains(pair.Key.Magic))
+                            {
+                                continue;
+                            }
+                            // 莲月剑法
+                            if (pair.Key.Magic == MagicType.BladeStorm && Game.AutoPotionBox.AutoBladeStormSkillCheckBox.Checked)
+                            {
+                                UseMagic(pair.Value);
+                                continue;
+                            }
+                            // 烈火剑法
+                            if (pair.Key.Magic == MagicType.FlamingSword && Game.AutoPotionBox.AutoFlamingSwordSkillCheckBox.Checked)
+                            {
+                                UseMagic(pair.Value);
+                                continue;
+                            }
+                            // 破血狂杀
+                            if (pair.Key.Magic == MagicType.Might && Game.AutoPotionBox.AutoMightSkillCheckBox.Checked && !User.VisibleBuffs.Contains(BuffType.Might))
+                            {
+                                UseMagic(pair.Value);
+                                break;
+                            }
+                        }
+                        break;
+                    case MirClass.Wizard:
+                        if (autoSkillList == null)
+                        {
+                            autoSkillList = new MagicType[2] { MagicType.MagicShield, MagicType.Renounce };
+                        }
+                        foreach (KeyValuePair<MagicInfo, ClientUserMagic> pair in User.Magics)
+                        {
+                            // 如果都没勾选就退出, 不用浪费循环
+                            if (!Game.AutoPotionBox.AutoMagicShieldSkillCheckBox.Checked && !Game.AutoPotionBox.AutoRenounceSkillCheckBox.Checked)
+                            {
+                                break;
+                            }
+                            // 如果不是指定可以自动化的技能，退出，不用浪费循环
+                            if (!autoSkillList.Contains(pair.Key.Magic))
+                            {
+                                continue;
+                            }
+                            // 魔法盾
+                            if (pair.Key.Magic == MagicType.MagicShield && Game.AutoPotionBox.AutoMagicShieldSkillCheckBox.Checked && !User.VisibleBuffs.Contains(BuffType.MagicShield))
+                            {
+                                UseMagic(pair.Value);
+                                break;
+                            }
+                            // 凝血离魄
+                            if (pair.Key.Magic == MagicType.Renounce && Game.AutoPotionBox.AutoRenounceSkillCheckBox.Checked && !User.VisibleBuffs.Contains(BuffType.Renounce))
+                            {
+                                UseMagic(pair.Value);
+                                break;
+                            }
+                        }
+                        break;
+                    case MirClass.Taoist:
+                        if (autoSkillList == null)
+                        {
+                            autoSkillList = new MagicType[1] { MagicType.CelestialLight };
+                        }
+                        foreach (KeyValuePair<MagicInfo, ClientUserMagic> pair in User.Magics)
+                        {
+                            // 如果都没勾选就退出, 不用浪费循环
+                            if (!Game.AutoPotionBox.AutoCelestialLightSkillCheckBox.Checked)
+                            {
+                                break;
+                            }
+                            // 如果不是指定可以自动化的技能，退出，不用浪费循环
+                            if (!autoSkillList.Contains(pair.Key.Magic))
+                            {
+                                continue;
+                            }
+                            // 阴阳法环
+                            if (pair.Key.Magic == MagicType.CelestialLight && Game.AutoPotionBox.AutoCelestialLightSkillCheckBox.Checked && !User.VisibleBuffs.Contains(BuffType.CelestialLight))
+                            {
+                                UseMagic(pair.Value);
+                                break;
+                            }
+                        }
+                        break;
+                    case MirClass.Assassin:
+                        if (autoSkillList == null)
+                        {
+                            autoSkillList = new MagicType[6] { MagicType.Evasion, MagicType.RagingWind, MagicType.FullBloom, MagicType.WhiteLotus, MagicType.RedLotus, MagicType.SweetBrier };
+                        }
+                        foreach (KeyValuePair<MagicInfo, ClientUserMagic> pair in User.Magics)
+                        {
+                            // 如果都没勾选就退出, 不用浪费循环
+                            if (!Game.AutoPotionBox.AutoEvasionSkillCheckBox.Checked && !Game.AutoPotionBox.AutoFourFlowerSkillCheckBox.Checked && !Game.AutoPotionBox.AutoRagingWindSkillCheckBox.Checked)
+                            {
+                                break;
+                            }
+                            // 如果不是指定可以自动化的技能，退出，不用浪费循环
+                            if (!autoSkillList.Contains(pair.Key.Magic))
+                            {
+                                continue;
+                            }
+                            // 风之闪避
+                            if (pair.Key.Magic == MagicType.Evasion && Game.AutoPotionBox.AutoEvasionSkillCheckBox.Checked && !User.VisibleBuffs.Contains(BuffType.Evasion))
+                            {
+                                // Game.ReceiveChat("自动使用风之闪避", MessageType.Announcement);
+                                UseMagic(pair.Value);
+                                break;
+                            }
+                            // 风之守护
+                            if (pair.Key.Magic == MagicType.RagingWind && Game.AutoPotionBox.AutoRagingWindSkillCheckBox.Checked && !User.VisibleBuffs.Contains(BuffType.RagingWind))
+                            {
+                                // Game.ReceiveChat("自动使用风之守护", MessageType.Announcement);
+                                UseMagic(pair.Value);
+                                break;
+                            }
+                            // 自动四花
+                            if (Game.AutoPotionBox.AutoFourFlowerSkillCheckBox.Checked)
+                            {
+                                // WhiteLotus --> RedLotus --> SweetBrier --> FullBloom --> WhiteLotus --> ..
+                                if (autoUseSkillType == MagicType.SweetBrier && pair.Key.Magic == MagicType.SweetBrier)
+                                {
+                                    UseMagic(pair.Value);
+                                    autoUseSkillType = MagicType.FullBloom;
+                                    continue;
+                                }
+                                else if (autoUseSkillType == MagicType.RedLotus && pair.Key.Magic == MagicType.RedLotus)
+                                {
+                                    UseMagic(pair.Value);
+                                    autoUseSkillType = MagicType.SweetBrier;
+                                    break;
+                                }
+                                else if (autoUseSkillType == MagicType.WhiteLotus && pair.Key.Magic == MagicType.WhiteLotus)
+                                {
+                                    UseMagic(pair.Value);
+                                    autoUseSkillType = MagicType.RedLotus;
+                                    break;
+                                }
+                                else if (pair.Key.Magic == MagicType.FullBloom && autoUseSkillType != MagicType.WhiteLotus && autoUseSkillType != MagicType.RedLotus && autoUseSkillType != MagicType.SweetBrier)
+                                {
+                                    UseMagic(pair.Value);
+                                    autoUseSkillType = MagicType.WhiteLotus;
+                                    break;
+                                }
+                            }
+
+                        }
+                        break;
+                }
+                Game.nextAutoSkillTime = CEnvir.Now.AddSeconds(_AutoSkillCoolDown);
             }
 
             if (MouseItem != null && CEnvir.Now > ItemRefreshTime)
@@ -2844,6 +3022,465 @@ namespace Client.Scenes
             ItemLabel.Size = new Size(ItemLabel.Size.Width, ItemLabel.Size.Height + 4);
         }
 
+
+        public void UseMagic(ClientUserMagic magic)
+        {
+            if (Game.Observer || User == null || User.Horse != HorseType.None || MagicBarBox == null) return;
+            if (magic == null || User.Level < magic.Info.NeedLevel1) return;
+            switch (magic.Info.Magic)
+            {
+                case MagicType.Swordsmanship:
+                case MagicType.SpiritSword:
+                case MagicType.VineTreeDance:
+                case MagicType.WillowDance:
+                    return;
+                case MagicType.Thrusting:
+                    if (CEnvir.Now < ToggleTime) return;
+                    ToggleTime = CEnvir.Now.AddSeconds(1);
+                    CEnvir.Enqueue(new C.MagicToggle { Magic = magic.Info.Magic, CanUse = !User.CanThrusting });
+                    return;
+                case MagicType.HalfMoon:
+                    if (CEnvir.Now < ToggleTime) return;
+                    ToggleTime = CEnvir.Now.AddSeconds(1);
+                    CEnvir.Enqueue(new C.MagicToggle { Magic = magic.Info.Magic, CanUse = !User.CanHalfMoon });
+                    return;
+                case MagicType.DestructiveSurge:
+                    if (CEnvir.Now < ToggleTime) return;
+                    ToggleTime = CEnvir.Now.AddSeconds(1);
+                    CEnvir.Enqueue(new C.MagicToggle { Magic = magic.Info.Magic, CanUse = !User.CanDestructiveSurge });
+                    return;
+                case MagicType.FlamingSword:
+                case MagicType.DragonRise:
+                case MagicType.BladeStorm:
+                case MagicType.DemonicRecovery:
+                case MagicType.DefensiveBlow:
+                    if (CEnvir.Now < magic.NextCast || magic.Cost > User.CurrentMP) return;
+                    magic.NextCast = CEnvir.Now.AddSeconds(0.5D); //Act as an anti spam
+                    CEnvir.Enqueue(new C.MagicToggle { Magic = magic.Info.Magic });
+                    return;
+                case MagicType.FlameSplash:
+                    if (CEnvir.Now < ToggleTime) return;
+                    ToggleTime = CEnvir.Now.AddSeconds(1);
+                    CEnvir.Enqueue(new C.MagicToggle { Magic = magic.Info.Magic, CanUse = !User.CanFlameSplash });
+                    return;
+                case MagicType.FullBloom:
+                case MagicType.WhiteLotus:
+                case MagicType.RedLotus:
+                case MagicType.SweetBrier:
+                    if (CEnvir.Now < ToggleTime || CEnvir.Now < magic.NextCast) return;
+
+                    if (User.AttackMagic != magic.Info.Magic)
+                    {
+                        ReceiveChat(string.Format(CEnvir.Language.GameSceneSkillReady, magic.Info.Name), MessageType.Hint);
+                        int attackDelay = Globals.AttackDelay - MapObject.User.Stats[Stat.AttackSpeed] * Globals.ASpeedRate;
+                        attackDelay = Math.Max(800, attackDelay);
+
+                        ToggleTime = CEnvir.Now + TimeSpan.FromMilliseconds(attackDelay + 200);
+
+                        User.AttackMagic = magic.Info.Magic;
+                    }
+                    return;
+                case MagicType.Karma:
+                    if (CEnvir.Now < ToggleTime || CEnvir.Now < magic.NextCast || User.Buffs.All(x => x.Type != BuffType.Cloak)) return;
+
+                    if (User.AttackMagic != magic.Info.Magic)
+                    {
+                        ReceiveChat(string.Format(CEnvir.Language.GameSceneSkillReady, magic.Info.Name), MessageType.Hint);
+                        ToggleTime = CEnvir.Now + TimeSpan.FromMilliseconds(500);
+
+                        User.AttackMagic = magic.Info.Magic;
+                    }
+                    return;
+            }
+
+            if (CEnvir.Now < User.NextMagicTime || User.Dead ||
+                User.Buffs.Any(x => x.Type == BuffType.DragonRepulse) ||
+                (User.Buffs.Any(x => x.Type == BuffType.ElementalHurricane) && magic.Info.Magic != MagicType.ElementalHurricane) ||
+                (User.Poison & PoisonType.Paralysis) == PoisonType.Paralysis ||
+                (User.Poison & PoisonType.Silenced) == PoisonType.Silenced) return;
+
+            if (CEnvir.Now < magic.NextCast)
+            {
+                if (CEnvir.Now >= OutputTime)
+                {
+                    OutputTime = CEnvir.Now.AddSeconds(1);
+                    ReceiveChat(string.Format(CEnvir.Language.GameSceneCastInCooldown, magic.Info.Name), MessageType.Hint);
+                }
+                return;
+            }
+
+            switch (magic.Info.Magic)
+            {
+                case MagicType.Cloak:
+                    if (User.VisibleBuffs.Contains(BuffType.Cloak)) break;
+                    if (CEnvir.Now < User.CombatTime.AddSeconds(10))
+                    {
+                        if (CEnvir.Now >= OutputTime)
+                        {
+                            OutputTime = CEnvir.Now.AddSeconds(1);
+                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastInCombat, magic.Info.Name), MessageType.Hint);
+                        }
+                        return;
+                    }
+
+                    if (User.Stats[Stat.Health] * magic.Cost / 1000 >= User.CurrentHP || User.CurrentHP < User.Stats[Stat.Health] / 10)
+                    {
+                        if (CEnvir.Now >= OutputTime)
+                        {
+                            OutputTime = CEnvir.Now.AddSeconds(1);
+                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastNoEnoughHealth, magic.Info.Name), MessageType.Hint);
+                        }
+                        return;
+                    }
+                    break;
+                case MagicType.DarkConversion:
+                    if (User.VisibleBuffs.Contains(BuffType.DarkConversion)) break;
+
+                    if (magic.Cost > User.CurrentMP)
+                    {
+                        if (CEnvir.Now >= OutputTime)
+                        {
+                            OutputTime = CEnvir.Now.AddSeconds(1);
+                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastNoEnoughMana, magic.Info.Name), MessageType.Hint);
+                        }
+                        return;
+                    }
+                    break;
+                case MagicType.DragonRepulse:
+                    if (User.Stats[Stat.Health] * magic.Cost / 1000 >= User.CurrentHP || User.CurrentHP < User.Stats[Stat.Health] / 10)
+                    {
+                        if (CEnvir.Now >= OutputTime)
+                        {
+                            OutputTime = CEnvir.Now.AddSeconds(1);
+                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastNoEnoughHealth, magic.Info.Name), MessageType.Hint);
+                        }
+                        return;
+                    }
+                    if (User.Stats[Stat.Mana] * magic.Cost / 1000 >= User.CurrentMP || User.CurrentMP < User.Stats[Stat.Mana] / 10)
+                    {
+                        if (CEnvir.Now >= OutputTime)
+                        {
+                            OutputTime = CEnvir.Now.AddSeconds(1);
+                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastNoEnoughMana, magic.Info.Name), MessageType.Hint);
+                        }
+                        return;
+                    }
+                    break;
+                case MagicType.ElementalHurricane:
+                    int cost = magic.Cost;
+                    if (MapObject.User.VisibleBuffs.Contains(BuffType.ElementalHurricane))
+                        cost = 0;
+
+                    if (cost > User.CurrentMP)
+                    {
+                        if (CEnvir.Now >= OutputTime)
+                        {
+                            OutputTime = CEnvir.Now.AddSeconds(1);
+                            ReceiveChat($"Unable to cast {magic.Info.Name}, You do not have enough Mana.", MessageType.Hint);
+                        }
+                        return;
+                    }
+                    break;
+                default:
+
+                    if (magic.Cost > User.CurrentMP)
+                    {
+                        if (CEnvir.Now >= OutputTime)
+                        {
+                            OutputTime = CEnvir.Now.AddSeconds(1);
+                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastNoEnoughMana, magic.Info.Name), MessageType.Hint);
+                        }
+                        return;
+                    }
+                    break;
+            }
+            MapObject target = null;
+            MirDirection direction = MapControl.MouseDirection();
+
+            switch (magic.Info.Magic)
+            {
+                case MagicType.ShoulderDash:
+                    if (CEnvir.Now < User.ServerTime) return;
+                    if ((User.Poison & PoisonType.WraithGrip) == PoisonType.WraithGrip) return;
+
+                    User.ServerTime = CEnvir.Now.AddSeconds(5);
+                    User.NextMagicTime = CEnvir.Now + Globals.MagicDelay;
+                    CEnvir.Enqueue(new C.Magic { Direction = direction, Action = MirAction.Spell, Type = magic.Info.Magic });
+                    return;
+
+                case MagicType.DanceOfSwallow:
+                    if (CEnvir.Now < User.ServerTime) return;
+                    if (CanAttackTarget(MouseObject))
+                        target = MouseObject;
+
+                    if (target == null) return;
+
+                    if (!Functions.InRange(target.CurrentLocation, User.CurrentLocation, Globals.MagicRange))
+                    {
+                        if (CEnvir.Now < OutputTime) return;
+                        OutputTime = CEnvir.Now.AddSeconds(1);
+                        ReceiveChat(string.Format(CEnvir.Language.GameSceneCastTooFar, magic.Info.Name), MessageType.Hint);
+                        return;
+                    }
+
+                    User.ServerTime = CEnvir.Now.AddSeconds(5);
+                    User.NextMagicTime = CEnvir.Now + Globals.MagicDelay;
+
+                    MapObject.TargetObject = target;
+                    MapObject.MagicObject = target;
+
+                    CEnvir.Enqueue(new C.Magic { Action = MirAction.Spell, Type = magic.Info.Magic, Target = target.ObjectID });
+                    return;
+
+                case MagicType.ElementalSwords:
+
+                case MagicType.FireBall:
+                case MagicType.IceBolt:
+                case MagicType.LightningBall:
+                case MagicType.GustBlast:
+                case MagicType.ElectricShock:
+                case MagicType.AdamantineFireBall:
+                case MagicType.FireBounce:
+                case MagicType.ThunderBolt:
+                case MagicType.ChainLightning:
+                case MagicType.IceBlades:
+                case MagicType.Cyclone:
+                case MagicType.ExpelUndead:
+                case MagicType.LightningStrike:
+                case MagicType.IceRain:
+
+                case MagicType.PoisonDust:
+                case MagicType.ExplosiveTalisman:
+                case MagicType.EvilSlayer:
+                case MagicType.GreaterEvilSlayer:
+                case MagicType.ImprovedExplosiveTalisman:
+                case MagicType.Parasite:
+                case MagicType.Neutralize:
+                case MagicType.SearingLight:
+
+                case MagicType.Hemorrhage:
+                    if (CanAttackTarget(MagicObject))
+                        target = MagicObject;
+
+                    if (CanAttackTarget(MouseObject))
+                    {
+                        target = MouseObject;
+
+                        if (MouseObject.Race == ObjectType.Monster && ((MonsterObject)MouseObject).MonsterInfo.AI >= 0)
+                            MapObject.MagicObject = target;
+                        else
+                            MapObject.MagicObject = null;
+                    }
+                    break;
+                case MagicType.WraithGrip:
+                case MagicType.HellFire:
+                case MagicType.Abyss:
+                    if (CanAttackTarget(MouseObject))
+                        target = MouseObject;
+                    break;
+                case MagicType.Interchange:
+                case MagicType.Beckon:
+                    if (CanAttackTarget(MouseObject))
+                        target = MouseObject;
+                    break;
+
+                case MagicType.MagicCombustion:
+                    if (!CanAttackTarget(MouseObject) || MouseObject.Race != ObjectType.Player) return;
+
+                    target = MouseObject;
+                    break;
+
+                case MagicType.Heal:
+                case MagicType.Purification:
+                    target = MouseObject ?? User;
+                    break;
+                case MagicType.CelestialLight:
+                    if (User.Buffs.All(x => x.Type == BuffType.CelestialLight)) return;
+                    break;
+
+                case MagicType.Resurrection:
+                    if (MouseObject == null || !MouseObject.Dead || MouseObject.Race != ObjectType.Player) return;
+
+                    target = MouseObject;
+                    break;
+                case MagicType.SoulResonance:
+                    if (MouseObject == null || MouseObject.Dead || MouseObject.Race != ObjectType.Player || !IsAlly(MouseObject.ObjectID)) return;
+
+                    target = MouseObject;
+                    break;
+                case MagicType.CursedDoll:
+                    if (CanAttackTarget(MouseObject))
+                        target = MouseObject;
+                    break;
+                case MagicType.CorpseExploder:
+                case MagicType.SummonDead:
+                    if (MouseObject != null && MouseObject.Dead && (MouseObject.Race == ObjectType.Player || MouseObject.Race == ObjectType.Monster))
+                        target = MouseObject;
+                    break;
+
+                case MagicType.Spiritualism:
+                    if (Equipment[(int)EquipmentSlot.Amulet] == null || Equipment[(int)EquipmentSlot.Amulet].Info.Shape != 0 || Equipment[(int)EquipmentSlot.Amulet].Count < 1) return;
+
+                    direction = MirDirection.Down;
+                    break;
+
+                case MagicType.Rake:
+                    if (!User.VisibleBuffs.Contains(BuffType.Cloak)) return;
+                    break;
+
+                case MagicType.Chain:
+                    if (CanAttackTarget(MouseObject) && MouseObject.Race == ObjectType.Monster)
+                        target = MouseObject;
+                    break;
+
+                case MagicType.Defiance:
+                case MagicType.Invincibility:
+                    direction = MirDirection.Down;
+                    break;
+                case MagicType.Might:
+                    direction = MirDirection.Down;
+                    break;
+                case MagicType.MassBeckon:
+                    direction = MirDirection.Down;
+                    break;
+                case MagicType.ReflectDamage:
+                    if (User.Buffs.Any(x => x.Type == BuffType.ReflectDamage)) return;
+                    direction = MirDirection.Down;
+                    break;
+                case MagicType.Endurance:
+                    direction = MirDirection.Down;
+                    break;
+                case MagicType.Renounce:
+                    break;
+                case MagicType.StrengthOfFaith:
+                    break;
+                case MagicType.MagicShield:
+                    if (User.Buffs.Any(x => x.Type == BuffType.MagicShield || x.Type == BuffType.SuperiorMagicShield)) return;
+                    break;
+                case MagicType.SuperiorMagicShield:
+                    if (User.Buffs.Any(x => x.Type == BuffType.SuperiorMagicShield)) return;
+                    break;
+                case MagicType.FrostBite:
+                    if (User.Buffs.Any(x => x.Type == BuffType.FrostBite)) return;
+                    break;
+                case MagicType.JudgementOfHeaven:
+                    break;
+                case MagicType.SeismicSlam:
+                case MagicType.CrushingWave:
+
+                case MagicType.Repulsion:
+                case MagicType.ScortchedEarth:
+                case MagicType.LightningBeam:
+                case MagicType.Teleportation:
+                case MagicType.FrozenEarth:
+                case MagicType.BlowEarth:
+                case MagicType.GreaterFrozenEarth:
+                case MagicType.ThunderStrike:
+                case MagicType.MirrorImage:
+                case MagicType.ElementalHurricane:
+
+                case MagicType.Invisibility:
+                case MagicType.CombatKick:
+                case MagicType.ThunderKick:
+                case MagicType.Fetter:
+                case MagicType.SummonSkeleton:
+                case MagicType.SummonShinsu:
+                case MagicType.SummonJinSkeleton:
+                case MagicType.SummonDemonicCreature:
+                case MagicType.DemonExplosion:
+                case MagicType.DarkSoulPrison:
+
+                case MagicType.PoisonousCloud:
+                case MagicType.Cloak:
+                case MagicType.SummonPuppet:
+                case MagicType.TheNewBeginning:
+                case MagicType.DarkConversion:
+                case MagicType.DragonRepulse:
+                case MagicType.FlashOfLight:
+                case MagicType.Evasion:
+                case MagicType.RagingWind:
+                case MagicType.Concentration:
+                case MagicType.Containment:
+                    break;
+
+                case MagicType.SwiftBlade:
+
+                case MagicType.FireWall:
+                case MagicType.FireStorm:
+                case MagicType.LightningWave:
+                case MagicType.IceStorm:
+                case MagicType.DragonTornado:
+                case MagicType.GeoManipulation:
+                case MagicType.Transparency:
+                case MagicType.MeteorShower:
+                case MagicType.Tempest:
+                case MagicType.Asteroid:
+                case MagicType.Tornado:
+
+                case MagicType.MagicResistance:
+                case MagicType.Resilience:
+                case MagicType.LifeSteal:
+                case MagicType.MassInvisibility:
+                case MagicType.TrapOctagon:
+                case MagicType.ElementalSuperiority:
+                case MagicType.BloodLust:
+                case MagicType.MassHeal:
+
+                case MagicType.BurningFire:
+                    if (!Functions.InRange(MapControl.MapLocation, User.CurrentLocation, Globals.MagicRange))
+                    {
+                        if (CEnvir.Now < OutputTime) return;
+                        OutputTime = CEnvir.Now.AddSeconds(1);
+                        ReceiveChat(string.Format(CEnvir.Language.GameSceneCastTooFar, magic.Info.Name), MessageType.Hint);
+                        return;
+                    }
+                    break;
+                default:
+                    return;
+            }
+
+            if (target != null && !Functions.InRange(target.CurrentLocation, User.CurrentLocation, Globals.MagicRange))
+            {
+                if (CEnvir.Now < OutputTime) return;
+                OutputTime = CEnvir.Now.AddSeconds(1);
+                ReceiveChat(string.Format(CEnvir.Language.GameSceneCastTooFar, magic.Info.Name), MessageType.Hint);
+                return;
+            }
+
+            //Check Attack Range.
+
+            if (target != null && target != User)
+                direction = Functions.DirectionFromPoint(User.CurrentLocation, target.CurrentLocation);
+
+            uint targetID = target?.ObjectID ?? 0;
+            Point targetLocation;
+
+            //Allows area casting instead of direct lock on (augmentations required)
+            //targetID and separate maplocation passed through - allowing for target lock and area lookup to work
+            switch (magic.Info.Magic)
+            {
+                case MagicType.Purification:
+                case MagicType.EvilSlayer:
+                case MagicType.GreaterEvilSlayer:
+                case MagicType.ExplosiveTalisman:
+                case MagicType.ImprovedExplosiveTalisman:
+                case MagicType.PoisonDust:
+                case MagicType.Neutralize:
+                    targetLocation = MapControl.MapLocation;
+                    break;
+                default:
+                    targetLocation = target?.CurrentLocation ?? MapControl.MapLocation;
+                    break;
+            }
+
+            //switch spell type.
+
+            if (MouseObject != null && MouseObject.Race == ObjectType.Monster)
+                FocusObject = (MonsterObject)MouseObject;
+
+            User.MagicAction = new ObjectAction(MirAction.Spell, direction, MapObject.User.CurrentLocation, magic.Info.Magic, new List<uint> { targetID }, new List<Point> { targetLocation }, false, Element.None);
+
+        }
 
         public void UseMagic(SpellKey key)
         {
