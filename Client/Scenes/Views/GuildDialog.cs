@@ -342,7 +342,7 @@ namespace Client.Scenes.Views
 
             TitleLabel = new DXLabel
             {
-                Text = CEnvir.Language.GuildDialogTitle,
+                Text = "行会",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -540,7 +540,7 @@ namespace Client.Scenes.Views
         {
             CreateTab = new DXTab
             {
-                TabButton = { Label = { Text = CEnvir.Language.GuildDialogCreateTabLabel } },
+                TabButton = { Label = { Text = "创建" } },
                 Parent = GuildTabs,
                 BackColour = Color.Empty,
                 Location = new Point(0, 23)
@@ -570,13 +570,13 @@ namespace Client.Scenes.Views
                 Location = new Point(10, 10),
                 ButtonType = ButtonType.Default,
                 Size = new Size(120, DefaultHeight),
-                Label = { Text = CEnvir.Language.GuildDialogCreateTabStarterGuildButtonLabel }
+                Label = { Text = "加入新人行会" }
             };
             StarterGuildButton.MouseClick += StarterGuildButton_MouseClick;
 
             DXLabel stepLabel = new DXLabel
             {
-                Text = CEnvir.Language.GuildDialogCreateTabStep1Label,
+                Text = "第一步 - 识别",
                 Parent = CreateTab,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -591,7 +591,7 @@ namespace Client.Scenes.Views
 
             DXLabel label = new DXLabel
             {
-                Text = CEnvir.Language.GuildDialogCreateTabStep1GuildNameLabel,
+                Text = "行会名称:",
                 Parent = CreateTab,
                 Outline = true,
                 OutlineColour = Color.Black,
@@ -610,7 +610,7 @@ namespace Client.Scenes.Views
 
             stepLabel = new DXLabel
             {
-                Text = CEnvir.Language.GuildDialogCreateTabStep2Label,
+                Text = "第二步 - 付费",
                 Parent = CreateTab,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -624,7 +624,7 @@ namespace Client.Scenes.Views
 
             GoldCheckBox = new DXCheckBox
             {
-                Label = { Text = string.Format(CEnvir.Language.GuildDialogCreateTabStep2GoldCheckBoxLabel, Globals.GuildCreationCost), ForeColour = Color.White },
+                Label = { Text = string.Format("{0:#,##0} 金币", Globals.GuildCreationCost), ForeColour = Color.White },
                 Parent = CreateTab,
                 Checked = true,
                 ReadOnly = true,
@@ -635,7 +635,7 @@ namespace Client.Scenes.Views
 
             HornCheckBox = new DXCheckBox
             {
-                Label = { Text = CEnvir.Language.GuildDialogCreateTabStep2HornCheckBoxLabel, ForeColour = Color.White },
+                Label = { Text = "沃玛号角", ForeColour = Color.White },
                 Parent = CreateTab,
                 ReadOnly = true,
             };
@@ -655,7 +655,7 @@ namespace Client.Scenes.Views
 
             stepLabel = new DXLabel
             {
-                Text = CEnvir.Language.GuildDialogCreateTabStep3Label,
+                Text = "第三步 - 选项",
                 Parent = CreateTab,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -669,7 +669,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.GuildDialogCreateTabStep3ExtraMembersLabel,
+                Text = "扩展成员:",
                 Parent = CreateTab,
                 Outline = true,
                 OutlineColour = Color.Black,
@@ -695,13 +695,13 @@ namespace Client.Scenes.Views
                 Outline = true,
                 OutlineColour = Color.Black,
                 IsControl = false,
-                Hint = string.Format(CEnvir.Language.GuildDialogCreateTabStep3ExtraMembersHint, Globals.GuildMemberCost)
+                Hint = string.Format("基础上限: 10, 每扩展一名成员上限需要花费: {0}.", Globals.GuildMemberCost)
             };
             label.Location = new Point(MemberTextBox.Location.X + MemberTextBox.Size.Width, MemberTextBox.Location.Y + (MemberTextBox.Size.Height - label.Size.Height) / 2);
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.GuildDialogCreateTabStep3ExtraStorageLabel,
+                Text = "扩展行会仓库:",
                 Parent = CreateTab,
                 Outline = true,
                 OutlineColour = Color.Black,
@@ -727,7 +727,7 @@ namespace Client.Scenes.Views
                 Outline = true,
                 OutlineColour = Color.Black,
                 IsControl = false,
-                Hint = string.Format(CEnvir.Language.GuildDialogCreateTabStep3ExtraStorageHint, Globals.GuildStorageCost)
+                Hint = string.Format("基础行会仓库空间: 10, 每扩展一个空间需要花费: {0}.", Globals.GuildStorageCost)
             };
             label.Location = new Point(StorageTextBox.Location.X + StorageTextBox.Size.Width, StorageTextBox.Location.Y + (StorageTextBox.Size.Height - label.Size.Height) / 2);
 
@@ -735,7 +735,7 @@ namespace Client.Scenes.Views
 
             stepLabel = new DXLabel
             {
-                Text = CEnvir.Language.GuildDialogCreateTabStep4Label,
+                Text = "第四步 - 概况",
                 Parent = CreateTab,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -749,7 +749,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.GuildDialogCreateTabStep4TotalCostLabel,
+                Text = "花费金币:",
                 Parent = CreateTab,
                 Outline = true,
                 OutlineColour = Color.Black,
@@ -774,7 +774,7 @@ namespace Client.Scenes.Views
                 Parent = CreateTab,
                 ButtonType = ButtonType.SmallButton,
                 Size = new Size(110, SmallButtonHeight),
-                Label = { Text = CEnvir.Language.GuildDialogCreateTabCreateButtonLabel },
+                Label = { Text = "创建行会" },
                 Location = new Point(TotalCostBox.Location.X, TotalCostBox.Location.Y + 30)
             };
 
@@ -837,7 +837,7 @@ namespace Client.Scenes.Views
         {
             HomeTab = new DXTab
             {
-                TabButton = { Label = { Text = CEnvir.Language.GuildDialogHomeTabLabel } },
+                TabButton = { Label = { Text = "主页" } },
                 Parent = GuildTabs,
                 BackColour = Color.Empty,
                 Location = new Point(0, 23)
@@ -854,7 +854,7 @@ namespace Client.Scenes.Views
 
             new DXLabel
             {
-                Text = CEnvir.Language.GuildDialogHomeTabNoticeLabel,
+                Text = "公告",
                 Parent = HomeTab,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -916,7 +916,7 @@ namespace Client.Scenes.Views
                 Parent = HomeTab,
                 Size = new Size(60, SmallButtonHeight),
                 Location = new Point(HomeTab.Size.Width - 75, 9),
-                Label = { Text = CEnvir.Language.GuildDialogHomeTabNoticeEditButtonLabel },
+                Label = { Text = "编辑" },
                 ButtonType = ButtonType.SmallButton
             };
             EditNoticeButton.MouseClick += (o, e) =>
@@ -933,7 +933,7 @@ namespace Client.Scenes.Views
                 Parent = HomeTab,
                 Size = new Size(60, SmallButtonHeight),
                 Location = new Point(HomeTab.Size.Width - 145, 9),
-                Label = { Text = CEnvir.Language.GuildDialogHomeTabNoticeSaveButtonLabel },
+                Label = { Text = "保存" },
                 ButtonType = ButtonType.SmallButton,
                 Visible = false,
             };
@@ -952,7 +952,7 @@ namespace Client.Scenes.Views
                 Parent = HomeTab,
                 Size = new Size(60, SmallButtonHeight),
                 Location = new Point(HomeTab.Size.Width - 75, 9),
-                Label = { Text = CEnvir.Language.CommonControlCancel },
+                Label = { Text = "取消" },
                 ButtonType = ButtonType.SmallButton,
                 Visible = false,
             };
@@ -977,7 +977,7 @@ namespace Client.Scenes.Views
 
             new DXLabel
             {
-                Text = CEnvir.Language.GuildDialogHomeTabNoticeStatsLabel,
+                Text = "行会状态",
                 Parent = panel,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -991,7 +991,7 @@ namespace Client.Scenes.Views
 
             DXLabel label = new DXLabel
             {
-                Text = CEnvir.Language.GuildDialogHomeTabNoticeStatsMembersLabel,
+                Text = "行会成员:",
                 Parent = panel,
                 Outline = true,
                 IsControl = false,
@@ -1009,7 +1009,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.GuildDialogHomeTabNoticeStatsGuildFundsLabel,
+                Text = "行会基金:",
                 Parent = panel,
                 Outline = true,
                 IsControl = false,
@@ -1027,7 +1027,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.GuildDialogHomeTabNoticeStatsTodaysGrowthLabel,
+                Text = "今日增长:",
                 Parent = panel,
                 Outline = true,
                 IsControl = false,
@@ -1045,7 +1045,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.GuildDialogHomeTabNoticeStatsTotalContributionLabel,
+                Text = "全部贡献",
                 Parent = panel,
                 Outline = true,
                 IsControl = false,
@@ -1063,7 +1063,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.GuildDialogHomeTabNoticeStatsTodaysContributionLabel,
+                Text = "今日贡献:",
                 Parent = panel,
                 Outline = true,
                 IsControl = false,
@@ -1081,7 +1081,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.GuildDialogHomeTabNoticeStatsTaxLabel,
+                Text = "行会税收",
                 Parent = panel,
                 Outline = true,
                 IsControl = false,
@@ -1112,11 +1112,11 @@ namespace Client.Scenes.Views
                 Location = new Point(10, 10),
                 ButtonType = ButtonType.Default,
                 Size = new Size(120, DefaultHeight),
-                Label = { Text = CEnvir.Language.GuildDialogManageTabTreasuryChangeButtonLabel },
+                Label = { Text = "改变" },
             };
             SetTaxButton.MouseClick += (o, e) =>
             {
-                DXInputWindow window = new DXInputWindow(CEnvir.Language.GuildDialogManageTabTreasuryTaxConfirmMessage, CEnvir.Language.GuildDialogManageTabTreasuryLabel)
+                DXInputWindow window = new DXInputWindow("请输入您要设置的税额。", "财务")
                 {
                     ConfirmButton = { Enabled = false },
                     Modal = true
@@ -1167,7 +1167,7 @@ namespace Client.Scenes.Views
         {
             MemberTab = new DXTab
             {
-                TabButton = { Label = { Text = CEnvir.Language.GuildDialogMembersTabLabel } },
+                TabButton = { Label = { Text = "成员" } },
                 Parent = GuildTabs,
                 BackColour = Color.Empty,
                 Location = new Point(0, 23)
@@ -1234,11 +1234,11 @@ namespace Client.Scenes.Views
                 Location = new Point(10, 10),
                 ButtonType = ButtonType.Default,
                 Size = new Size(110, DefaultHeight),
-                Label = { Text = CEnvir.Language.GuildDialogManageTabMembershipAddButtonLabel },
+                Label = { Text = "邀请" },
             };
             AddMemberButton.MouseClick += (o, e) =>
             {
-                DXInputWindow window = new DXInputWindow(CEnvir.Language.GuildDialogManageTabMembershipMemberConfirmMessage, CEnvir.Language.GuildDialogManageTabMembershipLabel)
+                DXInputWindow window = new DXInputWindow("请输入您希望邀请的人的姓名。", "行会成员")
                 {
                     ConfirmButton = { Enabled = false },
                     Modal = true
@@ -1259,11 +1259,11 @@ namespace Client.Scenes.Views
                 Location = new Point(AddMemberButton.DisplayArea.Right + 5, 10),
                 ButtonType = ButtonType.Default,
                 Size = new Size(110, DefaultHeight),
-                Label = { Text = CEnvir.Language.GuildDialogManageTabMembershipEditDefaultButtonLabel },
+                Label = { Text = "设定默认级别" },
             };
             EditDefaultMemberButton.MouseClick += (o, e) =>
             {
-                GameScene.Game.GuildMemberBox.MemberNameLabel.Text = "Default Member";
+                GameScene.Game.GuildMemberBox.MemberNameLabel.Text = "默认成员";
                 GameScene.Game.GuildMemberBox.RankTextBox.TextBox.Text = GuildInfo.DefaultRank;
                 GameScene.Game.GuildMemberBox.Permission = GuildInfo.DefaultPermission;
                 GameScene.Game.GuildMemberBox.MemberIndex = 0;
@@ -1315,7 +1315,7 @@ namespace Client.Scenes.Views
         {
             StorageTab = new DXTab
             {
-                TabButton = { Label = { Text = CEnvir.Language.GuildDialogStorageTabLabel } },
+                TabButton = { Label = { Text = "行会仓库" } },
                 Parent = GuildTabs,
                 BackColour = Color.Empty,
                 Location = new Point(0, 23)
@@ -1342,7 +1342,7 @@ namespace Client.Scenes.Views
             {
                 Parent = filterPanel,
                 Location = new Point(10, 7),
-                Text = CEnvir.Language.GuildDialogStorageTabNameLabel,
+                Text = "名称:",
             };
 
             ItemNameTextBox = new DXTextBox
@@ -1359,7 +1359,7 @@ namespace Client.Scenes.Views
             {
                 Parent = filterPanel,
                 Location = new Point(ItemNameTextBox.Location.X + ItemNameTextBox.Size.Width + 33, 5),
-                Text = CEnvir.Language.GuildDialogStorageTabItemLabel,
+                Text = "类型:",
             };
 
             ItemTypeComboBox = new DXComboBox
@@ -1402,7 +1402,7 @@ namespace Client.Scenes.Views
                 Location = new Point(ItemTypeComboBox.Location.X + ItemTypeComboBox.Size.Width + 30, label.Location.Y - 1),
                 Parent = filterPanel,
                 ButtonType = ButtonType.SmallButton,
-                Label = { Text = CEnvir.Language.GuildDialogStorageTabClearButtonLabel }
+                Label = { Text = "清除" }
             };
             ClearButton.MouseClick += (o, e) =>
             {
@@ -2672,7 +2672,7 @@ namespace Client.Scenes.Views
                 Location = new Point(0120, StorageBox.Location.Y + 40),
                 ButtonType = ButtonType.SmallButton,
                 Size = new Size(80, SmallButtonHeight),
-                Label = { Text = CEnvir.Language.CommonControlConfirm },
+                Label = { Text = "提交" },
             };
 
             ConfirmButton.MouseClick += (o, e) =>

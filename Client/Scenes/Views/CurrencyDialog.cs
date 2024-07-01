@@ -45,7 +45,7 @@ namespace Client.Scenes.Views
 
         public CurrencyDialog()
         {
-            TitleLabel.Text = CEnvir.Language.CurrencyDialogTitle;
+            TitleLabel.Text = "货币";
 
             HasFooter = false;
             Movable = true;

@@ -2851,7 +2851,7 @@ namespace Client.Scenes.Views
         public NPCQuestListDialog()
         {
             LibraryFile = LibraryFile.Interface;
-            Index = 209;
+            Index = 245;
             Movable = false;
             Sort = true;
             Location = new Point(0, GameScene.Game.NPCBox.Size.Height);
@@ -3502,7 +3502,7 @@ namespace Client.Scenes.Views
             {
                 Label = { Text = "Accept" },
                 Parent = this,
-                Location = new Point(0 + (250), label.Location.Y + label.Size.Height + 40),
+                Location = new Point(0 + (250), label.Location.Y + label.Size.Height + 45),
                 Size = new Size(100, DefaultHeight),
                 ButtonType = ButtonType.Default,
                 Visible = false,
@@ -3518,7 +3518,7 @@ namespace Client.Scenes.Views
             {
                 Label = { Text = "Complete" },
                 Parent = this,
-                Location = new Point(0 + (250), label.Location.Y + label.Size.Height + 40),
+                Location = new Point(0 + (250), label.Location.Y + label.Size.Height + 45),
                 Size = new Size(100, DefaultHeight),
                 ButtonType = ButtonType.Default,
                 Visible = false,

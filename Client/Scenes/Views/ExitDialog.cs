@@ -47,7 +47,7 @@ namespace Client.Scenes.Views
 
             TitleLabel = new DXLabel
             {
-                Text = CEnvir.Language.ExitDialogTitle,
+                Text = "退出游戏",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -62,13 +62,13 @@ namespace Client.Scenes.Views
                 Location = new Point(61, 45),
                 Size = new Size(130, DefaultHeight),
                 Parent = this,
-                Label = { Text = CEnvir.Language.ExitDialogToSelectButtonLabel },
+                Label = { Text = "角色选择" },
             };
             ToSelectButton.MouseClick += (o, e) =>
             {
                 if (CEnvir.Now < MapObject.User.CombatTime.AddSeconds(10) && !GameScene.Game.Observer)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.LogoutInCombat, MessageType.System);
+                    GameScene.Game.ReceiveChat("在战斗中无法退出游戏.", MessageType.System);
                     return;
                 }
 
@@ -80,13 +80,13 @@ namespace Client.Scenes.Views
                 Location = new Point(61, 55 + DefaultHeight),
                 Size = new Size(130, DefaultHeight),
                 Parent = this,
-                Label = { Text = CEnvir.Language.ExitDialogExitButtonLabel },
+                Label = { Text = "退出游戏" },
             };
             ExitButton.MouseClick += (o, e) =>
             {
                 if (CEnvir.Now < MapObject.User.CombatTime.AddSeconds(10) && !GameScene.Game.Observer)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.ExitInCombat, MessageType.System);
+                    GameScene.Game.ReceiveChat("在战斗中无法退出游戏。", MessageType.System);
                     return;
                 }
 

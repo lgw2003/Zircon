@@ -311,7 +311,7 @@ namespace Client.Scenes.Views
 
             TitleLabel = new DXLabel
             {
-                Text = CEnvir.Language.CommunicationDialogTitle,
+                Text = "邮箱",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -343,7 +343,7 @@ namespace Client.Scenes.Views
             FriendTab = new DXTab
             {
                 Parent = TabControl,
-                TabButton = { Label = { Text = CEnvir.Language.CommunicationDialogFriendTabLabel } },
+                TabButton = { Label = { Text = "好友列表" } },
                 BackColour = Color.Empty,
                 Location = new Point(0, 23)
             };
@@ -371,7 +371,7 @@ namespace Client.Scenes.Views
             ReceivedTab = new DXTab
             {
                 Parent = TabControl,
-                TabButton = { Label = { Text = CEnvir.Language.CommunicationDialogReceivedTabLabel } },
+                TabButton = { Label = { Text = "收邮件" } },
                 BackColour = Color.Empty,
                 Location = new Point(0, 23)
             };
@@ -399,7 +399,7 @@ namespace Client.Scenes.Views
             SendTab = new DXTab
             {
                 Parent = TabControl,
-                TabButton = { Label = { Text = CEnvir.Language.CommunicationDialogSendTabLabel } },
+                TabButton = { Label = { Text = "发邮件" } },
                 BackColour = Color.Empty,
                 Location = new Point(0, 23)
             };
@@ -432,7 +432,7 @@ namespace Client.Scenes.Views
             BlockTab = new DXTab
             {
                 Parent = TabControl,
-                TabButton = { Label = { Text = CEnvir.Language.CommunicationDialogBlockedTabLabel } },
+                TabButton = { Label = { Text = "黑名单" } },
                 BackColour = Color.Empty,
                 Location = new Point(0, 23)
             };
@@ -474,7 +474,7 @@ namespace Client.Scenes.Views
             DXLabel label = new DXLabel
             {
                 Parent = FriendTab,
-                Text = CEnvir.Language.CommunicationDialogFriendTabStatusLabel
+                Text = "状态:"
             };
             label.Location = new Point(150 - label.Size.Width, 11);
 
@@ -507,7 +507,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = FriendTab,
-                Text = CEnvir.Language.CommunicationDialogFriendTabViewStatusLabel
+                Text = "查看状态:"
             };
             label.Location = new Point(150 - label.Size.Width, 32);
 
@@ -562,13 +562,13 @@ namespace Client.Scenes.Views
                 ButtonType = ButtonType.Default,
                 Size = new Size(100, DefaultHeight),
                 Parent = this,
-                Label = { Text = CEnvir.Language.CommunicationDialogFriendTabFriendAddButtonLabel },
+                Label = { Text = "添加好友" },
                 Visible = true
             };
             FriendAddButton.Location = new Point(43, FriendTab.Location.Y + FriendTab.Size.Height + 43);
             FriendAddButton.MouseClick += (o, e) =>
             {
-                DXInputWindow window = new DXInputWindow(CEnvir.Language.CommunicationDialogFriendTabFriendAddButtonConfirmMessage, CEnvir.Language.CommunicationDialogFriendTabFriendAddButtonConfirmCaption)
+                DXInputWindow window = new DXInputWindow("请输入您希望加为好友的人的姓名.", "添加好友")
                 {
                     ConfirmButton = { Enabled = false },
                     Modal = true
@@ -588,7 +588,7 @@ namespace Client.Scenes.Views
                 ButtonType = ButtonType.Default,
                 Size = new Size(100, DefaultHeight),
                 Parent = this,
-                Label = { Text = CEnvir.Language.CommunicationDialogFriendTabFriendRemoveButtonLabel },
+                Label = { Text = "移除好友" },
                 Visible = true,
                 Enabled = false
             };
@@ -597,7 +597,7 @@ namespace Client.Scenes.Views
             {
                 if (FriendListBox.SelectedItem == null) return;
 
-                DXMessageBox box = new DXMessageBox(string.Format(CEnvir.Language.CommunicationDialogFriendTabFriendRemoveButtonConfirmMessage, FriendListBox.SelectedItem.Label.Text), CEnvir.Language.CommunicationDialogFriendTabFriendRemoveButtonConfirmCaption, DXMessageBoxButtons.YesNo);
+                DXMessageBox box = new DXMessageBox(string.Format("你确定要解除与 {0} 的好友关系吗?", FriendListBox.SelectedItem.Label.Text), "移除好友", DXMessageBoxButtons.YesNo);
 
                 box.YesButton.MouseClick += (o1, e1) =>
                 {
@@ -626,7 +626,7 @@ namespace Client.Scenes.Views
                 Size = new Size(50, 20),
                 Location = new Point(15, 5),
                 DrawFormat = TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter,
-                Text = CEnvir.Language.CommunicationDialogReceivedTabCategoryLabel
+                Text = "类别"
             };
 
             RecievedTitleLabel = new DXLabel
@@ -636,7 +636,7 @@ namespace Client.Scenes.Views
                 Size = new Size(140, 20),
                 Location = new Point(65, 5),
                 DrawFormat = TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter,
-                Text = CEnvir.Language.CommunicationDialogReceivedTabTitleLabel
+                Text = "标题"
             };
 
             ReceivedDateLabel = new DXLabel
@@ -646,7 +646,7 @@ namespace Client.Scenes.Views
                 Size = new Size(65, 20),
                 Location = new Point(200, 5),
                 DrawFormat = TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter,
-                Text = CEnvir.Language.CommunicationDialogReceivedTabDateLabel
+                Text = "发送日期"
             };
 
             //Rows
@@ -697,7 +697,7 @@ namespace Client.Scenes.Views
             {
                 Size = new Size(80, DefaultHeight),
                 Parent = this,
-                Label = { Text = CEnvir.Language.CommunicationDialogReceivedTabCollectAllButtonLabel },
+                Label = { Text = "收所有" },
                 Visible = false
             };
             ReceivedCollectAllButton.Location = new Point(15, ReceivedTab.Location.Y + ReceivedTab.Size.Height + 43);
@@ -735,7 +735,7 @@ namespace Client.Scenes.Views
             {
                 Size = new Size(80, DefaultHeight),
                 Parent = this,
-                Label = { Text = CEnvir.Language.CommunicationDialogReceivedTabDeleteAllButtonLabel },
+                Label = { Text = "删所有" },
                 Visible = false
             };
             ReceivedDeleteAll.Location = new Point(15 + ReceivedCollectAllButton.Size.Width + 10, ReceivedTab.Location.Y + ReceivedTab.Size.Height + 43);
@@ -756,7 +756,7 @@ namespace Client.Scenes.Views
             {
                 Size = new Size(80, DefaultHeight),
                 Parent = this,
-                Label = { Text = CEnvir.Language.CommunicationDialogReceivedTabNewButtonLabel },
+                Label = { Text = "新邮件" },
                 Visible = false
             };
             ReceivedNewButton.Location = new Point(15 + ReceivedCollectAllButton.Size.Width + 10 + ReceivedDeleteAll.Size.Width + 10, ReceivedTab.Location.Y + ReceivedTab.Size.Height + 43);
@@ -772,7 +772,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = SendTab,
-                Text = CEnvir.Language.CommunicationDialogSendTabRecipientLabel,
+                Text = "收件人:",
             };
             label.Location = new Point(82 - label.Size.Width, 11);
 
@@ -790,7 +790,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = SendTab,
-                Text = CEnvir.Language.CommunicationDialogSendTabSubjectLabel
+                Text = "主题:"
             };
             label.Location = new Point(82 - label.Size.Width, 31);
 
@@ -850,7 +850,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = SendTab,
-                Text = CEnvir.Language.CommunicationDialogSendTabItemsLabel
+                Text = "物品:"
             };
             label.Location = new Point(82 - label.Size.Width, 246);
 
@@ -870,7 +870,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = SendTab,
-                Text = CEnvir.Language.CommunicationDialogSendTabGoldLabel,
+                Text = "金币:",
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Regular),
             };
             label.Location = new Point(82 - label.Size.Width, SendGrid.Location.Y + 3 + SendGrid.Size.Height);
@@ -893,7 +893,7 @@ namespace Client.Scenes.Views
                 ButtonType = ButtonType.Default,
                 Size = new Size(70, DefaultHeight),
                 Parent = this,
-                Label = { Text = CEnvir.Language.CommunicationDialogSendTabSendButtonLabel },
+                Label = { Text = "发送" },
                 Enabled = false,
                 Visible = false
             };
@@ -927,7 +927,7 @@ namespace Client.Scenes.Views
 
             BlockAddButton = new DXButton
             {
-                Label = { Text = CEnvir.Language.CommunicationDialogBlockedTabAddButtonLabel },
+                Label = { Text = "加黑名单" },
                 Parent = this,
                 Size = new Size(100, DefaultHeight),
                 ButtonType = ButtonType.Default,
@@ -935,7 +935,7 @@ namespace Client.Scenes.Views
             };
             BlockAddButton.MouseClick += (o, e) =>
             {
-                DXInputWindow window = new DXInputWindow(CEnvir.Language.CommunicationDialogBlockedTabAddButtonConfirmMessage, CEnvir.Language.CommunicationDialogBlockedTabAddButtonConfirmCaption)
+                DXInputWindow window = new DXInputWindow("请输入您希望加入黑名单的人的姓名.", "加黑名单")
                 {
                     ConfirmButton = { Enabled = false },
                     Modal = true
@@ -952,7 +952,7 @@ namespace Client.Scenes.Views
             
             BlockRemoveButton = new DXButton
             {
-                Label = { Text = CEnvir.Language.CommunicationDialogBlockedTabRemoveButtonLabel },
+                Label = { Text = "移除黑名单" },
                 Parent = this,
                 Size = new Size(100, DefaultHeight),
                 ButtonType = ButtonType.Default,
@@ -963,7 +963,7 @@ namespace Client.Scenes.Views
             {
                 if (BlockListBox.SelectedItem == null) return;
 
-                DXMessageBox box = new DXMessageBox(string.Format(CEnvir.Language.CommunicationDialogBlockedTabRemoveButtonConfirmMessage, BlockListBox.SelectedItem.Label.Text), CEnvir.Language.CommunicationDialogBlockedTabRemoveButtonConfirmCaption, DXMessageBoxButtons.YesNo);
+                DXMessageBox box = new DXMessageBox(string.Format("你确定要从黑名单中移除 {0} 吗?", BlockListBox.SelectedItem.Label.Text), "移除黑名单", DXMessageBoxButtons.YesNo);
 
                 box.YesButton.MouseClick += (o1, e1) =>
                 {
@@ -1139,7 +1139,7 @@ namespace Client.Scenes.Views
             {
                 if (ReadMail.Items.Count > 0)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.CommunicationCannotDeleteMailWithItems, MessageType.System);
+                    GameScene.Game.ReceiveChat("您不能删除内含物品的邮件", MessageType.System);
                     return;
                 }
 

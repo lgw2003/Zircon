@@ -32,7 +32,7 @@ namespace Client.Scenes.Views
         public FortuneCheckerDialog()
         {
             //HasFooter = true;
-            TitleLabel.Text = "Fortune Checker";
+            TitleLabel.Text = "财富检查器";
             SetClientSize(new Size(485, 551));
             
             #region Search
@@ -343,7 +343,7 @@ namespace Client.Scenes.Views
             CountLabelLabel = new DXLabel
             {
                 Parent = this,
-                Text = CEnvir.Language.FortuneCheckerRowCountLabel,
+                Text = "掉落数量:",
                 ForeColour = Color.White,
                 IsControl = false,
 
@@ -360,7 +360,7 @@ namespace Client.Scenes.Views
             ProgressLabelLabel = new DXLabel
             {
                 Parent = this,
-                Text = CEnvir.Language.FortuneCheckerRowProgressLabel,
+                Text = "掉落地点:",
                 ForeColour = Color.White,
                 IsControl = false,
 
@@ -377,7 +377,7 @@ namespace Client.Scenes.Views
             DateLabelLabel = new DXLabel
             {
                 Parent = this,
-                Text = CEnvir.Language.FortuneCheckerRowDateLabel,
+                Text = "时间:",
                 ForeColour = Color.White,
                 IsControl = false,
 
@@ -394,7 +394,7 @@ namespace Client.Scenes.Views
             CheckButton = new DXButton
             {
                 Parent = this,
-                Label = { Text = CEnvir.Language.FortuneCheckerRowCheckButtonLabel },
+                Label = { Text = "检查" },
                 ButtonType = ButtonType.SmallButton,
                 Size = new Size(50, SmallButtonHeight),
                 Location = new Point(Size.Width - 55, 34)
@@ -408,7 +408,7 @@ namespace Client.Scenes.Views
         {
             if (GameScene.Game.Observer) return;
 
-            DXMessageBox box = new DXMessageBox(CEnvir.Language.FortuneCheckerRowCheckButtonConfirmMessage, CEnvir.Language.FortuneCheckerRowCheckButtonConfirmCaption, DXMessageBoxButtons.YesNo);
+            DXMessageBox box = new DXMessageBox("确认要计算生成个人统计数据吗?", "数据统计", DXMessageBoxButtons.YesNo);
 
             box.YesButton.MouseClick += (o1, e1) =>
             {

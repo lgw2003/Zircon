@@ -27,7 +27,7 @@ namespace Client.Scenes.Views
 
         public AutoPotionDialog()
         {
-            TitleLabel.Text = CEnvir.Language.AutoPotionTitle;
+            TitleLabel.Text = "辅助功能";
             HasFooter = true;
 
             SetClientSize(new Size(280, 398));
@@ -322,7 +322,7 @@ namespace Client.Scenes.Views
             {
                 Parent = this,
                 IsControl = false,
-                Text = CEnvir.Language.CommonStatusHealth + ":"
+                Text = "生命值" + ":"
             };
             HealthLabel.Location = new Point(HealthTargetBox.Location.X - HealthLabel.Size.Width, HealthTargetBox.Location.Y + (HealthTargetBox.Size.Height - HealthLabel.Size.Height) / 2);
 
@@ -331,13 +331,13 @@ namespace Client.Scenes.Views
             {
                 Parent = this,
                 IsControl = false,
-                Text = CEnvir.Language.CommonStatusMana + ":"
+                Text = "魔法值" + ":"
             };
             ManaLabel.Location = new Point(ManaTargetBox.Location.X - ManaLabel.Size.Width, ManaTargetBox.Location.Y + (ManaTargetBox.Size.Height - ManaLabel.Size.Height) / 2);
 
             EnabledCheckBox = new DXCheckBox
             {
-                Label = { Text = CEnvir.Language.AutoPotionEnabledLabel },
+                Label = { Text = "开启" },
                 Parent = this,
             };
             EnabledCheckBox.CheckedChanged += (o, e) => SendUpdate();

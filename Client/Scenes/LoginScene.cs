@@ -67,11 +67,11 @@ namespace Client.Scenes
         {
             ConnectionAttemptChanged?.Invoke(this, EventArgs.Empty);
 
-            string message = string.Format(CEnvir.Language.LoginConnectionAttemptMessage, ConnectionAttempt);
+            string message = $"尝试连接服务器.\n重试:{ConnectionAttempt}";
 
             if (ConnectionBox == null)
             {
-                ConnectionBox = new DXMessageBox(message, CEnvir.Language.LoginConnectionAttemptCaption, DXMessageBoxButtons.Cancel);
+                ConnectionBox = new DXMessageBox(message, "连接中", DXMessageBoxButtons.Cancel);
                 ConnectionBox.Disposing += (o, e1) => ConnectionBox = null;
                 ConnectionBox.CancelButton.MouseClick += (o, e1) => CEnvir.Target.Close();
                 ConnectionBox.CloseButton.Visible = false;
@@ -271,11 +271,11 @@ namespace Client.Scenes
 
             if (!CEnvir.Loaded)
             {
-                string message = CEnvir.Language.LoginLoadingMessage;
+                string message = "加载客户端信息...\n请等待...";
 
                 if (ConnectionBox == null)
                 {
-                    ConnectionBox = new DXMessageBox(message, CEnvir.Language.LoginLoadingCaption, DXMessageBoxButtons.Cancel);
+                    ConnectionBox = new DXMessageBox(message, "加载中", DXMessageBoxButtons.Cancel);
 
                     ConnectionBox.Disposing += (o, e1) => ConnectionBox = null;
                     ConnectionBox.CancelButton.MouseClick += (o, e1) => CEnvir.Target.Close();
@@ -638,7 +638,7 @@ namespace Client.Scenes
                 TitleLabel = new DXLabel
                 {
                     Parent = this,
-                    Text = CEnvir.Language.LoginDialogTitle,
+                    Text = "输入您的账号和密码登录",
                     ForeColour = Color.FromArgb(214, 190, 148)
                 };
                 TitleLabel.Location = new Point(280, 38);
@@ -678,7 +678,7 @@ namespace Client.Scenes
                     Visible = false,
                     Parent = this,
                     Text = "[?]",
-                    Hint = string.Format(CEnvir.Language.LoginDialogEMailHelpHint, Globals.MaxEMailLength),
+                    Hint = string.Format("邮箱地址.\n格式: Example@Example.Com.\n最大长度: {0} 个字符。", Globals.MaxEMailLength),
                 };
                 EMailHelpLabel.Location = new Point(EMailTextBox.Location.X + EMailTextBox.Size.Width + 2, EMailTextBox.Location.Y - 2);
 
@@ -687,7 +687,7 @@ namespace Client.Scenes
                     Visible = false,
                     Parent = this,
                     Text = "[?]",
-                    Hint = string.Format(CEnvir.Language.LoginDialogPasswordHelpHint, Globals.MinPasswordLength, Globals.MaxPasswordLength),
+                    Hint = string.Format("密码.\n合法字符:大小写字符和数字和部分特殊字符(不含空格).\n合法长度: 大于 {0} 小于 {1} 个字符。", Globals.MinPasswordLength, Globals.MaxPasswordLength),
                 };
                 PasswordHelpLabel.Location = new Point(PasswordTextBox.Location.X + PasswordTextBox.Size.Width + 2, PasswordTextBox.Location.Y - 2);
 
@@ -696,7 +696,7 @@ namespace Client.Scenes
                     Parent = this,
                     Location = new Point(550, 60),
                     Size = new Size(100, DefaultHeight),
-                    Label = { Text = CEnvir.Language.LoginDialogLoginButtonLabel },
+                    Label = { Text = "登录" },
                     Enabled = false,
                 };
                 LoginButton.MouseClick += (o, e) => Login();
@@ -706,7 +706,7 @@ namespace Client.Scenes
                     Parent = this,
                     Location = new Point(660, 60),
                     Size = new Size(100, DefaultHeight),
-                    Label = { Text = CEnvir.Language.LoginDialogExitButtonLabel },
+                    Label = { Text = "退出游戏" },
                     Enabled = true,
                 };
                 ExitButton.MouseClick += (o, e) => CEnvir.Target.Close();
@@ -718,7 +718,7 @@ namespace Client.Scenes
                     Index = 153,
                     Location = new Point(20, 0),
                     Size = new Size(68, 32),
-                    Label = { Text = CEnvir.Language.LoginDialogRankingButtonLabel, ForeColour = Color.FromArgb(255, 227, 165) },
+                    Label = { Text = "排行榜", ForeColour = Color.FromArgb(255, 227, 165) },
                 };
                 RankingButton.MouseClick += RankingButton_MouseClick;
 
@@ -729,7 +729,7 @@ namespace Client.Scenes
                     Index = 153,
                     Location = new Point(RankingButton.Location.X + RankingButton.Size.Width + 5, 0),
                     Size = new Size(68, 32),
-                    Label = { Text = CEnvir.Language.LoginDialogOptionButtonLabel, ForeColour = Color.FromArgb(255, 227, 165) },
+                    Label = { Text = "设置", ForeColour = Color.FromArgb(255, 227, 165) },
                 };
                 OptionButton.MouseClick += OptionButton_MouseClick;
                 
@@ -740,7 +740,7 @@ namespace Client.Scenes
                     Index = 152,
                     Location = new Point(485, 0),
                     Size = new Size(136, 32),
-                    Label = { Text = CEnvir.Language.LoginDialogNewAccountButtonLabel, ForeColour = Color.FromArgb(255, 227, 165) },
+                    Label = { Text = "新建账号", ForeColour = Color.FromArgb(255, 227, 165) },
                 };
                 NewAccountButton.MouseClick += NewAccountButton_MouseClick;
 
@@ -751,13 +751,13 @@ namespace Client.Scenes
                     Index = 152,
                     Location = new Point(625, 0),
                     Size = new Size(136, 32),
-                    Label = { Text = CEnvir.Language.LoginDialogChangePasswordButtonLabel, ForeColour = Color.FromArgb(255, 227, 165) }
+                    Label = { Text = "更改密码", ForeColour = Color.FromArgb(255, 227, 165) }
                 };
                 ChangePasswordButton.MouseClick += ChangePasswordButton_MouseClick;
 
                 RememberCheckBox = new DXCheckBox
                 {
-                    Label = { Text = CEnvir.Language.LoginDialogRememberCheckBoxLabel },
+                    Label = { Text = "记住我?" },
                     Parent = this,
                     Checked = Config.RememberDetails,
                 };
@@ -767,7 +767,7 @@ namespace Client.Scenes
                 ForgotPasswordLabel = new DXLabel()
                 {
                     Parent = this,
-                    Text = CEnvir.Language.LoginDialogForgotPasswordLabel,
+                    Text = "忘记密码?",
                     Sound = SoundIndex.ButtonC,
                 };
                 ForgotPasswordLabel.MouseEnter += (o, e) => ForgotPasswordLabel.ForeColour = Color.White;
@@ -1197,14 +1197,14 @@ namespace Client.Scenes
             public NewAccountDialog()
             {
                 Size = new Size(300, 255);
-                TitleLabel.Text = CEnvir.Language.NewAccountDialogTitle;
+                TitleLabel.Text = "创建账户";
                 HasFooter = true;
                 Visible = false;
 
                 CancelButton = new DXButton
                 {
                     Parent = this,
-                    Label = { Text = CEnvir.Language.CommonControlCancel },
+                    Label = { Text = "取消" },
                     Location = new Point(Size.Width / 2 + 10, Size.Height - 43),
                     Size = new Size(80, DefaultHeight),
                 };
@@ -1215,7 +1215,7 @@ namespace Client.Scenes
                 {
                     Enabled = false,
                     Parent = this,
-                    Label = { Text = CEnvir.Language.NewAccountDialogCreateButtonLabel },
+                    Label = { Text = "创建" },
                     Location = new Point((Size.Width) / 2 - 80 - 10, Size.Height - 43),
                     Size = new Size(80, DefaultHeight),
                 };
@@ -1302,35 +1302,35 @@ namespace Client.Scenes
                 DXLabel label = new DXLabel
                 {
                     Parent = this,
-                    Text = CEnvir.Language.NewAccountDialogEMailLabel,
+                    Text = "E-Mail:",
                 };
                 label.Location = new Point(EMailTextBox.Location.X - label.Size.Width - 5, (EMailTextBox.Size.Height - label.Size.Height) / 2 + EMailTextBox.Location.Y);
 
                 label = new DXLabel
                 {
                     Parent = this,
-                    Text = CEnvir.Language.NewAccountDialogPassword1Label,
+                    Text = "密码:",
                 };
                 label.Location = new Point(Password1TextBox.Location.X - label.Size.Width - 5, (Password1TextBox.Size.Height - label.Size.Height) / 2 + Password1TextBox.Location.Y);
 
                 label = new DXLabel
                 {
                     Parent = this,
-                    Text = CEnvir.Language.NewAccountDialogPassword2Label,
+                    Text = "确认密码:",
                 };
                 label.Location = new Point(Password2TextBox.Location.X - label.Size.Width - 5, (Password2TextBox.Size.Height - label.Size.Height) / 2 + Password2TextBox.Location.Y);
 
                 label = new DXLabel
                 {
                     Parent = this,
-                    Text = CEnvir.Language.NewAccountDialogRealNameLabel,
+                    Text = "真实姓名:",
                 };
                 label.Location = new Point(RealNameTextBox.Location.X - label.Size.Width - 5, (RealNameTextBox.Size.Height - label.Size.Height) / 2 + RealNameTextBox.Location.Y);
 
                 label = new DXLabel
                 {
                     Parent = this,
-                    Text = CEnvir.Language.NewAccountDialogBirthDateLabel,
+                    Text = "出生日期:",
                 };
                 label.Location = new Point(BirthDateTextBox.Location.X - label.Size.Width - 5, (BirthDateTextBox.Size.Height - label.Size.Height) / 2 + BirthDateTextBox.Location.Y);
 
@@ -1338,7 +1338,7 @@ namespace Client.Scenes
                 label = new DXLabel
                 {
                     Parent = this,
-                    Text = CEnvir.Language.NewAccountDialogReferralLabel,
+                    Text = "推荐人:",
                 };
                 label.Location = new Point(ReferralTextBox.Location.X - label.Size.Width - 5, (ReferralTextBox.Size.Height - label.Size.Height) / 2 + ReferralTextBox.Location.Y);
 
@@ -1348,7 +1348,7 @@ namespace Client.Scenes
                     Visible = false,
                     Parent = this,
                     Text = "[?]",
-                    Hint = string.Format(CEnvir.Language.NewAccountDialogEMailHelpHint, Globals.MaxEMailLength),
+                    Hint = string.Format("邮箱地址.\n格式: Example@Example.Com.\n最大长度: {0} 个字符.", Globals.MaxEMailLength),
                 };
                 EMailHelpLabel.Location = new Point(EMailTextBox.Location.X + EMailTextBox.Size.Width + 2, (EMailTextBox.Size.Height - EMailHelpLabel.Size.Height) / 2 + EMailTextBox.Location.Y);
 
@@ -1357,7 +1357,7 @@ namespace Client.Scenes
                     Visible = false,
                     Parent = this,
                     Text = "[?]",
-                    Hint = string.Format(CEnvir.Language.NewAccountDialogPassword1HelpHint, Globals.MinPasswordLength, Globals.MaxPasswordLength),
+                    Hint = string.Format("密码.\n合法字符:大小写字符和数字和部分特殊字符(不含空格).\n合法长度: 大于 {0} 小于 {1} 个字符.", Globals.MinPasswordLength, Globals.MaxPasswordLength),
                 };
                 Password1HelpLabel.Location = new Point(Password1TextBox.Location.X + Password1TextBox.Size.Width + 2, (Password1TextBox.Size.Height - Password1HelpLabel.Size.Height) / 2 + Password1TextBox.Location.Y);
 
@@ -1366,7 +1366,7 @@ namespace Client.Scenes
                     Visible = false,
                     Parent = this,
                     Text = "[?]",
-                    Hint = string.Format(CEnvir.Language.NewAccountDialogPassword2HelpHint, Globals.MinPasswordLength, Globals.MaxPasswordLength),
+                    Hint = string.Format("密码.\n合法字符:大小写字符和数字和部分特殊字符(不含空格).\n合法长度: 大于 {0} 小于 {1} 个字符.", Globals.MinPasswordLength, Globals.MaxPasswordLength),
                 };
                 Password2HelpLabel.Location = new Point(Password2TextBox.Location.X + Password2TextBox.Size.Width + 2, (Password2TextBox.Size.Height - Password2HelpLabel.Size.Height) / 2 + Password2TextBox.Location.Y);
 
@@ -1376,7 +1376,7 @@ namespace Client.Scenes
                     Visible = false,
                     Parent = this,
                     Text = "[?]",
-                    Hint = string.Format(CEnvir.Language.NewAccountDialogRealNameHelpHint, Globals.MinRealNameLength, Globals.MaxRealNameLength, Globals.RealNameRequired),
+                    Hint = string.Format("真实姓名.\n合法字符: 所有字符.\n合法长度: 大于 {0} 小于 {1} 个字符.\n必须输入: {2}", Globals.MinRealNameLength, Globals.MaxRealNameLength, Globals.RealNameRequired),
                 };
                 RealNameHelpLabel.Location = new Point(RealNameTextBox.Location.X + RealNameTextBox.Size.Width + 2, (RealNameTextBox.Size.Height - RealNameHelpLabel.Size.Height) / 2 + RealNameTextBox.Location.Y);
 
@@ -1385,7 +1385,7 @@ namespace Client.Scenes
                     Visible = false,
                     Parent = this,
                     Text = "[?]",
-                    Hint = string.Format(CEnvir.Language.NewAccountDialogBirthDateHelpHint, Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper(), Globals.BirthDateRequired),
+                    Hint = string.Format("生日.\n格式: {0}.\n必须输入: {1}", Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper(), Globals.BirthDateRequired),
                 };
                 BirthDateHelpLabel.Location = new Point(BirthDateTextBox.Location.X + BirthDateTextBox.Size.Width + 2, (BirthDateTextBox.Size.Height - BirthDateHelpLabel.Size.Height) / 2 + BirthDateTextBox.Location.Y);
 
@@ -1394,7 +1394,7 @@ namespace Client.Scenes
                     Visible = false,
                     Parent = this,
                     Text = "[?]",
-                    Hint = string.Format(CEnvir.Language.NewAccountDialogReferralHelpHint, Globals.MaxEMailLength),
+                    Hint = string.Format("推荐人的邮件地址.\n格式: Example@Example.Com.\n最大长度: {0} 个字符.", Globals.MaxEMailLength),
                 };
                 ReferralHelpLabel.Location = new Point(ReferralTextBox.Location.X + ReferralTextBox.Size.Width + 2, (ReferralTextBox.Size.Height - ReferralHelpLabel.Size.Height) / 2 + ReferralTextBox.Location.Y);
 
@@ -1837,14 +1837,14 @@ namespace Client.Scenes
             public ChangePasswordDialog()
             {
                 Size = new Size(330, 205);
-                TitleLabel.Text = CEnvir.Language.ChangePasswordTitle;
+                TitleLabel.Text = "更改密码";
                 HasFooter = true;
                 Visible = false;
 
                 CancelButton = new DXButton
                 {
                     Parent = this,
-                    Label = { Text = CEnvir.Language.CommonControlCancel },
+                    Label = { Text = "取消" },
                     Location = new Point(Size.Width / 2 + 10, Size.Height - 43),
                     Size = new Size(80, DefaultHeight),
                 };
@@ -1855,7 +1855,7 @@ namespace Client.Scenes
                 {
                     Enabled = false,
                     Parent = this,
-                    Label = { Text = CEnvir.Language.ChangePasswordChangeButtonLabel },
+                    Label = { Text = "变更" },
                     Location = new Point((Size.Width) / 2 - 80 - 10, Size.Height - 43),
                     Size = new Size(80, DefaultHeight),
                 };
@@ -1917,28 +1917,28 @@ namespace Client.Scenes
                 DXLabel label = new DXLabel
                 {
                     Parent = this,
-                    Text = CEnvir.Language.ChangePasswordEMailLabel,
+                    Text = "E-Mail:",
                 };
                 label.Location = new Point(EMailTextBox.Location.X - label.Size.Width - 5, (EMailTextBox.Size.Height - label.Size.Height) / 2 + EMailTextBox.Location.Y);
 
                 label = new DXLabel
                 {
                     Parent = this,
-                    Text = CEnvir.Language.ChangePasswordCurrentPasswordLabel,
+                    Text = "当前密码:",
                 };
                 label.Location = new Point(CurrentPasswordTextBox.Location.X - label.Size.Width - 5, (CurrentPasswordTextBox.Size.Height - label.Size.Height) / 2 + CurrentPasswordTextBox.Location.Y);
 
                 label = new DXLabel
                 {
                     Parent = this,
-                    Text = CEnvir.Language.ChangePasswordNewPassword1Label,
+                    Text = "新密码:",
                 };
                 label.Location = new Point(NewPassword1TextBox.Location.X - label.Size.Width - 5, (NewPassword1TextBox.Size.Height - label.Size.Height) / 2 + NewPassword1TextBox.Location.Y);
 
                 label = new DXLabel
                 {
                     Parent = this,
-                    Text = CEnvir.Language.ChangePasswordNewPassword2Label,
+                    Text = "确认密码:",
                 };
                 label.Location = new Point(NewPassword2TextBox.Location.X - label.Size.Width - 5, (NewPassword2TextBox.Size.Height - label.Size.Height) / 2 + NewPassword2TextBox.Location.Y);
 
@@ -1948,7 +1948,7 @@ namespace Client.Scenes
                     Visible = false,
                     Parent = this,
                     Text = "[?]",
-                    Hint = string.Format(CEnvir.Language.ChangePasswordEMailHelpHint, Globals.MaxEMailLength),
+                    Hint = string.Format("邮箱地址.\n格式: Example@Example.Com.\n最大长度: {0} 个字符.", Globals.MaxEMailLength),
                 };
                 EMailHelpLabel.Location = new Point(EMailTextBox.Location.X + EMailTextBox.Size.Width + 2, (EMailTextBox.Size.Height - EMailHelpLabel.Size.Height) / 2 + EMailTextBox.Location.Y);
 
@@ -1957,7 +1957,7 @@ namespace Client.Scenes
                     Visible = false,
                     Parent = this,
                     Text = "[?]",
-                    Hint = string.Format(CEnvir.Language.ChangePasswordCurrentPasswordHelpHint, Globals.MinPasswordLength, Globals.MaxPasswordLength),
+                    Hint = string.Format("密码.\n合法字符:大小写字符和数字和部分特殊字符(不含空格).\n合法长度: 大于 {0} 小于 {1} 个字符.", Globals.MinPasswordLength, Globals.MaxPasswordLength),
                 };
                 CurrentPasswordHelpLabel.Location = new Point(CurrentPasswordTextBox.Location.X + CurrentPasswordTextBox.Size.Width + 2, (CurrentPasswordTextBox.Size.Height - CurrentPasswordHelpLabel.Size.Height) / 2 + CurrentPasswordTextBox.Location.Y);
 
@@ -1966,7 +1966,7 @@ namespace Client.Scenes
                     Visible = false,
                     Parent = this,
                     Text = "[?]",
-                    Hint = string.Format(CEnvir.Language.ChangePasswordNewPassword1HelpHint, Globals.MinPasswordLength, Globals.MaxPasswordLength),
+                    Hint = string.Format("密码.\n合法字符:大小写字符和数字和部分特殊字符(不含空格).\n合法长度: 大于 {0} 小于 {1} 个字符.", Globals.MinPasswordLength, Globals.MaxPasswordLength),
                 };
                 NewPassword1HelpLabel.Location = new Point(NewPassword1TextBox.Location.X + NewPassword1TextBox.Size.Width + 2, (NewPassword1TextBox.Size.Height - NewPassword1HelpLabel.Size.Height) / 2 + NewPassword1TextBox.Location.Y);
 
@@ -1975,7 +1975,7 @@ namespace Client.Scenes
                     Visible = false,
                     Parent = this,
                     Text = "[?]",
-                    Hint = string.Format(CEnvir.Language.ChangePasswordNewPassword2HelpHint, Globals.MinPasswordLength, Globals.MaxPasswordLength),
+                    Hint = string.Format("密码.\n合法字符:大小写字符和数字和部分特殊字符(不含空格).\n合法长度: 大于 {0} 小于 {1} 个字符.", Globals.MinPasswordLength, Globals.MaxPasswordLength),
                 };
                 NewPassword2HelpLabel.Location = new Point(NewPassword2TextBox.Location.X + NewPassword2TextBox.Size.Width + 2, (NewPassword2TextBox.Size.Height - NewPassword2HelpLabel.Size.Height) / 2 + NewPassword2TextBox.Location.Y);
 
@@ -2270,14 +2270,14 @@ namespace Client.Scenes
             public RequestResetPasswordDialog()
             {
                 Size = new Size(330, 150);
-                TitleLabel.Text = CEnvir.Language.RequestResetPasswordTitle;
+                TitleLabel.Text = "请求密码重置";
                 HasFooter = true;
                 Visible = false;
 
                 CancelButton = new DXButton
                 {
                     Parent = this,
-                    Label = { Text = CEnvir.Language.CommonControlCancel },
+                    Label = { Text = "取消" },
                     Location = new Point(Size.Width / 2 + 10, Size.Height - 43),
                     Size = new Size(80, DefaultHeight),
                 };
@@ -2288,7 +2288,7 @@ namespace Client.Scenes
                 {
                     Enabled = false,
                     Parent = this,
-                    Label = { Text = CEnvir.Language.RequestResetPasswordRequestButtonLabel },
+                    Label = { Text = "请求" },
                     Location = new Point((Size.Width) / 2 - 80 - 10, Size.Height - 43),
                     Size = new Size(80, DefaultHeight),
                 };
@@ -2311,7 +2311,7 @@ namespace Client.Scenes
                 DXLabel label = new DXLabel
                 {
                     Parent = this,
-                    Text = CEnvir.Language.RequestResetPasswordEMailLabel,
+                    Text = "E-Mail:",
                 };
                 label.Location = new Point(EMailTextBox.Location.X - label.Size.Width - 5, (EMailTextBox.Size.Height - label.Size.Height) / 2 + EMailTextBox.Location.Y);
 
@@ -2320,14 +2320,14 @@ namespace Client.Scenes
                     Visible = false,
                     Parent = this,
                     Text = "[?]",
-                    Hint = string.Format(CEnvir.Language.RequestResetPasswordEMailHelpHint, Globals.MaxEMailLength),
+                    Hint = string.Format("邮箱地址.\n格式: Example@Example.Com.\n最大长度: {0} 个字符.", Globals.MaxEMailLength),
                 };
                 EMailHelpLabel.Location = new Point(EMailTextBox.Location.X + EMailTextBox.Size.Width + 2, (EMailTextBox.Size.Height - EMailHelpLabel.Size.Height) / 2 + EMailTextBox.Location.Y);
 
                 HaveKeyLabel = new DXLabel
                 {
                     Parent = this,
-                    Text = CEnvir.Language.RequestResetPasswordHaveKeyLabel,
+                    Text = "有重置密钥?",
                 };
                 HaveKeyLabel.MouseEnter += (o, e) => HaveKeyLabel.ForeColour = Color.White;
                 HaveKeyLabel.MouseLeave += (o, e) => HaveKeyLabel.ForeColour = Color.FromArgb(198, 166, 99);
@@ -2586,14 +2586,14 @@ namespace Client.Scenes
             public ResetPasswordDialog()
             {
                 Size = new Size(330, 180);
-                TitleLabel.Text = CEnvir.Language.ResetPasswordTitle;
+                TitleLabel.Text = "重置密码";
                 HasFooter = true;
                 Visible = false;
 
                 CancelButton = new DXButton
                 {
                     Parent = this,
-                    Label = { Text = CEnvir.Language.CommonControlCancel },
+                    Label = { Text = "取消" },
                     Location = new Point(Size.Width / 2 + 10, Size.Height - 43),
                     Size = new Size(80, DefaultHeight),
                 };
@@ -2604,7 +2604,7 @@ namespace Client.Scenes
                 {
                     Enabled = false,
                     Parent = this,
-                    Label = { Text = CEnvir.Language.ResetPasswordResetButtonLabel },
+                    Label = { Text = "重置" },
                     Location = new Point((Size.Width) / 2 - 80 - 10, Size.Height - 43),
                     Size = new Size(80, DefaultHeight),
                 };
@@ -2653,21 +2653,21 @@ namespace Client.Scenes
                 DXLabel label = new DXLabel
                 {
                     Parent = this,
-                    Text = CEnvir.Language.ResetPasswordResetKeyLabel,
+                    Text = "重置密钥:",
                 };
                 label.Location = new Point(ResetKeyTextBox.Location.X - label.Size.Width - 5, (ResetKeyTextBox.Size.Height - label.Size.Height) / 2 + ResetKeyTextBox.Location.Y);
 
                 label = new DXLabel
                 {
                     Parent = this,
-                    Text = CEnvir.Language.ResetPasswordNewPassword1Label,
+                    Text = "新密码:",
                 };
                 label.Location = new Point(NewPassword1TextBox.Location.X - label.Size.Width - 5, (NewPassword1TextBox.Size.Height - label.Size.Height) / 2 + NewPassword1TextBox.Location.Y);
 
                 label = new DXLabel
                 {
                     Parent = this,
-                    Text = CEnvir.Language.ResetPasswordNewPassword2Label,
+                    Text = "确认密码:",
                 };
                 label.Location = new Point(NewPassword2TextBox.Location.X - label.Size.Width - 5, (NewPassword2TextBox.Size.Height - label.Size.Height) / 2 + NewPassword2TextBox.Location.Y);
 
@@ -2677,7 +2677,7 @@ namespace Client.Scenes
                     Visible = false,
                     Parent = this,
                     Text = "[?]",
-                    Hint = CEnvir.Language.ResetPasswordResetKeyHelpHint,
+                    Hint = "重置密钥.\n在密码重置电子邮件中发现的随机数字和字母序列.",
                 };
                 ResetHelpLabel.Location = new Point(ResetKeyTextBox.Location.X + ResetKeyTextBox.Size.Width + 2, (ResetKeyTextBox.Size.Height - ResetHelpLabel.Size.Height) / 2 + ResetKeyTextBox.Location.Y);
 
@@ -2686,7 +2686,7 @@ namespace Client.Scenes
                     Visible = false,
                     Parent = this,
                     Text = "[?]",
-                    Hint = string.Format(CEnvir.Language.ResetPasswordNewPassword1HelpHint, Globals.MinPasswordLength, Globals.MaxPasswordLength),
+                    Hint = string.Format("密码.\n合法字符:大小写字符和数字和部分特殊字符(不含空格).\n合法长度: 大于 {0} 小于 {1} 个字符.", Globals.MinPasswordLength, Globals.MaxPasswordLength),
                 };
                 NewPassword1HelpLabel.Location = new Point(NewPassword1TextBox.Location.X + NewPassword1TextBox.Size.Width + 2, (NewPassword1TextBox.Size.Height - NewPassword1HelpLabel.Size.Height) / 2 + NewPassword1TextBox.Location.Y);
 
@@ -2695,7 +2695,7 @@ namespace Client.Scenes
                     Visible = false,
                     Parent = this,
                     Text = "[?]",
-                    Hint = string.Format(CEnvir.Language.ResetPasswordNewPassword2HelpHint, Globals.MinPasswordLength, Globals.MaxPasswordLength),
+                    Hint = string.Format("密码.\n合法字符:大小写字符和数字和部分特殊字符(不含空格).\n合法长度: 大于 {0} 小于 {1} 个字符.", Globals.MinPasswordLength, Globals.MaxPasswordLength),
                 };
                 NewPassword2HelpLabel.Location = new Point(NewPassword2TextBox.Location.X + NewPassword2TextBox.Size.Width + 2, (NewPassword2TextBox.Size.Height - NewPassword2HelpLabel.Size.Height) / 2 + NewPassword2TextBox.Location.Y);
 
@@ -2958,7 +2958,7 @@ namespace Client.Scenes
                 CancelButton = new DXButton
                 {
                     Parent = this,
-                    Label = { Text = CEnvir.Language.CommonControlCancel },
+                    Label = { Text = "取消" },
                     Location = new Point(Size.Width / 2 + 10, Size.Height - 43),
                     Size = new Size(80, DefaultHeight),
                 };
@@ -3223,7 +3223,7 @@ namespace Client.Scenes
                 CancelButton = new DXButton
                 {
                     Parent = this,
-                    Label = { Text = CEnvir.Language.CommonControlCancel },
+                    Label = { Text = "取消" },
                     Location = new Point(Size.Width / 2 + 10, Size.Height - 43),
                     Size = new Size(80, DefaultHeight),
                 };

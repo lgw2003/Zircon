@@ -169,7 +169,7 @@ namespace Client.Scenes.Views
 
             TitleLabel = new DXLabel
             {
-                Text = CEnvir.Language.CompanionDialogTitle,
+                Text = "同伴",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -191,7 +191,7 @@ namespace Client.Scenes.Views
             CompanionTab = new DXTab
             {
                 Parent = TabControl,
-                TabButton = { Label = { Text = CEnvir.Language.CompanionDialogCompanionTabLabel } },
+                TabButton = { Label = { Text = "宠物" } },
                 BackColour = Color.Empty,
                 Location = new Point(0, 24)
             };
@@ -201,7 +201,7 @@ namespace Client.Scenes.Views
             BonusButton = new DXButton
             {
                 Parent = CompanionTab,
-                Label = { Text = CEnvir.Language.CompanionDialogCompanionTabBonusButtonLabel },
+                Label = { Text = "Bonus" },
                 Location = new Point(10, 263),
                 Size = new Size(70, DefaultHeight),
                 Enabled = false,
@@ -211,7 +211,7 @@ namespace Client.Scenes.Views
             FilterButton = new DXButton
             {
                 Parent = CompanionTab,
-                Label = { Text = CEnvir.Language.CompanionDialogCompanionTabFilterButtonLabel },
+                Label = { Text = "过滤" },
                 Location = new Point(90, 263),
                 Size = new Size(70, DefaultHeight),
                 Enabled = false,
@@ -221,7 +221,7 @@ namespace Client.Scenes.Views
             BagButton = new DXButton
             {
                 Parent = CompanionTab,
-                Label = { Text = CEnvir.Language.CompanionDialogCompanionTabBagButtonLabel },
+                Label = { Text = "背包" },
                 Location = new Point(170, 263),
                 Size = new Size(70, DefaultHeight),
                 Enabled = false,
@@ -339,7 +339,7 @@ namespace Client.Scenes.Views
                 ForeColour = Color.FromArgb(198, 166, 99),
                 OutlineColour = Color.Black,
                 IsControl = false,
-                Text = CEnvir.Language.CompanionDialogCompanionTabNameLabel,
+                Text = "名称",
                 AutoSize = false,
                 Size = new Size(60, 17),
                 Location = new Point(10, 156)
@@ -367,7 +367,7 @@ namespace Client.Scenes.Views
                 ForeColour = Color.FromArgb(198, 166, 99),
                 OutlineColour = Color.Black,
                 IsControl = false,
-                Text = CEnvir.Language.CompanionDialogCompanionTabLevelLabel,
+                Text = "等级",
                 AutoSize = false,
                 Size = new Size(60, 17),
                 Location = new Point(10, 178)
@@ -418,7 +418,7 @@ namespace Client.Scenes.Views
                 ForeColour = Color.FromArgb(198, 166, 99),
                 OutlineColour = Color.Black,
                 IsControl = false,
-                Text = CEnvir.Language.CompanionDialogCompanionTabExpLabel,
+                Text = "经验",
                 AutoSize = false,
                 Size = new Size(60, 17),
                 Location = new Point(10, 200)
@@ -469,7 +469,7 @@ namespace Client.Scenes.Views
                 ForeColour = Color.FromArgb(198, 166, 99),
                 OutlineColour = Color.Black,
                 IsControl = false,
-                Text = CEnvir.Language.CompanionDialogCompanionTabHungerLabel,
+                Text = "饥饿",
                 AutoSize = false,
                 Size = new Size(60, 17),
                 Location = new Point(10, 222)

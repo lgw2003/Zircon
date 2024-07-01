@@ -39,7 +39,7 @@ namespace Client.Controls
         public DXKeyBindWindow()
         {
             HasFooter = true;
-            TitleLabel.Text = CEnvir.Language.CommonControlDXKeyBindWindowTitle;
+            TitleLabel.Text = "按键设置";
             Modal = true;
             CloseButton.Visible = false;
 
@@ -49,7 +49,7 @@ namespace Client.Controls
             DXLabel label = new DXLabel
             {
                 Parent = this,
-                Text = CEnvir.Language.CommonControlDXKeyBindWindowTipLabel,
+                Text = "[ESC] 撤销对当前按键的绑定",
             };
             label.Location = new Point(ClientArea.Right - label.Size.Width, ClientArea.Y);
 
@@ -65,7 +65,7 @@ namespace Client.Controls
                 Location = new Point(Size.Width - 190, Size.Height - 43),
                 Size = new Size(80, DefaultHeight),
                 Parent = this,
-                Label = { Text = CEnvir.Language.CommonControlApply }
+                Label = { Text = "应用" }
             };
             SaveButton.MouseClick += SaveButton_MouseClick;
 
@@ -74,7 +74,7 @@ namespace Client.Controls
                 Location = new Point(Size.Width - 100, Size.Height - 43),
                 Size = new Size(80, DefaultHeight),
                 Parent = this,
-                Label = { Text = CEnvir.Language.CommonControlClose }
+                Label = { Text = "关闭" }
             };
             CancelButton.MouseClick += (o, e) => Visible = false;
 
@@ -83,11 +83,11 @@ namespace Client.Controls
                 Location = new Point(ClientArea.X, Size.Height - 43),
                 Size = new Size(80, DefaultHeight),
                 Parent = this,
-                Label = { Text = CEnvir.Language.CommonControlDefaults }
+                Label = { Text = "默认" }
             };
             DefaultButton.MouseClick += (o, e) =>
             {
-                DXMessageBox box = new DXMessageBox(CEnvir.Language.CommonControlDXKeyBindWindowDefaultConfirmMessage, CEnvir.Language.CommonControlDXKeyBindWindowDefaultConfirmCaption, DXMessageBoxButtons.YesNo);
+                DXMessageBox box = new DXMessageBox("您确定要将所有按键设置重置为默认设置吗?", "重置", DXMessageBoxButtons.YesNo);
 
                 box.YesButton.MouseClick += (o1, e1) =>
                 {

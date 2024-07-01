@@ -224,7 +224,7 @@ namespace Client.Scenes.Views
             {
                 Parent = this,
                 Location = new Point(UserGrid.Location.X + UserGrid.Size.Width - 75, UserGoldLabel.Location.Y + 35),
-                Label = { Text = CEnvir.Language.CommonControlConfirm },
+                Label = { Text = "提交" },
                 ButtonType = ButtonType.SmallButton,
                 Size = new Size(80, SmallButtonHeight),
             };

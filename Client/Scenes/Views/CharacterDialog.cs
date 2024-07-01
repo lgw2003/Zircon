@@ -300,7 +300,7 @@ namespace Client.Scenes.Views
             CharacterTab = new DXTab
             {
                 Parent = TabControl,
-                TabButton = { Label = { Text = CEnvir.Language.CharacterCharacterTabLabel } },
+                TabButton = { Label = { Text = "角色" } },
                 BackColour = Color.Empty,
                 Location = new Point(0, 26)
             };
@@ -327,7 +327,7 @@ namespace Client.Scenes.Views
             HermitTab = new DXTab
             {
                 Parent = TabControl,
-                TabButton = { Label = { Text = CEnvir.Language.CharacterHermitTabLabel } },
+                TabButton = { Label = { Text = "附加" } },
                 BackColour = Color.Empty,
                 Location = new Point(0, 26),
             };
@@ -657,7 +657,7 @@ namespace Client.Scenes.Views
                 { 
                     Label =
                     {
-                        Text = CEnvir.Language.CharacterCharacterTabStatsAttackTabLabel
+                        Text = "攻击"
                     },
                     Hint = CEnvir.Language.CharacterCharacterTabStatsAttackTabHint
                 },
@@ -673,7 +673,7 @@ namespace Client.Scenes.Views
                 { 
                     Label =
                     {
-                        Text = CEnvir.Language.CharacterCharacterTabStatsDefenseTabLabel
+                        Text = "防御"
                     },
                     Hint = CEnvir.Language.CharacterCharacterTabStatsDefenseTabHint
                 },
@@ -688,7 +688,7 @@ namespace Client.Scenes.Views
                 { 
                     Label =
                     {
-                        Text = CEnvir.Language.CharacterCharacterTabStatsWeightTabLabel
+                        Text = "负重"
                     },
                     Hint = CEnvir.Language.CharacterCharacterTabStatsWeightTabHint
                 },
@@ -703,7 +703,7 @@ namespace Client.Scenes.Views
                 { 
                     Label =
                     {
-                        Text = CEnvir.Language.CharacterCharacterTabStatsOtherTabLabel            
+                        Text = "其他"            
                     },
                     Hint = CEnvir.Language.CharacterCharacterTabStatsOtherTabHint
                 },
@@ -720,7 +720,7 @@ namespace Client.Scenes.Views
                     {
                         Text = CEnvir.Language.CharacterCharacterTabStatsElementAttackTabLabel    
                     },
-                    Hint = CEnvir.Language.CharacterCharacterTabStatsElementAttackTabHint
+                    Hint = "攻击元素"
                 },
                 BackColour = Color.Empty,
                 MinimumTabWidth = 40,
@@ -733,7 +733,7 @@ namespace Client.Scenes.Views
                 { 
                     Label =
                     {
-                        Text = CEnvir.Language.CharacterCharacterTabStatsElementAdvantageTabLabel    
+                        Text = "强元素"
                     },
                     Hint = CEnvir.Language.CharacterCharacterTabStatsElementAdvantageTabHint
                 },
@@ -748,7 +748,7 @@ namespace Client.Scenes.Views
                 { 
                     Label = 
                     { 
-                        Text = CEnvir.Language.CharacterCharacterTabStatsElementDisadvantageTabLabel                
+                        Text = "弱元素"
                     },
                     Hint = CEnvir.Language.CharacterCharacterTabStatsElementDisadvantageTabHint
                 },
@@ -771,7 +771,7 @@ namespace Client.Scenes.Views
             DXLabel label = new DXLabel
             {
                 Parent = StatsAttackTab,
-                Text = CEnvir.Language.CommonStatusDC + ":",
+                Text = "攻击" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y);
@@ -791,7 +791,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsAttackTab,
-                Text = CEnvir.Language.CharacterCharacterTabStatsAttackTabMCLabel,
+                Text = "魔法",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y += rowSpacing);
@@ -811,7 +811,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsAttackTab,
-                Text = CEnvir.Language.CharacterCharacterTabStatsAttackTabSCLabel,
+                Text = "道术:",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y += rowSpacing);
@@ -831,7 +831,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsAttackTab,
-                Text = CEnvir.Language.CharacterCharacterTabStatsAttackTabCritDamageLabel,
+                Text = "暴击伤害:",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y += rowSpacing);
@@ -853,7 +853,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsAttackTab,
-                Text = CEnvir.Language.CharacterCharacterTabStatsAttackTabAccuracyLabel,
+                Text = "准确:",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y);
@@ -873,7 +873,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsAttackTab,
-                Text = CEnvir.Language.CharacterCharacterTabStatsAttackTabASpeedLabel,
+                Text = "攻击速度:",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y += rowSpacing);
@@ -893,7 +893,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsAttackTab,
-                Text = CEnvir.Language.CharacterCharacterTabStatsAttackTabLuckLabel,
+                Text = "幸运",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y += rowSpacing);
@@ -913,7 +913,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsAttackTab,
-                Text = CEnvir.Language.CharacterCharacterTabStatsAttackTabCritChanceLabel,
+                Text = "暴击几率",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y += rowSpacing);
@@ -939,7 +939,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsDefenseTab,
-                Text = CEnvir.Language.CommonStatusAC + ":",
+                Text = "防御" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y);
@@ -959,7 +959,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsDefenseTab,
-                Text = CEnvir.Language.CommonStatusMR + ":",
+                Text = "魔防" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y += rowSpacing);
@@ -981,7 +981,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsDefenseTab,
-                Text = CEnvir.Language.CharacterCharacterTabStatsDefenseTabAgilityLabel,
+                Text = "敏捷:",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y);
@@ -1001,7 +1001,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsDefenseTab,
-                Text = CEnvir.Language.CharacterCharacterTabStatsDefenseTabLifeStealLabel,
+                Text = "生命偷取:",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y += rowSpacing);
@@ -1027,7 +1027,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsWeightTab,
-                Text = CEnvir.Language.CharacterCharacterTabStatsWeightTabBodyWLabel,
+                Text = "穿戴负重:",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y);
@@ -1047,7 +1047,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsWeightTab,
-                Text = CEnvir.Language.CharacterCharacterTabStatsWeightTabHandWLabel,
+                Text = "手持负重:",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y += rowSpacing);
@@ -1073,7 +1073,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsOtherTab,
-                Text = CEnvir.Language.CharacterCharacterTabStatsAdditionalTabComfortLabel,
+                Text = "舒适度:",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y);
@@ -1093,7 +1093,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsOtherTab,
-                Text = CEnvir.Language.CharacterCharacterTabStatsAdditionalTabPickupRadiusLabel,
+                Text = "拾取范围:",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y += rowSpacing);
@@ -1115,7 +1115,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsOtherTab,
-                Text = CEnvir.Language.CharacterCharacterTabStatsAdditionalTabGoldRateLabel,
+                Text = "金币倍率:",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y);
@@ -1135,7 +1135,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsOtherTab,
-                Text = CEnvir.Language.CharacterCharacterTabStatsAdditionalTabDropRateLabel,
+                Text = "掉落倍率:",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y += rowSpacing);
@@ -1155,7 +1155,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsOtherTab,
-                Text = CEnvir.Language.CharacterCharacterTabStatsAdditionalTabExpRateLabel,
+                Text = "经验倍率:",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y += rowSpacing);
@@ -1181,7 +1181,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementAttackTab,
-                Text = CEnvir.Language.CommonStatusFire + ":",
+                Text = "火" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y);
@@ -1192,7 +1192,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 600,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusFire,
+                Hint = "火",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1209,7 +1209,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementAttackTab,
-                Text = CEnvir.Language.CommonStatusIce + ":",
+                Text = "冰" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y += rowSpacing);
@@ -1220,7 +1220,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 601,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusIce,
+                Hint = "冰",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1237,7 +1237,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementAttackTab,
-                Text = CEnvir.Language.CommonStatusLightning + ":",
+                Text = "电" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y += rowSpacing);
@@ -1248,7 +1248,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 602,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusLightning,
+                Hint = "电",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1265,7 +1265,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementAttackTab,
-                Text = CEnvir.Language.CommonStatusWind + ":",
+                Text = "风" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y += rowSpacing);
@@ -1276,7 +1276,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 603,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusWind,
+                Hint = "风",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1295,7 +1295,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementAttackTab,
-                Text = CEnvir.Language.CommonStatusHoly + ":",
+                Text = "神圣" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y);
@@ -1306,7 +1306,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 604,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusHoly,
+                Hint = "神圣",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1323,7 +1323,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementAttackTab,
-                Text = CEnvir.Language.CommonStatusDark + ":",
+                Text = "暗黑" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y += rowSpacing);
@@ -1334,7 +1334,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 605,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusDark,
+                Hint = "暗黑",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1351,7 +1351,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementAttackTab,
-                Text = CEnvir.Language.CommonStatusPhantom + ":",
+                Text = "幻影" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y += rowSpacing);
@@ -1362,7 +1362,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 606,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusPhantom,
+                Hint = "幻影",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1385,7 +1385,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementAdvantageTab,
-                Text = CEnvir.Language.CommonStatusFire + ":",
+                Text = "火" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y);
@@ -1396,7 +1396,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 600,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusFire,
+                Hint = "火",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1413,7 +1413,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementAdvantageTab,
-                Text = CEnvir.Language.CommonStatusIce + ":",
+                Text = "冰" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y += rowSpacing);
@@ -1424,7 +1424,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 601,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusIce,
+                Hint = "冰",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1441,7 +1441,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementAdvantageTab,
-                Text = CEnvir.Language.CommonStatusLightning + ":",
+                Text = "电" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y += rowSpacing);
@@ -1452,7 +1452,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 602,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusLightning,
+                Hint = "电",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1469,7 +1469,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementAdvantageTab,
-                Text = CEnvir.Language.CommonStatusWind + ":",
+                Text = "风" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y += rowSpacing);
@@ -1480,7 +1480,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 603,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusWind,
+                Hint = "风",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1499,7 +1499,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementAdvantageTab,
-                Text = CEnvir.Language.CommonStatusHoly + ":",
+                Text = "神圣" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y);
@@ -1510,7 +1510,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 604,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusHoly,
+                Hint = "神圣",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1527,7 +1527,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementAdvantageTab,
-                Text = CEnvir.Language.CommonStatusDark + ":",
+                Text = "暗黑" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y += rowSpacing);
@@ -1538,7 +1538,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 605,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusDark,
+                Hint = "暗黑",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1555,7 +1555,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementAdvantageTab,
-                Text = CEnvir.Language.CommonStatusPhantom + ":",
+                Text = "幻影" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y += rowSpacing);
@@ -1566,7 +1566,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 606,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusPhantom,
+                Hint = "幻影",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1583,7 +1583,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementAdvantageTab,
-                Text = CEnvir.Language.CommonStatusPhysical + ":",
+                Text = "物理" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y += rowSpacing);
@@ -1594,7 +1594,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.GameInter,
                 Index = 1517,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusPhysical,
+                Hint = "物理",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1617,7 +1617,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementDisadvantageTab,
-                Text = CEnvir.Language.CommonStatusFire + ":",
+                Text = "火" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y);
@@ -1628,7 +1628,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 600,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusFire,
+                Hint = "火",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1645,7 +1645,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementDisadvantageTab,
-                Text = CEnvir.Language.CommonStatusIce + ":",
+                Text = "冰" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y += rowSpacing);
@@ -1656,7 +1656,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 601,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusIce,
+                Hint = "冰",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1673,7 +1673,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementDisadvantageTab,
-                Text = CEnvir.Language.CommonStatusLightning + ":",
+                Text = "电" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y += rowSpacing);
@@ -1684,7 +1684,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 602,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusLightning,
+                Hint = "电",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1701,7 +1701,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementDisadvantageTab,
-                Text = CEnvir.Language.CommonStatusWind + ":",
+                Text = "风" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(left, y += rowSpacing);
@@ -1712,7 +1712,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 603,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusWind,
+                Hint = "风",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1731,7 +1731,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementDisadvantageTab,
-                Text = CEnvir.Language.CommonStatusHoly + ":",
+                Text = "神圣" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y);
@@ -1742,7 +1742,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 604,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusHoly,
+                Hint = "神圣",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1759,7 +1759,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementDisadvantageTab,
-                Text = CEnvir.Language.CommonStatusDark + ":",
+                Text = "暗黑" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y += rowSpacing);
@@ -1770,7 +1770,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 605,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusDark,
+                Hint = "暗黑",
                 Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1787,7 +1787,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementDisadvantageTab,
-                Text = CEnvir.Language.CommonStatusPhantom + ":",
+                Text = "幻影" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y += rowSpacing);
@@ -1798,7 +1798,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 606,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusPhantom,
+                Hint = "幻影",
                 Visible = false,
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1815,7 +1815,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StatsElementDisadvantageTab,
-                Text = CEnvir.Language.CommonStatusPhysical + ":",
+                Text = "物理" + ":",
                 ForeColour = Color.White
             };
             label.Location = new Point(right, y += rowSpacing);
@@ -1826,7 +1826,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.GameInter,
                 Index = 1517,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusPhysical,
+                Hint = "物理",
                 Visible = false,
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
@@ -1849,7 +1849,7 @@ namespace Client.Scenes.Views
             HermitShowConfirmation = new DXCheckBox
             {
                 Parent = HermitTab,
-                Label = { Text = CEnvir.Language.CharacterHermitTabShowConfirmationLabel },
+                Label = { Text = "确认显示" },
                 Checked = true,
                 Location = new Point(175, 78)
             };
@@ -1857,7 +1857,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = HermitTab,
-                Text = CEnvir.Language.CharacterHermitTabUnspentPointsLabel
+                Text = "剩余点数:"
             };
             label.Location = new Point(HermitTab.Size.Width / 4 * 2 - label.Size.Width + 28, 151);
 
@@ -1877,7 +1877,7 @@ namespace Client.Scenes.Views
             {
                 Parent = HermitTab,
                 Location = new Point(x, 98),
-                Label = { Text = CEnvir.Language.CommonStatusAC },
+                Label = { Text = "防御" },
                 ButtonType = ButtonType.SmallButton,
                 Size = new Size(65, SmallButtonHeight)
             };
@@ -1887,7 +1887,7 @@ namespace Client.Scenes.Views
 
                 if (HermitShowConfirmation.Checked)
                 {
-                    DXMessageBox box = new DXMessageBox(string.Format(CEnvir.Language.CharacterHermitTabButtonsConfirmationMessage, CEnvir.Language.CommonStatusAC), CEnvir.Language.CharacterHermitTabButtonsConfirmationCaption, DXMessageBoxButtons.YesNo);
+                    DXMessageBox box = new DXMessageBox(string.Format("你确定要增加你的 {0}?", "防御"), "加点确认", DXMessageBoxButtons.YesNo);
 
                     box.YesButton.MouseClick += (o1, e1) =>
                     {
@@ -1904,7 +1904,7 @@ namespace Client.Scenes.Views
             {
                 Parent = HermitTab,
                 Location = new Point(x, 123),
-                Label = { Text = CEnvir.Language.CommonStatusMR },
+                Label = { Text = "魔防" },
                 ButtonType = ButtonType.SmallButton,
                 Size = new Size(65, SmallButtonHeight),
             };
@@ -1914,7 +1914,7 @@ namespace Client.Scenes.Views
 
                 if (HermitShowConfirmation.Checked)
                 {
-                    DXMessageBox box = new DXMessageBox(string.Format(CEnvir.Language.CharacterHermitTabButtonsConfirmationMessage, CEnvir.Language.CommonStatusMR), CEnvir.Language.CharacterHermitTabButtonsConfirmationCaption, DXMessageBoxButtons.YesNo);
+                    DXMessageBox box = new DXMessageBox(string.Format("你确定要增加你的 {0}?", "魔防"), "加点确认", DXMessageBoxButtons.YesNo);
 
                     box.YesButton.MouseClick += (o1, e1) =>
                     {
@@ -1933,7 +1933,7 @@ namespace Client.Scenes.Views
             {
                 Parent = HermitTab,
                 Location = new Point(x, 98),
-                Label = { Text = CEnvir.Language.CommonStatusHealth },
+                Label = { Text = "生命值" },
                 ButtonType = ButtonType.SmallButton,
                 Size = new Size(65, SmallButtonHeight)
             };
@@ -1943,7 +1943,7 @@ namespace Client.Scenes.Views
 
                 if (HermitShowConfirmation.Checked)
                 {
-                    DXMessageBox box = new DXMessageBox(string.Format(CEnvir.Language.CharacterHermitTabButtonsConfirmationMessage, CEnvir.Language.CommonStatusHealth), CEnvir.Language.CharacterHermitTabButtonsConfirmationCaption, DXMessageBoxButtons.YesNo);
+                    DXMessageBox box = new DXMessageBox(string.Format("你确定要增加你的 {0}?", "生命值"), "加点确认", DXMessageBoxButtons.YesNo);
 
                     box.YesButton.MouseClick += (o1, e1) =>
                     {
@@ -1960,7 +1960,7 @@ namespace Client.Scenes.Views
             {
                 Parent = HermitTab,
                 Location = new Point(x, 123),
-                Label = { Text = CEnvir.Language.CommonStatusMana },
+                Label = { Text = "魔法值" },
                 ButtonType = ButtonType.SmallButton,
                 Size = new Size(65, SmallButtonHeight)
             };
@@ -1970,7 +1970,7 @@ namespace Client.Scenes.Views
 
                 if (HermitShowConfirmation.Checked)
                 {
-                    DXMessageBox box = new DXMessageBox(string.Format(CEnvir.Language.CharacterHermitTabButtonsConfirmationMessage, CEnvir.Language.CommonStatusMana), CEnvir.Language.CharacterHermitTabButtonsConfirmationCaption, DXMessageBoxButtons.YesNo);
+                    DXMessageBox box = new DXMessageBox(string.Format("你确定要增加你的 {0}?", "魔法值"), "加点确认", DXMessageBoxButtons.YesNo);
 
                     box.YesButton.MouseClick += (o1, e1) =>
                     {
@@ -1989,7 +1989,7 @@ namespace Client.Scenes.Views
             {
                 Parent = HermitTab,
                 Location = new Point(x, 98),
-                Label = { Text = CEnvir.Language.CommonStatusDC },
+                Label = { Text = "攻击" },
                 ButtonType = ButtonType.SmallButton,
                 Size = new Size(65, SmallButtonHeight)
             };
@@ -1999,7 +1999,7 @@ namespace Client.Scenes.Views
 
                 if (HermitShowConfirmation.Checked)
                 {
-                    DXMessageBox box = new DXMessageBox(string.Format(CEnvir.Language.CharacterHermitTabButtonsConfirmationMessage, CEnvir.Language.CommonStatusDC), CEnvir.Language.CharacterHermitTabButtonsConfirmationCaption, DXMessageBoxButtons.YesNo);
+                    DXMessageBox box = new DXMessageBox(string.Format("你确定要增加你的 {0}?", "攻击"), "加点确认", DXMessageBoxButtons.YesNo);
 
                     box.YesButton.MouseClick += (o1, e1) =>
                     {
@@ -2016,7 +2016,7 @@ namespace Client.Scenes.Views
             {
                 Parent = HermitTab,
                 Location = new Point(x, 123),
-                Label = { Text = CEnvir.Language.CharacterHermitTabButtonsMCLabel },
+                Label = { Text = "魔法" },
                 ButtonType = ButtonType.SmallButton,
                 Size = new Size(65, SmallButtonHeight)
             };
@@ -2026,7 +2026,7 @@ namespace Client.Scenes.Views
 
                 if (HermitShowConfirmation.Checked)
                 {
-                    DXMessageBox box = new DXMessageBox(CEnvir.Language.CharacterHermitTabButtonsConfirmationMCMessage, CEnvir.Language.CharacterHermitTabButtonsConfirmationCaption, DXMessageBoxButtons.YesNo);
+                    DXMessageBox box = new DXMessageBox("你确定要增加你的 魔法?", "加点确认", DXMessageBoxButtons.YesNo);
 
                     box.YesButton.MouseClick += (o1, e1) =>
                     {
@@ -2045,7 +2045,7 @@ namespace Client.Scenes.Views
             {
                 Parent = HermitTab,
                 Location = new Point(x, 98),
-                Label = { Text = CEnvir.Language.CharacterHermitTabButtonsSCLabel },
+                Label = { Text = "道术" },
                 ButtonType = ButtonType.SmallButton,
                 Size = new Size(65, SmallButtonHeight)
             };
@@ -2055,7 +2055,7 @@ namespace Client.Scenes.Views
 
                 if (HermitShowConfirmation.Checked)
                 {
-                    DXMessageBox box = new DXMessageBox(CEnvir.Language.CharacterHermitTabButtonsConfirmationSCMessage, CEnvir.Language.CharacterHermitTabButtonsConfirmationCaption, DXMessageBoxButtons.YesNo);
+                    DXMessageBox box = new DXMessageBox("你确定要增加你的 道术?", "加点确认", DXMessageBoxButtons.YesNo);
 
                     box.YesButton.MouseClick += (o1, e1) =>
                     {
@@ -2072,7 +2072,7 @@ namespace Client.Scenes.Views
             {
                 Parent = HermitTab,
                 Location = new Point(x, 123),
-                Label = { Text = CEnvir.Language.CharacterHermitTabButtonsElementLabel },
+                Label = { Text = "攻击元素" },
                 ButtonType = ButtonType.SmallButton,
                 Size = new Size(65, SmallButtonHeight)
             };
@@ -2082,7 +2082,7 @@ namespace Client.Scenes.Views
 
                 if (HermitShowConfirmation.Checked)
                 {
-                    DXMessageBox box = new DXMessageBox(CEnvir.Language.CharacterHermitTabButtonsConfirmationElementMessage, CEnvir.Language.CharacterHermitTabButtonsConfirmationCaption, DXMessageBoxButtons.YesNo);
+                    DXMessageBox box = new DXMessageBox("你确定要增加你的 攻击元素?", "加点确认", DXMessageBoxButtons.YesNo);
 
                     box.YesButton.MouseClick += (o1, e1) =>
                     {
@@ -2103,7 +2103,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = HermitTab,
-                Text = CEnvir.Language.CommonStatusAC + ":"
+                Text = "防御" + ":"
             };
             label.Location = new Point(HermitTab.Size.Width / 4 - label.Size.Width + xOffset, 176);
 
@@ -2118,7 +2118,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = HermitTab,
-                Text = CEnvir.Language.CommonStatusMR + ":"
+                Text = "魔防" + ":"
             };
             label.Location = new Point(HermitTab.Size.Width / 4 * 2 - label.Size.Width + xOffset, 176);
 
@@ -2133,7 +2133,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = HermitTab,
-                Text = CEnvir.Language.CommonStatusDC + ":"
+                Text = "攻击" + ":"
             };
             label.Location = new Point(HermitTab.Size.Width / 5 - label.Size.Width + xOffset, 206);
 
@@ -2148,7 +2148,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = HermitTab,
-                Text = CEnvir.Language.CommonStatusMC + ":"
+                Text = "魔法" + ":"
             };
             label.Location = new Point(HermitTab.Size.Width / 5 * 2 - label.Size.Width + xOffset, 206);
 
@@ -2163,7 +2163,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = HermitTab,
-                Text = CEnvir.Language.CommonStatusSC + ":"
+                Text = "道术" + ":"
             };
             label.Location = new Point(HermitTab.Size.Width / 5 * 3 - label.Size.Width + xOffset, 206);
 
@@ -2178,7 +2178,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = HermitTab,
-                Text = CEnvir.Language.CommonStatusHealth + ":"
+                Text = "生命值" + ":"
             };
             label.Location = new Point(HermitTab.Size.Width / 4 - label.Size.Width + xOffset, 236);
 
@@ -2193,7 +2193,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = HermitTab,
-                Text = CEnvir.Language.CommonStatusMana + ":"
+                Text = "魔法值" + ":"
             };
             label.Location = new Point(HermitTab.Size.Width / 4 * 2 - label.Size.Width + xOffset, 236);
 
@@ -2211,7 +2211,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = HermitTab,
-                Text = CEnvir.Language.CommonStatusElementAttack + ":"
+                Text = "攻击元素" + ":"
             };
             label.Location = new Point(65 - label.Size.Width, 296);
 
@@ -2221,7 +2221,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 600,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusFire,
+                Hint = "火",
             };
             icon.Location = new Point(label.Location.X + label.Size.Width, label.Location.Y + (label.Size.Height - icon.Size.Height) / 2);
 
@@ -2240,7 +2240,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 601,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusIce,
+                Hint = "冰",
             };
             icon.Location = new Point(label.Location.X + label.Size.Width + 50, label.Location.Y + (label.Size.Height - icon.Size.Height) / 2);
 
@@ -2259,7 +2259,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 602,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusLightning,
+                Hint = "电",
             };
             icon.Location = new Point(label.Location.X + label.Size.Width + 100, label.Location.Y + (label.Size.Height - icon.Size.Height) / 2);
 
@@ -2278,7 +2278,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 603,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusWind,
+                Hint = "风",
             };
             icon.Location = new Point(label.Location.X + label.Size.Width + 150, label.Location.Y + (label.Size.Height - icon.Size.Height) / 2);
 
@@ -2297,7 +2297,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 604,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusHoly,
+                Hint = "神圣",
             };
             icon.Location = new Point(label.Location.X + label.Size.Width, label.Location.Y + (label.Size.Height - icon.Size.Height) / 2 + 30);
 
@@ -2316,7 +2316,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 605,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusDark,
+                Hint = "暗黑",
             };
             icon.Location = new Point(label.Location.X + label.Size.Width + 50, label.Location.Y + (label.Size.Height - icon.Size.Height) / 2 + 31);
 
@@ -2335,7 +2335,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 606,
                 ForeColour = Color.FromArgb(60, 60, 60),
-                Hint = CEnvir.Language.CommonStatusPhantom,
+                Hint = "幻影",
             };
             icon.Location = new Point(label.Location.X + label.Size.Width + 100, label.Location.Y + (label.Size.Height - icon.Size.Height) / 2 + 31);
 

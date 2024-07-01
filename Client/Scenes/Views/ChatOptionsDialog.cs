@@ -44,7 +44,7 @@ namespace Client.Scenes.Views
 
         public ChatOptionsDialog()
         {
-            TitleLabel.Text = CEnvir.Language.ChatOptionsDialogTitle;
+            TitleLabel.Text = "聊天选项";
             HasFooter = true;
 
             SetClientSize(new Size(350, 250));
@@ -60,7 +60,7 @@ namespace Client.Scenes.Views
             DXButton button = new DXButton
             {
                 ButtonType = ButtonType.SmallButton,
-                Label = { Text = CEnvir.Language.ChatOptionsDialogButtonAdd },
+                Label = { Text = "增加" },
                 Parent = this,
                 Size = new Size(50, SmallButtonHeight),
             };
@@ -71,14 +71,14 @@ namespace Client.Scenes.Views
             button = new DXButton
             {
                 ButtonType = ButtonType.Default,
-                Label = { Text = CEnvir.Language.ChatOptionsDialogButtonResetAll },
+                Label = { Text = "重置所有" },
                 Parent = this,
                 Size = new Size(80, DefaultHeight),
                 Location = new Point(ClientArea.Right - 80 - 10, Size.Height - 43),
             };
             button.MouseClick += (o, e) =>
             {
-                DXMessageBox box = new DXMessageBox(CEnvir.Language.ChatOptionsDialogResetAllMessage, CEnvir.Language.ChatOptionsDialogResetAllCaption, DXMessageBoxButtons.YesNo);
+                DXMessageBox box = new DXMessageBox("您确定要重置所有聊天窗口吗?", "聊天窗口重置", DXMessageBoxButtons.YesNo);
 
                 box.YesButton.MouseClick += (o1, e1) =>
                 {
@@ -92,7 +92,7 @@ namespace Client.Scenes.Views
             button = new DXButton
             {
                 ButtonType = ButtonType.Default,
-                Label = { Text = CEnvir.Language.ChatOptionsDialogButtonSaveAll },
+                Label = { Text = "保存所有" },
                 Parent = this,
                 Size = new Size(80, DefaultHeight),
                 Location = new Point(ClientArea.X, Size.Height - 43),
@@ -102,20 +102,20 @@ namespace Client.Scenes.Views
                 // DXMessageBox box = new DXMessageBox("Are you sure you want to reset ALL chat windows", "Chat Reset", DXMessageBoxButtons.YesNo);
 
                 GameScene.Game.SaveChatTabs();
-                GameScene.Game.ReceiveChat(CEnvir.Language.ChatLayoutSaved, MessageType.Announcement);
+                GameScene.Game.ReceiveChat("聊天布局保存完成", MessageType.Announcement);
             };
 
             button = new DXButton
             {
                 ButtonType = ButtonType.Default,
-                Label = { Text = CEnvir.Language.ChatOptionsDialogButtonReloadAll },
+                Label = { Text = "重载所有" },
                 Parent = this,
                 Size = new Size(80, DefaultHeight),
                 Location = new Point(ClientArea.X + 85, Size.Height - 43),
             };
             button.MouseClick += (o, e) =>
             {
-                DXMessageBox box = new DXMessageBox(CEnvir.Language.ChatOptionsDialogReloadAllMessage, CEnvir.Language.ChatOptionsDialogReloadAllCaption, DXMessageBoxButtons.YesNo);
+                DXMessageBox box = new DXMessageBox("您确定要重新加载所有聊天窗口吗?", "聊天窗口重载", DXMessageBoxButtons.YesNo);
 
                 box.YesButton.MouseClick += (o1, e1) =>
                 {
@@ -354,7 +354,7 @@ namespace Client.Scenes.Views
         {
             DXLabel label = new DXLabel
             {
-                Text = CEnvir.Language.ChatOptionsPanelChatNameLabel,
+                Text = "窗口名称:",
                 Outline = true,
                 Parent = this,
             };
@@ -370,7 +370,7 @@ namespace Client.Scenes.Views
 
             TransparentCheckBox = new DXCheckBox
             {
-                Label = { Text = CEnvir.Language.ChatOptionsPanelTransparentLabel },
+                Label = { Text = "透明度:" },
                 Parent = this,
                 Checked = false,
             };
@@ -378,7 +378,7 @@ namespace Client.Scenes.Views
 
             AlertCheckBox = new DXCheckBox
             {
-                Label = { Text = CEnvir.Language.ChatOptionsPanelShowAlertLabel },
+                Label = { Text = "显示提示框:" },
                 Parent = this,
                 Checked = false,
             };
@@ -386,7 +386,7 @@ namespace Client.Scenes.Views
 
             HideTabCheckBox = new DXCheckBox
             {
-                Label = { Text = CEnvir.Language.ChatOptionsPanelHideTabLabel },
+                Label = { Text = "隐藏标签" },
                 Parent = this,
                 Checked = false,
             };
@@ -418,7 +418,7 @@ namespace Client.Scenes.Views
 
             LocalCheckBox = new DXCheckBox
             {
-                Label = { Text = CEnvir.Language.ChatOptionsPanelLocalChatLabel },
+                Label = { Text = "本地聊天:" },
                 Parent = this,
                 Checked = false,
             };
@@ -426,7 +426,7 @@ namespace Client.Scenes.Views
 
             WhisperCheckBox = new DXCheckBox
             {
-                Label = { Text = CEnvir.Language.ChatOptionsPanelWhisperChatLabel },
+                Label = { Text = "私聊:" },
                 Parent = this,
                 Checked = false,
             };
@@ -434,7 +434,7 @@ namespace Client.Scenes.Views
 
             GroupCheckBox = new DXCheckBox
             {
-                Label = { Text = CEnvir.Language.ChatOptionsPanelGroupChatLabel },
+                Label = { Text = "队伍聊天:" },
                 Parent = this,
                 Checked = false,
             };
@@ -442,7 +442,7 @@ namespace Client.Scenes.Views
 
             GuildCheckBox = new DXCheckBox
             {
-                Label = { Text = CEnvir.Language.ChatOptionsPanelGuildChatLabel },
+                Label = { Text = "行会聊天:" },
                 Parent = this,
                 Checked = false,
             };
@@ -450,7 +450,7 @@ namespace Client.Scenes.Views
 
             ShoutCheckBox = new DXCheckBox
             {
-                Label = { Text = CEnvir.Language.ChatOptionsPanelShoutChatLabel },
+                Label = { Text = "区域聊天:" },
                 Parent = this,
                 Checked = false,
             };
@@ -458,7 +458,7 @@ namespace Client.Scenes.Views
 
             GlobalCheckBox = new DXCheckBox
             {
-                Label = { Text = CEnvir.Language.ChatOptionsPanelGlobalChatLabel },
+                Label = { Text = "全服聊天:" },
                 Parent = this,
                 Checked = false,
             };
@@ -466,7 +466,7 @@ namespace Client.Scenes.Views
 
             ObserverCheckBox = new DXCheckBox
             {
-                Label = { Text = CEnvir.Language.ChatOptionsPanelObserverChatLabel },
+                Label = { Text = "观察者聊天:" },
                 Parent = this,
                 Checked = false,
             };
@@ -474,7 +474,7 @@ namespace Client.Scenes.Views
 
             HintCheckBox = new DXCheckBox
             {
-                Label = { Text = CEnvir.Language.ChatOptionsPanelHintTextLabel },
+                Label = { Text = "提示消息:" },
                 Parent = this,
                 Checked = false,
             };
@@ -482,7 +482,7 @@ namespace Client.Scenes.Views
 
             SystemCheckBox = new DXCheckBox
             {
-                Label = { Text = CEnvir.Language.ChatOptionsPanelSystemTextLabel },
+                Label = { Text = "系统消息:" },
                 Parent = this,
                 Checked = false,
             };
@@ -490,7 +490,7 @@ namespace Client.Scenes.Views
 
             GainsCheckBox = new DXCheckBox
             {
-                Label = { Text = CEnvir.Language.ChatOptionsPanelGainsTextLabel },
+                Label = { Text = "拾取信息:" },
                 Parent = this,
                 Checked = false,
             };
@@ -499,7 +499,7 @@ namespace Client.Scenes.Views
             RemoveButton = new DXButton
             {
                 ButtonType = ButtonType.SmallButton,
-                Label = { Text = CEnvir.Language.ChatOptionsPanelRemoveLabel },
+                Label = { Text = "移除" },
                 Parent = this,
                 Size = new Size(50, SmallButtonHeight),
                 Location = new Point(NameTextBox.DisplayArea.Right + 10, 0),

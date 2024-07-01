@@ -265,7 +265,7 @@ namespace Client.Scenes.Views
             ChangeButton = new DXButton
             {
                 Parent = this,
-                Label = { Text = CEnvir.Language.CommonControlConfirm },
+                Label = { Text = "提交" },
                 Location = new Point((Size.Width - 80) / 2, Size.Height - 43),
                 Size = new Size(80, DefaultHeight),
             };

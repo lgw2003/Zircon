@@ -189,14 +189,14 @@ namespace Client.Controls
         public DXColourPicker()
         {
             Size = new Size(380, 253);
-            TitleLabel.Text = CEnvir.Language.CommonControlColourPickerTitle;
+            TitleLabel.Text = "选色器";
             Modal = true;
             HasFooter = true;
 
             CancelButton = new DXButton
             {
                 Parent = this,
-                Label = { Text = CEnvir.Language.CommonControlCancel },
+                Label = { Text = "取消" },
                 Location = new Point(Size.Width / 2 + 10, Size.Height - 43),
                 Size = new Size(80, DefaultHeight),
             };
@@ -206,7 +206,7 @@ namespace Client.Controls
             SelectButton = new DXButton
             {
                 Parent = this,
-                Label = { Text = CEnvir.Language.CommonControlSelect },
+                Label = { Text = "选择" },
                 Location = new Point((Size.Width) / 2 - 80 - 10, Size.Height - 43),
                 Size = new Size(80, DefaultHeight),
             };
@@ -299,7 +299,7 @@ namespace Client.Controls
             label = new DXLabel
             {
                 Parent = this,
-                Text = CEnvir.Language.CommonControlColourPickerColourLabel,
+                Text = "颜色",
             };
             label.Location = new Point(BlueBox.Location.X - label.Size.Width - 5, (ColourBox.Size.Height - label.Size.Height) / 2 + ColourBox.Location.Y);
 
