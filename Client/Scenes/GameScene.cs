@@ -3739,6 +3739,14 @@ namespace Client.Scenes
                 case MagicType.IceRain:
 
                 case MagicType.PoisonDust:
+                    ReceiveChat("施毒术", MessageType.Hint);
+                    ClientUserItem poison = Equipment[(int)EquipmentSlot.Poison];
+                    if (poison == null || poison.Info.ItemType != ItemType.Poison)
+                    {
+                        ReceiveChat("没有毒药", MessageType.Hint);
+                        return;
+                    }
+                    break;
                 case MagicType.ExplosiveTalisman:
                 case MagicType.EvilSlayer:
                 case MagicType.GreaterEvilSlayer:

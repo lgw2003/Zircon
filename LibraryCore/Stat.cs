@@ -716,10 +716,10 @@ namespace Library
 
         [StatDescription(Title = "重量倍率", Format = "x{0}", Mode = StatType.Default)]
         WeightRate,
-        [StatDescription(Title = "MinAC and MinMR have been greatly Increased.", Mode = StatType.Text)]
-        Defiance,
-        [StatDescription(Title = "You sacrfice your Defense for Offense.", Mode = StatType.Text)]
-        Might,
+        [StatDescription(Title = "Magic Defence", Format = "{0:+#0%;-#0%;#0%}", Mode = StatType.Percent)]
+        MagicDefencePercent,
+        [StatDescription(Title = "Physical Defence", Format = "{0:+#0%;-#0%;#0%}", Mode = StatType.Percent)]
+        PhysicalDefencePercent,
         [StatDescription(Title = "魔法值", Format = "{0:+#0%;-#0%;#0%}", Mode = StatType.Percent)]
         ManaPercent,
 
@@ -798,8 +798,8 @@ namespace Library
         [StatDescription(Title = "Chance to summon map ", Mode = StatType.Text)]
         MapSummoning,
 
-        [StatDescription(Title = "Max Frost Bite Damage", Format = "{0}", Mode = StatType.Default)]
-        FrostBiteMaxDamage,
+        [StatDescription(Title = "Frost Bite Chance", Format = "{0:+#0%;-#0%;#0%}", Mode = StatType.Percent)]
+        FrostBiteChance,
 
         [StatDescription(Title = "麻痹几率", Format = "{0:+#0%;-#0%;#0%}", Mode = StatType.Percent)]
         ParalysisChance,
