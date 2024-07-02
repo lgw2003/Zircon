@@ -928,7 +928,7 @@ namespace Client.Scenes.Views
                         case ItemType.Poison:
                             if (MapObject.User.Stats[Stat.BagWeight] - MapObject.User.BagWeight < SelectedCell.Good.Item.Weight)
                             {
-                                GameScene.Game.ReceiveChat(string.Format(CEnvir.Language.BuySellOverweight, SelectedCell.Good.Item.ItemName), MessageType.System);
+                                GameScene.Game.ReceiveChat(string.Format("负重不足，无法购买 '{0}'.", SelectedCell.Good.Item.ItemName), MessageType.System);
                                 return;
                             }
                             break;
@@ -940,7 +940,7 @@ namespace Client.Scenes.Views
 
                 if (maxCount < 0)
                 {
-                    GameScene.Game.ReceiveChat(string.Format(CEnvir.Language.BuySellOverweight, SelectedCell.Good.Item.ItemName), MessageType.System);
+                    GameScene.Game.ReceiveChat(string.Format("负重不足，无法购买 '{0}'.", SelectedCell.Good.Item.ItemName), MessageType.System);
                     return;
                 }
 
@@ -957,13 +957,13 @@ namespace Client.Scenes.Views
             {
                 if (MapObject.User.Stats[Stat.BagWeight] - MapObject.User.BagWeight < SelectedCell.Good.Item.Weight)
                 {
-                    GameScene.Game.ReceiveChat(string.Format(CEnvir.Language.BuySellOverweight, SelectedCell.Good.Item.ItemName), MessageType.System);
+                    GameScene.Game.ReceiveChat(string.Format("负重不足，无法购买 '{0}'.", SelectedCell.Good.Item.ItemName), MessageType.System);
                     return;
                 }
 
                 if (cost > gold)
                 {
-                    GameScene.Game.ReceiveChat(string.Format(CEnvir.Language.BuySellNeedGold, SelectedCell.Good.Item.ItemName), MessageType.System);
+                    GameScene.Game.ReceiveChat(string.Format("资金不足，无法购买 '{0}'.", SelectedCell.Good.Item.ItemName), MessageType.System);
                     return;
                 }
 
@@ -3332,7 +3332,7 @@ namespace Client.Scenes.Views
 
             var label = new DXLabel
             {
-                Text = CEnvir.Language.QuestTabDetailsLabel,
+                Text = "描述",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 //ForeColour = Color.FromArgb(198, 166, 99),
@@ -3378,7 +3378,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.QuestTabTasksLabel,
+                Text = "任务内容",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 Outline = true,
@@ -3398,7 +3398,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.QuestTabRewardsLabel,
+                Text = "任务奖励",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 Outline = true,
@@ -3419,7 +3419,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.QuestTabChoiceLabel,
+                Text = "可选奖励",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 //ForeColour = Color.FromArgb(198, 166, 99),
@@ -3445,7 +3445,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.QuestTabStartLabel,
+                Text = "发布地点:",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 //ForeColour = Color.FromArgb(198, 166, 99),
@@ -3472,7 +3472,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.QuestTabEndLabel,
+                Text = "结束地点:",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 //ForeColour = Color.FromArgb(198, 166, 99),
@@ -3529,7 +3529,7 @@ namespace Client.Scenes.Views
 
                 if (HasChoice && SelectedCell == null)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.QuestSelectReward, MessageType.System);
+                    GameScene.Game.ReceiveChat("请选择一个奖励.", MessageType.System);
                     return;
                 }
 
@@ -4144,11 +4144,11 @@ namespace Client.Scenes.Views
         {
             if (GameScene.Game.Inventory.All(x => x == null || x.Info.ItemEffect != ItemEffect.CompanionTicket))
             {
-                GameScene.Game.ReceiveChat(CEnvir.Language.CompanionNeedTicket, MessageType.System);
+                GameScene.Game.ReceiveChat("你需要一个宠物激活令牌（元宝商铺有卖），来解锁新宠物", MessageType.System);
                 return;
             }
 
-            DXMessageBox box = new DXMessageBox($"Are you sure you want to use a Companion Ticket?\n\n" + $"" + $"This will unlock the {SelectedCompanionInfo.MonsterInfo.MonsterName} appearance for new companions", "Unlock Appearance", DXMessageBoxButtons.YesNo);
+            DXMessageBox box = new DXMessageBox($"你确认你要使用一张宠物激活令牌吗?\n\n" + $"" + $"这将解锁 {SelectedCompanionInfo.MonsterInfo.MonsterName} 新同伴的外观", "解锁外观", DXMessageBoxButtons.YesNo);
 
 
             box.YesButton.MouseClick += (o1, e1) =>
@@ -4791,14 +4791,14 @@ namespace Client.Scenes.Views
 
         public NPCRefinementStoneDialog()
         {
-            TitleLabel.Text = "Refinement Stone";
+            TitleLabel.Text = "精炼石";
 
 
             SetClientSize(new Size(491, 130));
 
             DXLabel label = new DXLabel
             {
-                Text = "Iron Ore",
+                Text = "铁矿",
                 Location = new Point(ClientArea.X + 21, ClientArea.Y),
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
@@ -4815,7 +4815,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = "Silver Ore",
+                Text = "银矿",
                 Location = new Point(IronOreGrid.Size.Width + 5 + IronOreGrid.Location.X, label.Location.Y),
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
@@ -4832,7 +4832,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = "Diamond",
+                Text = "金刚石",
                 Location = new Point(SilverOreGrid.Size.Width + 5 + SilverOreGrid.Location.X, label.Location.Y),
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
@@ -4849,7 +4849,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = "Gold Ore",
+                Text = "金矿",
                 Location = new Point(ClientArea.X + 21, IronOreGrid.Location.Y + IronOreGrid.Size.Height + 10),
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
@@ -4867,7 +4867,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = "Crystal",
+                Text = "结晶",
                 Location = new Point(IronOreGrid.Size.Width + 5 + IronOreGrid.Location.X, IronOreGrid.Location.Y + IronOreGrid.Size.Height + 10),
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
@@ -4885,7 +4885,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = "Gold",
+                Text = "金币",
                 Location = new Point(SilverOreGrid.Size.Width + 5 + SilverOreGrid.Location.X, SilverOreGrid.Location.Y + SilverOreGrid.Size.Height + 10),
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
@@ -4924,7 +4924,7 @@ namespace Client.Scenes.Views
             
             SubmitButton = new DXButton
             {
-                Label = { Text = "Submit" },
+                Label = { Text = "提交" },
                 Size = new Size(80, SmallButtonHeight),
                 Parent = this,
                 Enabled =false,
@@ -4947,7 +4947,7 @@ namespace Client.Scenes.Views
                 }
                 if (iron.Count < 4)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.RefineNeedIronOre, MessageType.System);
+                    GameScene.Game.ReceiveChat("你需要4个铁矿来获得一个精炼石", MessageType.System);
                     return;
                 }
 
@@ -4963,7 +4963,7 @@ namespace Client.Scenes.Views
                 }
                 if (silver.Count < 4)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.RefineNeedSilverOre, MessageType.System);
+                    GameScene.Game.ReceiveChat("你需要4个银矿来获得一个精炼石", MessageType.System);
                     return;
                 }
 
@@ -4979,7 +4979,7 @@ namespace Client.Scenes.Views
                 }
                 if (diamond.Count < 4)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.RefineNeedDiamond, MessageType.System);
+                    GameScene.Game.ReceiveChat("你需要4个金刚石来获得一个精炼石", MessageType.System);
                     return;
                 }
 
@@ -4995,7 +4995,7 @@ namespace Client.Scenes.Views
                 }
                 if (gold.Count < 2)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.RefineNeedGoldOre, MessageType.System);
+                    GameScene.Game.ReceiveChat("你需要2个金矿来获得一个精炼石", MessageType.System);
                     return;
                 }
 
@@ -5011,13 +5011,13 @@ namespace Client.Scenes.Views
                 }
                 if (crystal.Count < 1)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.RefineNeedCrystal, MessageType.System);
+                    GameScene.Game.ReceiveChat("你需要1个结晶来获得一个精炼石", MessageType.System);
                     return;
                 }
 
                 if (GoldBox.Value > GameScene.Game.User.Gold.Amount)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.RefineNeedGold, MessageType.System);
+                    GameScene.Game.ReceiveChat("金币不足.", MessageType.System);
                     return;
                 }
 
@@ -5163,7 +5163,7 @@ namespace Client.Scenes.Views
 
         public NPCItemFragmentDialog()
         {
-            TitleLabel.Text = "Fragment Items";
+            TitleLabel.Text = "拆解物品";
 
             Grid = new DXItemGrid
             {
@@ -5204,14 +5204,14 @@ namespace Client.Scenes.Views
                 DrawFormat = TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter,
                 Parent = this,
                 Location = new Point(ClientArea.Left, ClientArea.Bottom - 45),
-                Text = "Fragment Cost:",
+                Text = "拆解费用:",
                 Size = new Size(79, 20),
                 IsControl = false,
             };
 
             DXButton selectAll = new DXButton
             {
-                Label = { Text = "Select All" },
+                Label = { Text = "全选" },
                 Location = new Point(ClientArea.X, CostLabel.Location.Y + CostLabel.Size.Height + 5),
                 ButtonType = ButtonType.SmallButton,
                 Parent = this,
@@ -5229,7 +5229,7 @@ namespace Client.Scenes.Views
 
             FragmentButton = new DXButton
             {
-                Label = { Text = "Fragment" },
+                Label = { Text = "拆解" },
                 Location = new Point(ClientArea.Right - 80, CostLabel.Location.Y + CostLabel.Size.Height + 5),
                 ButtonType = ButtonType.SmallButton,
                 Parent = this,
@@ -5448,14 +5448,14 @@ namespace Client.Scenes.Views
 
         public NPCMasterRefineDialog()
         {
-            TitleLabel.Text = "Master Refine";
+            TitleLabel.Text = "大师精炼";
             
 
             SetClientSize(new Size(491, 130));
 
             DXLabel label = new DXLabel
             {
-                Text = "Fragement I",
+                Text = "低级碎片",
                 Location = ClientArea.Location,
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
@@ -5472,7 +5472,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = "Fragement II",
+                Text = "中级碎片",
                 Location = new Point(label.Size.Width + 5 + label.Location.X, label.Location.Y),
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
@@ -5489,7 +5489,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = "Fragement III",
+                Text = "高级碎片",
                 Location = new Point(label.Size.Width + 5 + label.Location.X, label.Location.Y),
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
@@ -5507,7 +5507,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = "Refinement Stone",
+                Text = "精练石",
                 Location = new Point(ClientArea.Location.X, Fragment3Grid.Location.Y + Fragment3Grid.Size.Height + 10),
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
@@ -5545,14 +5545,14 @@ namespace Client.Scenes.Views
             DCCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "DC" },
+                Label = { Text = "攻击" },
                 ReadOnly = true,
             };
             DCCheckBox.MouseClick += (o, e) => RefineType = RefineType.DC;
             SPCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Spell Power" },
+                Label = { Text = "技能威力" },
                 ReadOnly = true,
             };
             SPCheckBox.MouseClick += (o, e) => RefineType = RefineType.SpellPower;
@@ -5560,7 +5560,7 @@ namespace Client.Scenes.Views
             FireCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Fire" },
+                Label = { Text = "火" },
                 ReadOnly = true,
             };
             FireCheckBox.MouseClick += (o, e) => RefineType = RefineType.Fire;
@@ -5568,7 +5568,7 @@ namespace Client.Scenes.Views
             IceCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Ice" },
+                Label = { Text = "冰" },
                 ReadOnly = true,
             };
             IceCheckBox.MouseClick += (o, e) => RefineType = RefineType.Ice;
@@ -5576,7 +5576,7 @@ namespace Client.Scenes.Views
             LightningCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Lightning" },
+                Label = { Text = "电" },
                 ReadOnly = true,
             };
             LightningCheckBox.MouseClick += (o, e) => RefineType = RefineType.Lightning;
@@ -5584,7 +5584,7 @@ namespace Client.Scenes.Views
             WindCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Wind" },
+                Label = { Text = "风" },
                 ReadOnly = true,
             };
             WindCheckBox.MouseClick += (o, e) => RefineType = RefineType.Wind;
@@ -5592,7 +5592,7 @@ namespace Client.Scenes.Views
             HolyCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Holy" },
+                Label = { Text = "神圣" },
                 ReadOnly = true,
             };
             HolyCheckBox.MouseClick += (o, e) => RefineType = RefineType.Holy;
@@ -5600,7 +5600,7 @@ namespace Client.Scenes.Views
             DarkCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Dark" },
+                Label = { Text = "黑暗" },
                 ReadOnly = true,
             };
             DarkCheckBox.MouseClick += (o, e) => RefineType = RefineType.Dark;
@@ -5609,7 +5609,7 @@ namespace Client.Scenes.Views
             PhantomCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Phantom" },
+                Label = { Text = "幻影" },
                 ReadOnly = true,
             };
             PhantomCheckBox.MouseClick += (o, e) => RefineType = RefineType.Phantom;
@@ -5628,7 +5628,7 @@ namespace Client.Scenes.Views
 
             EvaluateButton = new DXButton
             {
-                Label = { Text = "Evaluate" },
+                Label = { Text = "评估" },
                 Size = new Size(80, SmallButtonHeight),
                 Parent = this,
                 ButtonType = ButtonType.SmallButton,
@@ -5680,36 +5680,36 @@ namespace Client.Scenes.Views
 
                 if (frag1.Count < 1 || frag1[0].Count != 10)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.RefineNeedFragmentI, MessageType.System);
+                    GameScene.Game.ReceiveChat("你需要10个初级碎片来进行大师精练", MessageType.System);
                     return;
                 }
 
                 if (frag2.Count < 1 || frag2[0].Count != 10)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.RefineNeedFragmentII, MessageType.System);
+                    GameScene.Game.ReceiveChat("你需要10个中级碎片来进行大师精练", MessageType.System);
                     return;
                 }
 
                 if (frag3.Count < 1)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.RefineNeedFragmentIII, MessageType.System);
+                    GameScene.Game.ReceiveChat("你需要1个高级碎片来进行大师精练", MessageType.System);
                     return;
                 }
 
                 if (stone.Count < 1)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.RefineNeedRefinementStone, MessageType.System);
+                    GameScene.Game.ReceiveChat("你需要1个精练石来进行大师精练", MessageType.System);
                     return;
                 }
                 
-               DXMessageBox box = new DXMessageBox("Are you sure you want to pay for an evaluation?", "Evaluation", DXMessageBoxButtons.YesNo);
+               DXMessageBox box = new DXMessageBox("你需要花钱来测试评估成功率吗?", "花钱评估", DXMessageBoxButtons.YesNo);
 
                 box.YesButton.MouseClick += (o1, e1) => CEnvir.Enqueue(new C.NPCMasterRefineEvaluate { RefineType = RefineType, Fragment1s = frag1, Fragment2s = frag2, Fragment3s = frag3, Stones = stone, Specials = special });
             };
             
             label = new DXLabel
             {
-                Text = $"Cost: {Globals.MasterRefineEvaluateCost:#,##0}",
+                Text = $"花费: {Globals.MasterRefineEvaluateCost:#,##0}",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
             };
@@ -5717,7 +5717,7 @@ namespace Client.Scenes.Views
 
             SubmitButton = new DXButton
             {
-                Label = { Text = "Submit" },
+                Label = { Text = "提交" },
                 Size = new Size(80, SmallButtonHeight),
                 Parent = this,
                 ButtonType = ButtonType.SmallButton,
@@ -5784,25 +5784,25 @@ namespace Client.Scenes.Views
 
                 if (frag1.Count < 1 || frag1[0].Count != 10)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.RefineNeedFragmentI, MessageType.System);
+                    GameScene.Game.ReceiveChat("你需要10个初级碎片来进行大师精练", MessageType.System);
                     return;
                 }
 
                 if (frag2.Count < 1 || frag2[0].Count != 10)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.RefineNeedFragmentII, MessageType.System);
+                    GameScene.Game.ReceiveChat("你需要10个中级碎片来进行大师精练", MessageType.System);
                     return;
                 }
 
                 if (frag3.Count < 1)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.RefineNeedFragmentIII, MessageType.System);
+                    GameScene.Game.ReceiveChat("你需要1个高级碎片来进行大师精练", MessageType.System);
                     return;
                 }
 
                 if (stone.Count < 1)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.RefineNeedRefinementStone, MessageType.System);
+                    GameScene.Game.ReceiveChat("你需要1个精练石来进行大师精练", MessageType.System);
                     return;
                 }
 
@@ -6137,14 +6137,14 @@ namespace Client.Scenes.Views
 
         public NPCAccessoryUpgradeDialog()
         {
-            TitleLabel.Text = "Accessory Upgrade";
+            TitleLabel.Text = "首饰升级";
 
             SetClientSize(new Size(491, 130));
             Movable = false;
 
             DXLabel label = new DXLabel
             {
-                Text = "Item",
+                Text = "物品",
                 Location = new Point(ClientArea.X + 65, ClientArea.Y + 15),
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
@@ -6162,7 +6162,7 @@ namespace Client.Scenes.Views
             DCPercentCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "DC 1%" },
+                Label = { Text = "攻击力 1%" },
                 ReadOnly = true,
             };
             DCPercentCheckBox.MouseClick += (o, e) => RefineType = RefineType.DCPercent;
@@ -6170,7 +6170,7 @@ namespace Client.Scenes.Views
             SPPercentCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Spell Power 1%" },
+                Label = { Text = "技能威力 1%" },
                 ReadOnly = true,
             };
             SPPercentCheckBox.MouseClick += (o, e) => RefineType = RefineType.SPPercent;
@@ -6178,7 +6178,7 @@ namespace Client.Scenes.Views
             HealthPercentCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Health 1%" },
+                Label = { Text = "生命值 1%" },
                 ReadOnly = true,
             };
             HealthPercentCheckBox.MouseClick += (o, e) => RefineType = RefineType.HealthPercent;
@@ -6186,7 +6186,7 @@ namespace Client.Scenes.Views
             ManaPercentCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Mana 1%" },
+                Label = { Text = "魔法值 1%" },
                 ReadOnly = true,
             };
             ManaPercentCheckBox.MouseClick += (o, e) => RefineType = RefineType.ManaPercent;
@@ -6194,7 +6194,7 @@ namespace Client.Scenes.Views
             DCCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "DC 0-1" },
+                Label = { Text = "攻击 0-1" },
                 ReadOnly = true,
             };
             DCCheckBox.MouseClick += (o, e) => RefineType = RefineType.DC;
@@ -6202,7 +6202,7 @@ namespace Client.Scenes.Views
             SPCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Spell Power 0-1" },
+                Label = { Text = "技能威力 0-1" },
                 ReadOnly = true,
             };
             SPCheckBox.MouseClick += (o, e) => RefineType = RefineType.SpellPower;
@@ -6210,7 +6210,7 @@ namespace Client.Scenes.Views
             FireCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Fire +1" },
+                Label = { Text = "火 +1" },
                 ReadOnly = true,
             };
             FireCheckBox.MouseClick += (o, e) => RefineType = RefineType.Fire;
@@ -6218,7 +6218,7 @@ namespace Client.Scenes.Views
             IceCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Ice +1" },
+                Label = { Text = "冰 +1" },
                 ReadOnly = true,
             };
             IceCheckBox.MouseClick += (o, e) => RefineType = RefineType.Ice;
@@ -6226,7 +6226,7 @@ namespace Client.Scenes.Views
             LightningCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Lightning +1" },
+                Label = { Text = "电 +1" },
                 ReadOnly = true,
             };
             LightningCheckBox.MouseClick += (o, e) => RefineType = RefineType.Lightning;
@@ -6234,7 +6234,7 @@ namespace Client.Scenes.Views
             WindCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Wind +1" },
+                Label = { Text = "风 +1" },
                 ReadOnly = true,
             };
             WindCheckBox.MouseClick += (o, e) => RefineType = RefineType.Wind;
@@ -6242,7 +6242,7 @@ namespace Client.Scenes.Views
             HolyCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Holy +1" },
+                Label = { Text = "神圣 +1" },
                 ReadOnly = true,
             };
             HolyCheckBox.MouseClick += (o, e) => RefineType = RefineType.Holy;
@@ -6250,7 +6250,7 @@ namespace Client.Scenes.Views
             DarkCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Dark +1" },
+                Label = { Text = "暗黑 +1" },
                 ReadOnly = true,
             };
             DarkCheckBox.MouseClick += (o, e) => RefineType = RefineType.Dark;
@@ -6258,7 +6258,7 @@ namespace Client.Scenes.Views
             PhantomCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Phantom +1" },
+                Label = { Text = "幻影 +1" },
                 ReadOnly = true,
             };
             PhantomCheckBox.MouseClick += (o, e) => RefineType = RefineType.Phantom;
@@ -6266,7 +6266,7 @@ namespace Client.Scenes.Views
             HealthCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Health +10" },
+                Label = { Text = "生命值 +10" },
                 ReadOnly = true,
             };
             HealthCheckBox.MouseClick += (o, e) => RefineType = RefineType.Health;
@@ -6274,7 +6274,7 @@ namespace Client.Scenes.Views
             ManaCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Mana +10" },
+                Label = { Text = "魔法值 +10" },
                 ReadOnly = true,
             };
             ManaCheckBox.MouseClick += (o, e) => RefineType = RefineType.Mana;
@@ -6282,7 +6282,7 @@ namespace Client.Scenes.Views
             ACCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "AC 1-1" },
+                Label = { Text = "防御 1-1" },
                 ReadOnly = true,
             };
             ACCheckBox.MouseClick += (o, e) => RefineType = RefineType.AC;
@@ -6290,7 +6290,7 @@ namespace Client.Scenes.Views
             MRCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "MR 1-1" },
+                Label = { Text = "魔防 1-1" },
                 ReadOnly = true,
             };
             MRCheckBox.MouseClick += (o, e) => RefineType = RefineType.MR;
@@ -6298,7 +6298,7 @@ namespace Client.Scenes.Views
             AccuracyCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Accuracy +1" },
+                Label = { Text = "准确 +1" },
                 ReadOnly = true,
             };
             AccuracyCheckBox.MouseClick += (o, e) => RefineType = RefineType.Accuracy;
@@ -6306,7 +6306,7 @@ namespace Client.Scenes.Views
             AgilityCheckBox = new DXCheckBox
             {
                 Parent = this,
-                Label = { Text = "Agility +1" },
+                Label = { Text = "敏捷 +1" },
                 ReadOnly = true,
             };
             AgilityCheckBox.MouseClick += (o, e) => RefineType = RefineType.Agility;
@@ -6330,7 +6330,7 @@ namespace Client.Scenes.Views
 
             new DXLabel
             {
-                Text = "Attack Element",
+                Text = "攻击元素",
                 Location = new Point(ClientArea.Right - HealthCheckBox.Size.Width - 150, ClientArea.Y + 73),
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
@@ -6348,7 +6348,7 @@ namespace Client.Scenes.Views
 
             SubmitButton = new DXButton
             {
-                Label = { Text = "Submit" },
+                Label = { Text = "提交" },
                 Size = new Size(80, SmallButtonHeight),
                 Parent = this,
                 ButtonType = ButtonType.SmallButton,
@@ -6759,7 +6759,7 @@ namespace Client.Scenes.Views
 
             DXLabel label = new DXLabel
             {
-                Text = "Accessory",
+                Text = "首饰",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -6787,7 +6787,7 @@ namespace Client.Scenes.Views
             {
                 Size = new Size(50, SmallButtonHeight),
                 Location = new Point((ClientArea.Width - 50) / 2 + ClientArea.X, ClientArea.Bottom - SmallButtonHeight),
-                Label = { Text = "Reset" },
+                Label = { Text = "重置" },
                 Parent = this,
                 ButtonType = ButtonType.SmallButton,
                 Enabled = false,
@@ -6795,7 +6795,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = $"Cost: {Globals.AccessoryResetCost:#,##0}",
+                Text = $"花费: {Globals.AccessoryResetCost:#,##0}",
                 Parent = this,
                 ForeColour = Color.FromArgb(198, 166, 99),
                 Outline = true,
@@ -6982,7 +6982,7 @@ namespace Client.Scenes.Views
 
         public NPCWeaponCraftWindow()
         {
-            TitleLabel.Text = "Weapon Craft";
+            TitleLabel.Text = "武器洗练";
 
             HasFooter = false;
 
@@ -6990,7 +6990,7 @@ namespace Client.Scenes.Views
 
             DXLabel label = new DXLabel
             {
-                Text = "Template / Weapon",
+                Text = "模板 / 武器",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
             };
@@ -7008,7 +7008,7 @@ namespace Client.Scenes.Views
             {
                 if (TemplateCell.Grid[0].Item == null || TemplateCell.Grid[0].Item.Info.ItemEffect == ItemEffect.WeaponTemplate)
                 {
-                    ClassLabel.Text = "Class:";
+                    ClassLabel.Text = "职业:";
                     switch (RequiredClass)
                     {
                         case RequiredClass.None:
@@ -7031,7 +7031,7 @@ namespace Client.Scenes.Views
                 }
                 else
                 {
-                    ClassLabel.Text = "Stats:";
+                    ClassLabel.Text = "状态:";
                     PreviewImageBox.Index = TemplateCell.Grid[0].Item.Info.Image;
                 }
 
@@ -7043,7 +7043,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = "Yellow",
+                Text = "黄色",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
             };
@@ -7059,7 +7059,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = "Blue",
+                Text = "蓝色",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
             };
@@ -7075,7 +7075,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = "Red",
+                Text = "红色",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
             };
@@ -7091,7 +7091,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = "Purple",
+                Text = "紫色",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
             };
@@ -7108,7 +7108,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = "Green",
+                Text = "绿色",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
             };
@@ -7125,7 +7125,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = "Grey",
+                Text = "灰色",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
             };
@@ -7143,7 +7143,7 @@ namespace Client.Scenes.Views
 
             ClassLabel = new DXLabel
             {
-                Text = "Class:",
+                Text = "职业:",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Underline)
             };
@@ -7170,26 +7170,27 @@ namespace Client.Scenes.Views
             new DXListBoxItem
             {
                 Parent = ClassComboBox.ListBox,
-                Label = { Text = $"{RequiredClass.Warrior}" },
+                Label = { Text = $"{EnumService.GetDescription(RequiredClass.Warrior)}" },
                 Item = RequiredClass.Warrior
             };
             new DXListBoxItem
             {
                 Parent = ClassComboBox.ListBox,
-                Label = { Text = $"{RequiredClass.Wizard}" },
+                Label = { Text = $"{EnumService.GetDescription(RequiredClass.Wizard)}" },
                 Item = RequiredClass.Wizard
             };
             new DXListBoxItem
             {
                 Parent = ClassComboBox.ListBox,
-                Label = { Text = $"{RequiredClass.Taoist}" },
+                Label = { Text = $"{EnumService.GetDescription(RequiredClass.Taoist)}" },
                 Item = RequiredClass.Taoist
             };
 
             new DXListBoxItem
             {
                 Parent = ClassComboBox.ListBox,
-                Label = { Text = $"{RequiredClass.Assassin}" },
+                Label = { Text = $"{EnumService.GetDescription(RequiredClass.Assassin)}" },
+
                 Item = RequiredClass.Assassin
             };
 
@@ -7217,7 +7218,7 @@ namespace Client.Scenes.Views
                 Location = new Point(YellowCell.Location.X, ClientArea.Y + 260),
                 Size = new Size(YellowCell.Size.Width + 99, SmallButtonHeight),
                 ButtonType = ButtonType.SmallButton,
-                Label = { Text = "Craft" }
+                Label = { Text = "洗练" }
             };
             AttemptButton.MouseClick += (o, e) =>
             {

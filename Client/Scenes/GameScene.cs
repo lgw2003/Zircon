@@ -230,7 +230,7 @@ namespace Client.Scenes
                 if (_AutoRun == value) return;
                 _AutoRun = value;
                 
-                ReceiveChat(value ? CEnvir.Language.GameSceneAutoRunOn : CEnvir.Language.GameSceneAutoRunOff, MessageType.Hint);
+                ReceiveChat(value ? "[自动跑步: 开]" : "[自动跑步: 关]", MessageType.Hint);
             }
         }
         private bool _AutoRun;
@@ -913,7 +913,7 @@ namespace Client.Scenes
             }
 
             if (result)
-                Game.ReceiveChat(CEnvir.Language.ChatLayoutLoaded, MessageType.Announcement);
+                Game.ReceiveChat("聊天布局加载完成", MessageType.Announcement);
             else
                 ChatOptionsBox.CreateDefaultWindows();
         }
@@ -1735,7 +1735,7 @@ namespace Client.Scenes
             };
 
             if (MouseItem.Info.ItemEffect == ItemEffect.ItemPart)
-                label.Text += " - [Part]";
+                label.Text += " - [碎片]";
             ItemLabel.Size = new Size(label.DisplayArea.Right + 4, label.DisplayArea.Bottom);
 
 
@@ -1749,7 +1749,7 @@ namespace Client.Scenes
                     ForeColour = Color.Yellow,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = $"{displayInfo.ItemType}",
+                    Text = EnumService.GetDescription(displayInfo.ItemType),
                 };
 
 
@@ -1766,7 +1766,7 @@ namespace Client.Scenes
                     ForeColour = Color.White,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = $"Weight: {MouseItem.Info.Weight}",
+                    Text = $"重量: {MouseItem.Info.Weight}",
                 };
 
                 switch (MouseItem.Info.ItemType)
@@ -1805,7 +1805,7 @@ namespace Client.Scenes
                     ForeColour = Color.Yellow,
                     Location = new Point(ItemLabel.DisplayArea.Right, 4),
                     Parent = ItemLabel,
-                    Text = $"Amount: {MouseItem.Count:#,##0}"
+                    Text = $"数量: {MouseItem.Count:#,##0}"
                 };
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4, ItemLabel.Size.Height + 4);
 
@@ -1835,7 +1835,7 @@ namespace Client.Scenes
                     ForeColour = Color.LightSeaGreen,
                     Location = new Point(ItemLabel.DisplayArea.Right, 4),
                     Parent = ItemLabel,
-                    Text = $"Parts: {MouseItem.Count}/{displayInfo.PartCount}.",
+                    Text = $"碎片: {MouseItem.Count}/{displayInfo.PartCount}.",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4, ItemLabel.Size.Height);
@@ -1847,7 +1847,7 @@ namespace Client.Scenes
                     ForeColour = Color.Yellow,
                     Location = new Point(ItemLabel.DisplayArea.Right, 4),
                     Parent = ItemLabel,
-                    Text = $"Count: {MouseItem.Count}/{MouseItem.Info.StackSize}"
+                    Text = $"数量: {MouseItem.Count}/{MouseItem.Info.StackSize}"
                 };
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4, ItemLabel.Size.Height);
             }
@@ -1869,7 +1869,7 @@ namespace Client.Scenes
                             ForeColour = Color.White,
                             Location = new Point(ItemLabel.DisplayArea.Right, 4),
                             Parent = ItemLabel,
-                            Text = $"Pages: {MouseItem.CurrentDurability}/{MouseItem.MaxDurability}",
+                            Text = $"页: {MouseItem.CurrentDurability}/{MouseItem.MaxDurability}",
                         };
 
                         ItemLabel.Size = new Size(label.DisplayArea.Right + 4, ItemLabel.Size.Height);
@@ -1883,7 +1883,7 @@ namespace Client.Scenes
                             ForeColour = MouseItem.CurrentDurability == 0 ? Color.Red : Color.White,
                             Location = new Point(ItemLabel.DisplayArea.Right, 4),
                             Parent = ItemLabel,
-                            Text = $"Quality: {Math.Round(MouseItem.CurrentDurability/1000M)}/{Math.Round(MouseItem.MaxDurability/1000M)}",
+                            Text = $"品质: {Math.Round(MouseItem.CurrentDurability/1000M)}/{Math.Round(MouseItem.MaxDurability/1000M)}",
                         };
 
                         ItemLabel.Size = new Size(label.DisplayArea.Right + 4, ItemLabel.Size.Height);
@@ -1897,7 +1897,7 @@ namespace Client.Scenes
                             ForeColour = MouseItem.CurrentDurability == 0 ? Color.Red : Color.White,
                             Location = new Point(ItemLabel.DisplayArea.Right, 4),
                             Parent = ItemLabel,
-                            Text = $"Purity: {Math.Round(MouseItem.CurrentDurability/1000M)}",
+                            Text = $"纯度: {Math.Round(MouseItem.CurrentDurability/1000M)}",
                         };
 
                         ItemLabel.Size = new Size(label.DisplayArea.Right + 4, ItemLabel.Size.Height);
@@ -1929,7 +1929,7 @@ namespace Client.Scenes
                     ForeColour = colour,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = $"Required Gender: {MouseItem.Info.RequiredGender}",
+                    Text = $"需要性别: {MouseItem.Info.RequiredGender}",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -1971,7 +1971,7 @@ namespace Client.Scenes
                     ForeColour = colour,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = $"Required Class: {description?.Description ?? displayInfo.RequiredClass.ToString()}",
+                    Text = $"需要职业: {description?.Description ?? displayInfo.RequiredClass.ToString()}",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -1987,77 +1987,77 @@ namespace Client.Scenes
                 switch (displayInfo.RequiredType)
                 {
                     case RequiredType.Level:
-                        text = $"Required Level: {MouseItem.Info.RequiredAmount}";
+                        text = $"需要等级: {MouseItem.Info.RequiredAmount}";
                         if (User.Level < MouseItem.Info.RequiredAmount && User.Stats[Stat.Rebirth] == 0)
                             colour = Color.Red;
                         break;
                     case RequiredType.MaxLevel:
-                        text = $"Max Level: {MouseItem.Info.RequiredAmount}";
+                        text = $"最大等级: {MouseItem.Info.RequiredAmount}";
                         if (User.Level > MouseItem.Info.RequiredAmount || User.Stats[Stat.Rebirth] > 0)
                             colour = Color.Red;
                         break;
                     case RequiredType.AC:
-                        text = $"Required AC: {MouseItem.Info.RequiredAmount}";
+                        text = $"需要防御: {MouseItem.Info.RequiredAmount}";
                         if (User.Stats[Stat.MaxAC] < MouseItem.Info.RequiredAmount)
                             colour = Color.Red;
                         break;
                     case RequiredType.MR:
-                        text = $"Required MR: {MouseItem.Info.RequiredAmount}";
+                        text = $"需要魔防: {MouseItem.Info.RequiredAmount}";
                         if (User.Stats[Stat.MaxMR] < MouseItem.Info.RequiredAmount)
                             colour = Color.Red;
                         break;
                     case RequiredType.DC:
-                        text = $"Required DC: {MouseItem.Info.RequiredAmount}";
+                        text = $"需要攻击: {MouseItem.Info.RequiredAmount}";
                         if (User.Stats[Stat.MaxDC] < MouseItem.Info.RequiredAmount)
                             colour = Color.Red;
                         break;
                     case RequiredType.MC:
-                        text = $"Required MC: {MouseItem.Info.RequiredAmount}";
+                        text = $"需要魔法: {MouseItem.Info.RequiredAmount}";
                         if (User.Stats[Stat.MaxMC] < MouseItem.Info.RequiredAmount)
                             colour = Color.Red;
                         break;
                     case RequiredType.SC:
-                        text = $"Required SC: {MouseItem.Info.RequiredAmount}";
+                        text = $"需要道术: {MouseItem.Info.RequiredAmount}";
                         if (User.Stats[Stat.MaxSC] < MouseItem.Info.RequiredAmount)
                             colour = Color.Red;
                         break;
                     case RequiredType.Health:
-                        text = $"Required Health: {MouseItem.Info.RequiredAmount}";
+                        text = $"需要生命值: {MouseItem.Info.RequiredAmount}";
                         if (User.Stats[Stat.Health] < MouseItem.Info.RequiredAmount)
                             colour = Color.Red;
                         break;
                     case RequiredType.Mana:
-                        text = $"Required Mana: {MouseItem.Info.RequiredAmount}";
+                        text = $"需要魔法值: {MouseItem.Info.RequiredAmount}";
                         if (User.Stats[Stat.Mana] < MouseItem.Info.RequiredAmount)
                             colour = Color.Red;
                         break;
                     case RequiredType.CompanionLevel:
-                        text = $"Companion Level: {MouseItem.Info.RequiredAmount}";
+                        text = $"宠物等级: {MouseItem.Info.RequiredAmount}";
                         if (Companion == null || Companion.Level < MouseItem.Info.RequiredAmount)
                             colour = Color.Red;
                         break;
                     case RequiredType.MaxCompanionLevel:
-                        text = $"Max Companion Level: {MouseItem.Info.RequiredAmount}";
+                        text = $"宠物最大等级: {MouseItem.Info.RequiredAmount}";
                         if (Companion == null || Companion.Level > MouseItem.Info.RequiredAmount)
                             colour = Color.Red;
                         break;
                     case RequiredType.RebirthLevel:
-                        text = $"Rebirth Level: {MouseItem.Info.RequiredAmount}";
+                        text = $"转生等级: {MouseItem.Info.RequiredAmount}";
                         if (User.Stats[Stat.Rebirth] < MouseItem.Info.RequiredAmount)
                             colour = Color.Red;
                         break;
                     case RequiredType.MaxRebirthLevel:
-                        text = $"Rebirth Level: {MouseItem.Info.RequiredAmount}";
+                        text = $"最大转生等级: {MouseItem.Info.RequiredAmount}";
                         if (User.Stats[Stat.Rebirth] > MouseItem.Info.RequiredAmount)
                             colour = Color.Red;
                         break;
                     default:
-                        text = "Unknown Type Required";
+                        text = "未知类型需求";
                         break;
                 }
 
                 if (displayInfo.Rarity > Rarity.Common)
-                    text += $" ({displayInfo.Rarity})";
+                    text += $" ({EnumService.GetDescription(displayInfo.Rarity)})";
 
 
                 label = new DXLabel
@@ -2096,7 +2096,7 @@ namespace Client.Scenes
                     ForeColour = Color.LightGoldenrodYellow,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = $"Sell Value: {sale}",
+                    Text = $"出售价格: {sale}",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2112,7 +2112,7 @@ namespace Client.Scenes
                     ForeColour = Color.Yellow,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = "Cannot be repaired.",
+                    Text = "不可修理.",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2128,7 +2128,7 @@ namespace Client.Scenes
                     ForeColour = Color.Yellow,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = "Cannot be sold.",
+                    Text = "不可出售.",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2144,7 +2144,7 @@ namespace Client.Scenes
                     ForeColour = Color.Yellow,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = "Cannot be stored.",
+                    Text = "不可存仓库.",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2160,7 +2160,7 @@ namespace Client.Scenes
                     ForeColour = Color.Yellow,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = "Cannot be traded.",
+                    Text = "不可交易.",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2176,7 +2176,7 @@ namespace Client.Scenes
                     ForeColour = Color.Yellow,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = "Cannot be dropped.",
+                    Text = "不可掉落.",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2192,7 +2192,7 @@ namespace Client.Scenes
                     ForeColour = Color.Yellow,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = "Cannot be dropped on death.",
+                    Text = "死亡不会掉落.",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2208,7 +2208,7 @@ namespace Client.Scenes
                     ForeColour = Color.Yellow,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = "Bound Item.",
+                    Text = "绑定道具.",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2229,11 +2229,11 @@ namespace Client.Scenes
                 {
                     case ItemType.Book:
                         label.ForeColour = Color.Red;
-                        label.Text = "Does not contain Level 4 Pages.";
+                        label.Text = "不可用作3级技能后的升级.";
                         break;
                     default:
                         label.ForeColour = Color.Yellow;
-                        label.Text = "Cannot be Refined or Upgraded.";
+                        label.Text = "不可精炼或升级.";
                         break;
                 }
 
@@ -2249,7 +2249,7 @@ namespace Client.Scenes
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
                     ForeColour = Color.Green,
-                    Text = "Contains high level Pages.",
+                    Text = "可以用作3级技能后的升级.",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2291,12 +2291,12 @@ namespace Client.Scenes
 
                 if (CEnvir.Now >= MouseItem.NextSpecialRepair)
                 {
-                    label.Text = "Can Special Repair";
+                    label.Text = "可以特殊修理";
                     label.ForeColour = Color.LimeGreen;
                 }
                 else
                 {
-                    label.Text = $"Special Repair in {Functions.ToString(MouseItem.NextSpecialRepair - CEnvir.Now, true)}";
+                    label.Text = $"下次特殊修理 {Functions.ToString(MouseItem.NextSpecialRepair - CEnvir.Now, true)}";
                     label.ForeColour = Color.Red;
                 }
 
@@ -2313,7 +2313,7 @@ namespace Client.Scenes
                 {
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = $"Expires in {Functions.ToString(MouseItem.ExpireTime, true)}",
+                    Text = $"过期时间 {Functions.ToString(MouseItem.ExpireTime, true)}",
                     ForeColour = Color.Chocolate,
                 };
                 
@@ -2336,12 +2336,12 @@ namespace Client.Scenes
 
                 if (CEnvir.Now >= value)
                 {
-                    label.Text = "Revival ready";
+                    label.Text = "可以复活";
                     label.ForeColour = Color.LimeGreen;
                 }
                 else
                 {
-                    label.Text = $"Revival ready in {Functions.ToString(value - CEnvir.Now, true)}";
+                    label.Text = $"复活 CD {Functions.ToString(value - CEnvir.Now, true)}";
                     label.ForeColour = Color.Red;
                 }
 
@@ -2363,7 +2363,7 @@ namespace Client.Scenes
                     ForeColour = Color.MediumOrchid,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = "Wedding Ring.",
+                    Text = "结婚戒指.",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2397,7 +2397,7 @@ namespace Client.Scenes
                     ForeColour = Color.MediumAquamarine,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = $"Fragment Cost: {MouseItem.FragmentCost():#,##0}",
+                    Text = $"拆解花费: {MouseItem.FragmentCost():#,##0}",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2408,7 +2408,7 @@ namespace Client.Scenes
                     ForeColour = Color.MediumAquamarine,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = $"Fragments: {(MouseItem.Info.Rarity == Rarity.Common ? "Fragment" : "Framgent (II)")} x{MouseItem.FragmentCount():#,##0}",
+                    Text = $"拆解: {(MouseItem.Info.Rarity == Rarity.Common ? "初级碎片" : "中级碎片")} x{MouseItem.FragmentCount():#,##0}",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2423,7 +2423,7 @@ namespace Client.Scenes
                 {
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = $"Reset Available in {Functions.ToString(MouseItem.NextReset - CEnvir.Now, true)}",
+                    Text = $"距离下次重置还需要 {Functions.ToString(MouseItem.NextReset - CEnvir.Now, true)}",
                     ForeColour = Color.Red,
                 };
 
@@ -2440,8 +2440,8 @@ namespace Client.Scenes
                 {
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = $"Locked: Prevents accidentally selling or throwing away\n" +
-                           $"[Middle Mouse Button] or [Scroll Lock] to Unlock.",
+                    Text = $"锁定: 防止意外出售或丢弃\n" +
+                           $"按鼠标中键或[Scroll Lock]来解锁.",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2484,7 +2484,7 @@ namespace Client.Scenes
                     ForeColour = MouseItem.CurrentDurability == 0 ? Color.Red : Color.FromArgb(132, 255, 255),
                     Location = new Point(ItemLabel.DisplayArea.Right, 4),
                     Parent = ItemLabel,
-                    Text = $"Durability: {Math.Round(MouseItem.CurrentDurability/1000M)}/{Math.Round(MouseItem.MaxDurability/1000M)}",
+                    Text = $"耐久: {Math.Round(MouseItem.CurrentDurability/1000M)}/{Math.Round(MouseItem.MaxDurability/1000M)}",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4, ItemLabel.Size.Height);
@@ -2568,7 +2568,7 @@ namespace Client.Scenes
                         ForeColour = Color.White,
                         Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                         Parent = ItemLabel,
-                        Text = $"{displayInfo.ItemType} Level: " + (MouseItem.Level < Globals.WeaponExperienceList.Count ? MouseItem.Level.ToString() : "Max")
+                        Text = $"{EnumService.GetDescription(displayInfo.ItemType)} 等级: " + (MouseItem.Level < Globals.WeaponExperienceList.Count ? MouseItem.Level.ToString() : "Max")
                     };
 
                     ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2584,12 +2584,12 @@ namespace Client.Scenes
 
                         if ((MouseItem.Flags & UserItemFlags.Refinable) == UserItemFlags.Refinable)
                         {
-                            label.Text = "Ready for Refine";
+                            label.Text = "可以精炼";
                             label.ForeColour = Color.LightGreen;
                         }
                         else
                         {
-                            label.Text = $"{displayInfo.ItemType} Training Points: {MouseItem.Experience / Globals.WeaponExperienceList[MouseItem.Level]:0.##%}";
+                            label.Text = $"{displayInfo.ItemType} 精炼点数: {MouseItem.Experience / Globals.WeaponExperienceList[MouseItem.Level]:0.##%}";
                             label.ForeColour = Color.White;
                         }
 
@@ -2611,7 +2611,7 @@ namespace Client.Scenes
                         ForeColour = Color.White,
                         Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                         Parent = ItemLabel,
-                        Text = $"{displayInfo.ItemType} Level: " + (MouseItem.Level < Globals.AccessoryExperienceList.Count ? MouseItem.Level.ToString() : "Max")
+                        Text = $"{EnumService.GetDescription(displayInfo.ItemType)} 等级: " + (MouseItem.Level < Globals.AccessoryExperienceList.Count ? MouseItem.Level.ToString() : "Max")
                     };
 
                     ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2627,12 +2627,12 @@ namespace Client.Scenes
 
                         if ((MouseItem.Flags & UserItemFlags.Refinable) == UserItemFlags.Refinable)
                         {
-                            label.Text = "Ready for Refine";
+                            label.Text = "可以精炼";
                             label.ForeColour = Color.LightGreen;
                         }
                         else
                         {
-                            label.Text = $"{displayInfo.ItemType} Training Points: {MouseItem.Experience / Globals.AccessoryExperienceList[MouseItem.Level]:0.##%}";
+                            label.Text = $"{EnumService.GetDescription(displayInfo.ItemType)} 精炼点数: {MouseItem.Experience / Globals.AccessoryExperienceList[MouseItem.Level]:0.##%}";
                             label.ForeColour = Color.White;
                         }
 
@@ -2696,7 +2696,7 @@ namespace Client.Scenes
                     ForeColour = Color.White,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = $"Cooldown: {MouseItem.Info.Durability/1000M:#,##0.#} Seconds"
+                    Text = $"冷却CD: {MouseItem.Info.Durability/1000M:#,##0.#} 秒"
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2755,7 +2755,7 @@ namespace Client.Scenes
                     ForeColour = Color.LimeGreen,
                     Location = new Point(4, MagicLabel.DisplayArea.Bottom),
                     Parent = MagicLabel,
-                    Text = $"Current Level: {level}",
+                    Text = $"当前等级: {level}",
                 };
 
                 string text;
@@ -2780,7 +2780,7 @@ namespace Client.Scenes
                     ForeColour = Color.LimeGreen,
                     Location = new Point(width + 4, MagicLabel.DisplayArea.Bottom),
                     Parent = MagicLabel,
-                    Text = $"Experience: {text}",
+                    Text = $"经验: {text}",
                 };
             }
             else
@@ -2790,7 +2790,7 @@ namespace Client.Scenes
                     ForeColour = Color.Red,
                     Location = new Point(4, MagicLabel.DisplayArea.Bottom),
                     Parent = MagicLabel,
-                    Text = $"Not learned",
+                    Text = $"尚未学习",
                 };
             }
             MagicLabel.Size = new Size(label.DisplayArea.Right + 4 > MagicLabel.Size.Width ? label.DisplayArea.Right + 4 : MagicLabel.Size.Width, label.DisplayArea.Bottom);
@@ -2800,7 +2800,7 @@ namespace Client.Scenes
                 ForeColour = User.Level < MouseMagic.NeedLevel1 ? Color.Red : Color.White,
                 Location = new Point(4, MagicLabel.DisplayArea.Bottom),
                 Parent = MagicLabel,
-                Text = $"Rank 1 Requirement: Level {MouseMagic.NeedLevel1}",
+                Text = $"等级1需要: 等级 {MouseMagic.NeedLevel1}",
             };
             width = label.DisplayArea.Right + 10;
             label = new DXLabel
@@ -2808,7 +2808,7 @@ namespace Client.Scenes
                 ForeColour = Color.White,
                 Location = new Point(width, MagicLabel.DisplayArea.Bottom),
                 Parent = MagicLabel,
-                Text = $"Experience: {MouseMagic.Experience1:#,##0}",
+                Text = $"经验: {MouseMagic.Experience1:#,##0}",
             };
 
             MagicLabel.Size = new Size(label.DisplayArea.Right + 4 > MagicLabel.Size.Width ? label.DisplayArea.Right + 4 : MagicLabel.Size.Width, label.DisplayArea.Bottom);
@@ -2818,7 +2818,7 @@ namespace Client.Scenes
                 ForeColour = User.Level < MouseMagic.NeedLevel2 ? Color.Red : Color.White,
                 Location = new Point(4, MagicLabel.DisplayArea.Bottom),
                 Parent = MagicLabel,
-                Text = $"Rank 2 Requirement: Level {MouseMagic.NeedLevel2}",
+                Text = $"等级2需要: 等级 {MouseMagic.NeedLevel2}",
             };
 
             label = new DXLabel
@@ -2826,7 +2826,7 @@ namespace Client.Scenes
                 ForeColour = Color.White,
                 Location = new Point(width , MagicLabel.DisplayArea.Bottom),
                 Parent = MagicLabel,
-                Text = $"Experience: {MouseMagic.Experience2:#,##0}",
+                Text = $"经验: {MouseMagic.Experience2:#,##0}",
             };
 
             MagicLabel.Size = new Size(label.DisplayArea.Right + 4 > MagicLabel.Size.Width ? label.DisplayArea.Right + 4 : MagicLabel.Size.Width, label.DisplayArea.Bottom);
@@ -2836,7 +2836,7 @@ namespace Client.Scenes
                 ForeColour = User.Level < MouseMagic.NeedLevel3 ? Color.Red : Color.White,
                 Location = new Point(4, MagicLabel.DisplayArea.Bottom),
                 Parent = MagicLabel,
-                Text = $"Rank 3 Requirement: Level {MouseMagic.NeedLevel3}",
+                Text = $"等级3需要: 等级 {MouseMagic.NeedLevel3}",
             };
 
             label = new DXLabel
@@ -2844,7 +2844,7 @@ namespace Client.Scenes
                 ForeColour = Color.White,
                 Location = new Point(width, MagicLabel.DisplayArea.Bottom),
                 Parent = MagicLabel,
-                Text = $"Experience: {MouseMagic.Experience3:#,##0}",
+                Text = $"经验: {MouseMagic.Experience3:#,##0}",
             };
             MagicLabel.Size = new Size(label.DisplayArea.Right + 4 > MagicLabel.Size.Width ? label.DisplayArea.Right + 4 : MagicLabel.Size.Width, label.DisplayArea.Bottom);
 
@@ -2855,7 +2855,7 @@ namespace Client.Scenes
                     ForeColour = magic?.Level < 3 ? Color.Red : Color.White,
                     Location = new Point(4, MagicLabel.DisplayArea.Bottom),
                     Parent = MagicLabel,
-                    Text = $"Rank 4+ Requirement: Books",
+                    Text = $"等级4需要: 吃技能书",
                 };
                 MagicLabel.Size = new Size(label.DisplayArea.Right + 4 > MagicLabel.Size.Width ? label.DisplayArea.Right + 4 : MagicLabel.Size.Width, label.DisplayArea.Bottom);
             }
@@ -2881,7 +2881,7 @@ namespace Client.Scenes
                 ForeColour = Color.LimeGreen,
                 Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                 Parent = ItemLabel,
-                Text = $"Item Set:"
+                Text = $"套装名称:"
             };
 
             ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2903,7 +2903,7 @@ namespace Client.Scenes
                 ForeColour = Color.LimeGreen,
                 Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                 Parent = ItemLabel,
-                Text = "Parts:"
+                Text = "套件:"
             };
 
             ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2967,7 +2967,7 @@ namespace Client.Scenes
                 ForeColour = Color.LimeGreen,
                 Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                 Parent = ItemLabel,
-                Text = $"Set Bonus:"
+                Text = $"套装属性:"
             };
 
             ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -3071,7 +3071,7 @@ namespace Client.Scenes
 
                     if (User.AttackMagic != magic.Info.Magic)
                     {
-                        ReceiveChat(string.Format(CEnvir.Language.GameSceneSkillReady, magic.Info.Name), MessageType.Hint);
+                        ReceiveChat(string.Format("{0} 已就绪", magic.Info.Name), MessageType.Hint);
                         int attackDelay = Globals.AttackDelay - MapObject.User.Stats[Stat.AttackSpeed] * Globals.ASpeedRate;
                         attackDelay = Math.Max(800, attackDelay);
 
@@ -3085,7 +3085,7 @@ namespace Client.Scenes
 
                     if (User.AttackMagic != magic.Info.Magic)
                     {
-                        ReceiveChat(string.Format(CEnvir.Language.GameSceneSkillReady, magic.Info.Name), MessageType.Hint);
+                        ReceiveChat(string.Format("{0} 已就绪", magic.Info.Name), MessageType.Hint);
                         ToggleTime = CEnvir.Now + TimeSpan.FromMilliseconds(500);
 
                         User.AttackMagic = magic.Info.Magic;
@@ -3104,7 +3104,7 @@ namespace Client.Scenes
                 if (CEnvir.Now >= OutputTime)
                 {
                     OutputTime = CEnvir.Now.AddSeconds(1);
-                    ReceiveChat(string.Format(CEnvir.Language.GameSceneCastInCooldown, magic.Info.Name), MessageType.Hint);
+                    ReceiveChat(string.Format("无法使用技能 {0}, 技能还在冷却中.", magic.Info.Name), MessageType.Hint);
                 }
                 return;
             }
@@ -3118,7 +3118,7 @@ namespace Client.Scenes
                         if (CEnvir.Now >= OutputTime)
                         {
                             OutputTime = CEnvir.Now.AddSeconds(1);
-                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastInCombat, magic.Info.Name), MessageType.Hint);
+                            ReceiveChat(string.Format("你还处于战斗状态 无法使用技能 {0}", magic.Info.Name), MessageType.Hint);
                         }
                         return;
                     }
@@ -3128,7 +3128,7 @@ namespace Client.Scenes
                         if (CEnvir.Now >= OutputTime)
                         {
                             OutputTime = CEnvir.Now.AddSeconds(1);
-                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastNoEnoughHealth, magic.Info.Name), MessageType.Hint);
+                            ReceiveChat(string.Format("无法使用技能 {0}, 你没有足够的生命值", magic.Info.Name), MessageType.Hint);
                         }
                         return;
                     }
@@ -3141,7 +3141,7 @@ namespace Client.Scenes
                         if (CEnvir.Now >= OutputTime)
                         {
                             OutputTime = CEnvir.Now.AddSeconds(1);
-                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastNoEnoughMana, magic.Info.Name), MessageType.Hint);
+                            ReceiveChat(string.Format("无法使用技能 {0}, 你没有足够的魔法值", magic.Info.Name), MessageType.Hint);
                         }
                         return;
                     }
@@ -3152,7 +3152,7 @@ namespace Client.Scenes
                         if (CEnvir.Now >= OutputTime)
                         {
                             OutputTime = CEnvir.Now.AddSeconds(1);
-                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastNoEnoughHealth, magic.Info.Name), MessageType.Hint);
+                            ReceiveChat(string.Format("无法使用技能 {0}, 你没有足够的生命值", magic.Info.Name), MessageType.Hint);
                         }
                         return;
                     }
@@ -3161,7 +3161,7 @@ namespace Client.Scenes
                         if (CEnvir.Now >= OutputTime)
                         {
                             OutputTime = CEnvir.Now.AddSeconds(1);
-                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastNoEnoughMana, magic.Info.Name), MessageType.Hint);
+                            ReceiveChat(string.Format("无法使用技能 {0}, 你没有足够的魔法值", magic.Info.Name), MessageType.Hint);
                         }
                         return;
                     }
@@ -3188,7 +3188,7 @@ namespace Client.Scenes
                         if (CEnvir.Now >= OutputTime)
                         {
                             OutputTime = CEnvir.Now.AddSeconds(1);
-                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastNoEnoughMana, magic.Info.Name), MessageType.Hint);
+                            ReceiveChat(string.Format("无法使用技能 {0}, 你没有足够的魔法值", magic.Info.Name), MessageType.Hint);
                         }
                         return;
                     }
@@ -3219,7 +3219,7 @@ namespace Client.Scenes
                     {
                         if (CEnvir.Now < OutputTime) return;
                         OutputTime = CEnvir.Now.AddSeconds(1);
-                        ReceiveChat(string.Format(CEnvir.Language.GameSceneCastTooFar, magic.Info.Name), MessageType.Hint);
+                        ReceiveChat(string.Format("无法使用技能 {0}, 你的目标太远了", magic.Info.Name), MessageType.Hint);
                         return;
                     }
 
@@ -3431,7 +3431,7 @@ namespace Client.Scenes
                     {
                         if (CEnvir.Now < OutputTime) return;
                         OutputTime = CEnvir.Now.AddSeconds(1);
-                        ReceiveChat(string.Format(CEnvir.Language.GameSceneCastTooFar, magic.Info.Name), MessageType.Hint);
+                        ReceiveChat(string.Format("无法使用技能 {0}, 你的目标太远了", magic.Info.Name), MessageType.Hint);
                         return;
                     }
                     break;
@@ -3443,7 +3443,7 @@ namespace Client.Scenes
             {
                 if (CEnvir.Now < OutputTime) return;
                 OutputTime = CEnvir.Now.AddSeconds(1);
-                ReceiveChat(string.Format(CEnvir.Language.GameSceneCastTooFar, magic.Info.Name), MessageType.Hint);
+                ReceiveChat(string.Format("无法使用技能 {0}, 你的目标太远了", magic.Info.Name), MessageType.Hint);
                 return;
             }
 
@@ -3560,7 +3560,7 @@ namespace Client.Scenes
 
                     if (User.AttackMagic != magic.Info.Magic)
                     {
-                        ReceiveChat(string.Format(CEnvir.Language.GameSceneSkillReady, magic.Info.Name), MessageType.Hint);
+                        ReceiveChat(string.Format("{0} 已就绪", magic.Info.Name), MessageType.Hint);
                         int attackDelay = Globals.AttackDelay - MapObject.User.Stats[Stat.AttackSpeed] * Globals.ASpeedRate;
                         attackDelay = Math.Max(800, attackDelay);
 
@@ -3574,7 +3574,7 @@ namespace Client.Scenes
 
                     if (User.AttackMagic != magic.Info.Magic)
                     {
-                        ReceiveChat(string.Format(CEnvir.Language.GameSceneSkillReady, magic.Info.Name), MessageType.Hint);
+                        ReceiveChat(string.Format("{0} 已就绪", magic.Info.Name), MessageType.Hint);
                         ToggleTime = CEnvir.Now + TimeSpan.FromMilliseconds(500);
 
                         User.AttackMagic = magic.Info.Magic;
@@ -3593,7 +3593,7 @@ namespace Client.Scenes
                 if (CEnvir.Now >= OutputTime)
                 {
                     OutputTime = CEnvir.Now.AddSeconds(1);
-                    ReceiveChat(string.Format(CEnvir.Language.GameSceneCastInCooldown, magic.Info.Name), MessageType.Hint);
+                    ReceiveChat(string.Format("无法使用技能 {0}, 技能还在冷却中.", magic.Info.Name), MessageType.Hint);
                 }
                 return;
             }
@@ -3607,7 +3607,7 @@ namespace Client.Scenes
                         if (CEnvir.Now >= OutputTime)
                         {
                             OutputTime = CEnvir.Now.AddSeconds(1);
-                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastInCombat, magic.Info.Name), MessageType.Hint);
+                            ReceiveChat(string.Format("你还处于战斗状态 无法使用技能 {0}", magic.Info.Name), MessageType.Hint);
                         }
                         return;
                     }
@@ -3617,7 +3617,7 @@ namespace Client.Scenes
                         if (CEnvir.Now >= OutputTime)
                         {
                             OutputTime = CEnvir.Now.AddSeconds(1);
-                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastNoEnoughHealth, magic.Info.Name), MessageType.Hint);
+                            ReceiveChat(string.Format("无法使用技能 {0}, 你没有足够的生命值", magic.Info.Name), MessageType.Hint);
                         }
                         return;
                     }
@@ -3630,7 +3630,7 @@ namespace Client.Scenes
                         if (CEnvir.Now >= OutputTime)
                         {
                             OutputTime = CEnvir.Now.AddSeconds(1);
-                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastNoEnoughMana, magic.Info.Name), MessageType.Hint);
+                            ReceiveChat(string.Format("无法使用技能 {0}, 你没有足够的魔法值", magic.Info.Name), MessageType.Hint);
                         }
                         return;
                     }
@@ -3641,7 +3641,7 @@ namespace Client.Scenes
                         if (CEnvir.Now >= OutputTime)
                         {
                             OutputTime = CEnvir.Now.AddSeconds(1);
-                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastNoEnoughHealth, magic.Info.Name), MessageType.Hint);
+                            ReceiveChat(string.Format("无法使用技能 {0}, 你没有足够的生命值", magic.Info.Name), MessageType.Hint);
                         }
                         return;
                     }
@@ -3650,7 +3650,7 @@ namespace Client.Scenes
                         if (CEnvir.Now >= OutputTime)
                         {
                             OutputTime = CEnvir.Now.AddSeconds(1);
-                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastNoEnoughMana, magic.Info.Name), MessageType.Hint);
+                            ReceiveChat(string.Format("无法使用技能 {0}, 你没有足够的魔法值", magic.Info.Name), MessageType.Hint);
                         }
                         return;
                     }
@@ -3677,7 +3677,7 @@ namespace Client.Scenes
                         if (CEnvir.Now >= OutputTime)
                         {
                             OutputTime = CEnvir.Now.AddSeconds(1);
-                            ReceiveChat(string.Format(CEnvir.Language.GameSceneCastNoEnoughMana, magic.Info.Name), MessageType.Hint);
+                            ReceiveChat(string.Format("无法使用技能 {0}, 你没有足够的魔法值", magic.Info.Name), MessageType.Hint);
                         }
                         return;
                     }
@@ -3708,7 +3708,7 @@ namespace Client.Scenes
                     {
                         if (CEnvir.Now < OutputTime) return;
                         OutputTime = CEnvir.Now.AddSeconds(1);
-                        ReceiveChat(string.Format(CEnvir.Language.GameSceneCastTooFar, magic.Info.Name), MessageType.Hint);
+                        ReceiveChat(string.Format("无法使用技能 {0}, 你的目标太远了", magic.Info.Name), MessageType.Hint);
                         return;
                     }
 
@@ -3920,7 +3920,7 @@ namespace Client.Scenes
                     {
                         if (CEnvir.Now < OutputTime) return;
                         OutputTime = CEnvir.Now.AddSeconds(1);
-                        ReceiveChat(string.Format(CEnvir.Language.GameSceneCastTooFar, magic.Info.Name), MessageType.Hint);
+                        ReceiveChat(string.Format("无法使用技能 {0}, 你的目标太远了", magic.Info.Name), MessageType.Hint);
                         return;
                     }
                     break;
@@ -3932,7 +3932,7 @@ namespace Client.Scenes
             {
                 if (CEnvir.Now < OutputTime) return;
                 OutputTime = CEnvir.Now.AddSeconds(1);
-                ReceiveChat(string.Format(CEnvir.Language.GameSceneCastTooFar, magic.Info.Name), MessageType.Hint);
+                ReceiveChat(string.Format("无法使用技能 {0}, 你的目标太远了", magic.Info.Name), MessageType.Hint);
                 return;
             }
 
@@ -4691,13 +4691,13 @@ namespace Client.Scenes
             switch (task.Task)
             {
                 case QuestTaskType.KillMonster:
-                    builder.AppendFormat("Kill {0} ", task.Amount);
+                    builder.AppendFormat("杀死 {0} ", task.Amount);
                     break;
                 case QuestTaskType.GainItem:
-                    builder.AppendFormat("Collect {0} {1} from ", task.Amount, task.ItemParameter?.ItemName);  
+                    builder.AppendFormat("收集物品 {0} {1} 从 ", task.Amount, task.ItemParameter?.ItemName);  
                     break;
                 case QuestTaskType.Region:
-                    builder.AppendFormat("Goto {0} in {1}", task.RegionParameter?.Description, task.RegionParameter?.Map.Description);
+                    builder.AppendFormat("位于 {1} 的 {0} ", task.RegionParameter?.Description, task.RegionParameter?.Map.Description);
                     break;
             }
 
@@ -4715,14 +4715,14 @@ namespace Client.Scenes
                     }
 
                     if (needComma)
-                        builder.Append(" or ");
+                        builder.Append(" 或 ");
 
                     needComma = true;
 
                     builder.Append(monster.Monster.MonsterName);
 
                     if (monster.Map != null)
-                        builder.AppendFormat(" in {0}", monster.Map.Description);
+                        builder.AppendFormat(" 的 {0}", monster.Map.Description);
                 }
             }
             else
@@ -4731,7 +4731,7 @@ namespace Client.Scenes
             if (userQuest != null)
             {
                 if (userTask != null && userTask.Completed)
-                    builder.Append(" (Completed)");
+                    builder.Append(" (完成)");
                 else
                 {
                     if (task.Task != QuestTaskType.Region)

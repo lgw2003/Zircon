@@ -115,7 +115,7 @@ namespace Client.Scenes.Views
 
             TitleLabel = new DXLabel
             {
-                Text = CEnvir.Language.QuestDialogTitle,
+                Text = "任务日志",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -135,7 +135,7 @@ namespace Client.Scenes.Views
 
             CurrentTab = new QuestTab
             {
-                TabButton = { Label = { Text = CEnvir.Language.QuestDialogCurrentTab } },
+                TabButton = { Label = { Text = "已接任务" } },
                 Parent = TabControl,
                 Border = false,
                 ChoiceGrid = { ReadOnly = true },
@@ -146,7 +146,7 @@ namespace Client.Scenes.Views
 
             AvailableTab = new QuestTab
             {
-                TabButton = { Label = { Text = CEnvir.Language.QuestDialogAvailableTab } },
+                TabButton = { Label = { Text = "可接任务" } },
                 Parent = TabControl,
                 Border = false,
                 ShowTrackerBox = { Visible = false },
@@ -156,7 +156,7 @@ namespace Client.Scenes.Views
 
             CompletedTab = new QuestTab
             {
-                TabButton = { Label = { Text = CEnvir.Language.QuestDialogCompletedTab } },
+                TabButton = { Label = { Text = "已完成任务" } },
                 Parent = TabControl,
                 Border = false,
                 ShowTrackerBox = { Visible = false },
@@ -574,7 +574,7 @@ namespace Client.Scenes.Views
 
             DXLabel label = new DXLabel
             {
-                Text = CEnvir.Language.QuestTabDetailsLabel,
+                Text = "描述",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 //ForeColour = Color.FromArgb(198, 166, 99),
@@ -586,7 +586,7 @@ namespace Client.Scenes.Views
 
             ShowTrackerBox = new DXCheckBox
             {
-                Label = { Text = CEnvir.Language.QuestTabShowQuestTrackerLabel },
+                Label = { Text = "显示任务追踪" },
                 Parent = this,
                 Checked = Config.QuestTrackerVisible,
             };
@@ -632,7 +632,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.QuestTabTasksLabel,
+                Text = "任务内容",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 //ForeColour = Color.FromArgb(198, 166, 99),
@@ -654,7 +654,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.QuestTabRewardsLabel,
+                Text = "任务奖励",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 Outline = true,
@@ -675,7 +675,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.QuestTabChoiceLabel,
+                Text = "可选奖励",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 //ForeColour = Color.FromArgb(198, 166, 99),
@@ -697,7 +697,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.QuestTabStartLabel,
+                Text = "发布地点:",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 //ForeColour = Color.FromArgb(198, 166, 99),
@@ -724,7 +724,7 @@ namespace Client.Scenes.Views
 
             label = new DXLabel
             {
-                Text = CEnvir.Language.QuestTabEndLabel,
+                Text = "结束地点:",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 //ForeColour = Color.FromArgb(198, 166, 99),
@@ -754,7 +754,7 @@ namespace Client.Scenes.Views
             {
                 Parent = this,
                 Visible = false,
-                Label = { Text = CEnvir.Language.QuestAbandonButtonLabel },
+                Label = { Text = "放弃" },
                 Location = new Point(640, 398),
                 Size = new Size(80, DefaultHeight)
             };
@@ -762,7 +762,7 @@ namespace Client.Scenes.Views
             {
                 if (SelectedQuest == null) return;
 
-                DXMessageBox box = new DXMessageBox(CEnvir.Language.QuestAbandonConfirmationMessage, CEnvir.Language.QuestAbandonConfirmationCaption, DXMessageBoxButtons.YesNo);
+                DXMessageBox box = new DXMessageBox("你确定要放弃这个任务吗?", "放弃任务", DXMessageBoxButtons.YesNo);
 
                 box.YesButton.MouseClick += (o1, e1) =>
                 {

@@ -87,7 +87,7 @@ namespace Client.Scenes.Views
 
             TitleLabel = new DXLabel
             {
-                Text = CEnvir.Language.TradeDialogTitle,
+                Text = "交易窗口",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -141,7 +141,7 @@ namespace Client.Scenes.Views
 
             UserLabel = new DXLabel
             {
-                Text = CEnvir.Language.TradeDialogUserLabel,
+                Text = "用户",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -154,7 +154,7 @@ namespace Client.Scenes.Views
 
             PlayerLabel = new DXLabel
             {
-                Text = CEnvir.Language.TradeDialogPlayerLabel,
+                Text = "玩家",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -188,7 +188,7 @@ namespace Client.Scenes.Views
                 DrawFormat = TextFormatFlags.VerticalCenter | TextFormatFlags.Left,
                 Parent = this,
                 Location = new Point(UserGrid.Location.X - 4, UserGrid.Location.Y + UserGrid.Size.Height + 20),
-                Text = CEnvir.Language.TradeDialogGoldLabel,
+                Text = "金币",
                 Size = new Size(63, 15),
                 IsControl = false,
             };
@@ -215,7 +215,7 @@ namespace Client.Scenes.Views
                 DrawFormat = TextFormatFlags.VerticalCenter | TextFormatFlags.Left,
                 Parent = this,
                 Location = new Point(PlayerGrid.Location.X - 4, UserGrid.Location.Y + UserGrid.Size.Height + 20),
-                Text = CEnvir.Language.TradeDialogGoldLabel,
+                Text = "金币",
                 Size = new Size(63, 15),
                 IsControl = false,
             };

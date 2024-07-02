@@ -427,7 +427,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 590,
                 Location = new Point(5, 87),
-                Hint = CEnvir.Language.MonsterDialogAttackingIconDefaultHint,
+                Hint = "攻击速度",
             };
 
             MovementSpeedIcon = new DXImageControl
@@ -436,7 +436,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 620,
                 Location = new Point(AttackSpeedIcon.Location.X + AttackSpeedIcon.Size.Width + 2, 87),
-                Hint = CEnvir.Language.MonsterDialogMovingIconDefaultHint,
+                Hint = "移动速度",
             };
 
             TamableIcon = new DXImageControl
@@ -445,7 +445,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 631,
                 Location = new Point(MovementSpeedIcon.Location.X + MovementSpeedIcon.Size.Width + 2, 87),
-                Hint = CEnvir.Language.MonsterDialogTamableIconHint,
+                Hint = "可驯服",
             };
 
             UndeadIcon = new DXImageControl
@@ -454,7 +454,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 634,
                 Location = new Point(TamableIcon.Location.X + TamableIcon.Size.Width + 2, 87),
-                Hint = CEnvir.Language.MonsterDialogMortalIconHint,
+                Hint = "生物",
             };
 
             GrowthIcon = new DXImageControl
@@ -463,7 +463,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.ProgUse,
                 Index = 630, //TODO - Find new icon!
                 Location = new Point(UndeadIcon.Location.X + UndeadIcon.Size.Width + 2, 87),
-                Hint = CEnvir.Language.MonsterDialogGrowthIconDefaultHint,
+                Hint = "成长",
                 Visible = false
             };
 
@@ -509,15 +509,15 @@ namespace Client.Scenes.Views
                 PopulateLabel(Stat.PhantomResistance, PhantomResistLabel, Monster.MonsterInfo.Stats);
                 PopulateLabel(Stat.PhysicalResistance, PhysicalResistLabel, Monster.MonsterInfo.Stats);
 
-                UndeadIcon.Hint = Monster.MonsterInfo.Undead ? CEnvir.Language.MonsterDialogUndeadIconHint : CEnvir.Language.MonsterDialogMortalIconHint;
+                UndeadIcon.Hint = Monster.MonsterInfo.Undead ? "亡灵" : "生物";
                 UndeadIcon.Index = Monster.MonsterInfo.Undead ? 635 : 634;
 
-                TamableIcon.Hint = Monster.MonsterInfo.CanTame ? CEnvir.Language.MonsterDialogTamableIconHint : CEnvir.Language.MonsterDialogUntamableIconHint;
+                TamableIcon.Hint = Monster.MonsterInfo.CanTame ? "可驯服" : "不可驯服";
                 TamableIcon.Index = Monster.MonsterInfo.CanTame ? 631 : 632;
 
                 if (Monster.GrowthLevel > 0)
                 {
-                    GrowthIcon.Hint = string.Format(CEnvir.Language.MonsterDialogGrowthIconHint, Monster.GrowthLevel);
+                    GrowthIcon.Hint = string.Format("进化等级 {0}", Monster.GrowthLevel);
                     GrowthIcon.Visible = true;
                 }
                 else
@@ -528,35 +528,35 @@ namespace Client.Scenes.Views
                 switch (Monster.MonsterInfo.AttackDelay)
                 {
                     case int n when (n == 0):
-                        AttackSpeedIcon.Hint = CEnvir.Language.MonsterDialogAttackSpeedIconAttackingNonHint;
+                        AttackSpeedIcon.Hint = "不攻击";
                         AttackSpeedIcon.Index = 630;
                         break;
                     case int n when (n >= 2500):
-                        AttackSpeedIcon.Hint = CEnvir.Language.MonsterDialogAttackSpeedIconAttackingVerySlowHint;
+                        AttackSpeedIcon.Hint = "攻速: 非常慢";
                         AttackSpeedIcon.Index = 590;
                         break;
                     case int n when (n >= 2000 && n < 2500):
-                        AttackSpeedIcon.Hint = CEnvir.Language.MonsterDialogAttackSpeedIconAttackingSlowHint;
+                        AttackSpeedIcon.Hint = "攻速: 慢";
                         AttackSpeedIcon.Index = 591;
                         break;
                     case int n when (n >= 1750 && n < 2000):
-                        AttackSpeedIcon.Hint = CEnvir.Language.MonsterDialogAttackSpeedIconAttackingSomewhatSlowHint;
+                        AttackSpeedIcon.Hint = "攻速攻速: 比较慢";
                         AttackSpeedIcon.Index = 592;
                         break;
                     case int n when (n >= 1500 && n < 1750):
-                        AttackSpeedIcon.Hint = CEnvir.Language.MonsterDialogAttackSpeedIconAttackingModerateHint;
+                        AttackSpeedIcon.Hint = "攻速: 普通";
                         AttackSpeedIcon.Index = 593;
                         break;
                     case int n when (n >= 1250 && n < 1500):
-                        AttackSpeedIcon.Hint = CEnvir.Language.MonsterDialogAttackSpeedIconAttackingSomewhatFastHint;
+                        AttackSpeedIcon.Hint = "攻速: 比较快";
                         AttackSpeedIcon.Index = 594;
                         break;
                     case int n when (n >= 1000 && n < 1250):
-                        AttackSpeedIcon.Hint = CEnvir.Language.MonsterDialogAttackSpeedIconAttackingFastHint;
+                        AttackSpeedIcon.Hint = "攻速: 快";
                         AttackSpeedIcon.Index = 595;
                         break;
                     case int n when (n > 0 && n < 1000):
-                        AttackSpeedIcon.Hint = CEnvir.Language.MonsterDialogAttackSpeedIconAttackingVeryFastHint;
+                        AttackSpeedIcon.Hint = "攻速: 非常快";
                         AttackSpeedIcon.Index = 596;
                         break;
                 }
@@ -564,35 +564,35 @@ namespace Client.Scenes.Views
                 switch (Monster.MonsterInfo.MoveDelay)
                 {
                     case int n when (n == 0):
-                        MovementSpeedIcon.Hint = CEnvir.Language.MonsterDialogMovementSpeedIconMovingNonHint;
+                        MovementSpeedIcon.Hint = "不移动";
                         MovementSpeedIcon.Index = 620;
                         break;
                     case int n when (n >= 2500):
-                        MovementSpeedIcon.Hint = CEnvir.Language.MonsterDialogMovementSpeedIconMovingVerySlowHint;
+                        MovementSpeedIcon.Hint = "移速: 非常慢";
                         MovementSpeedIcon.Index = 621;
                         break;
                     case int n when (n >= 1500 && n < 2500):
-                        MovementSpeedIcon.Hint = CEnvir.Language.MonsterDialogMovementSpeedIconMovingSlowHint;
+                        MovementSpeedIcon.Hint = "移速: 慢";
                         MovementSpeedIcon.Index = 622;
                         break;
                     case int n when (n >= 1000 && n < 1500):
-                        MovementSpeedIcon.Hint = CEnvir.Language.MonsterDialogMovementSpeedIconMovingSomewhatSlowHint;
+                        MovementSpeedIcon.Hint = "移速: 有点慢";
                         MovementSpeedIcon.Index = 623;
                         break;
                     case int n when (n >= 900 && n < 1000):
-                        MovementSpeedIcon.Hint = CEnvir.Language.MonsterDialogMovementSpeedIconMovingModerateHint;
+                        MovementSpeedIcon.Hint = "移速: 普通";
                         MovementSpeedIcon.Index = 624;
                         break;
                     case int n when (n >= 800 && n < 900):
-                        MovementSpeedIcon.Hint = CEnvir.Language.MonsterDialogMovementSpeedIconMovingSomewhatFastHint;
+                        MovementSpeedIcon.Hint = "移速: 有点快";
                         MovementSpeedIcon.Index = 625;
                         break;
                     case int n when (n >= 700 && n < 800):
-                        MovementSpeedIcon.Hint = CEnvir.Language.MonsterDialogMovementSpeedIconMovingFastHint;
+                        MovementSpeedIcon.Hint = "移速: 快";
                         MovementSpeedIcon.Index = 626;
                         break;
                     case int n when (n > 0 && n < 700):
-                        MovementSpeedIcon.Hint = CEnvir.Language.MonsterDialogMovementSpeedIconMovingVeryFastHint;
+                        MovementSpeedIcon.Hint = "移速: 非常快";
                         MovementSpeedIcon.Index = 627;
                         break;
                 }
@@ -650,15 +650,15 @@ namespace Client.Scenes.Views
                 PopulateLabel(Stat.PhantomResistance, PhantomResistLabel, data.Stats);
                 PopulateLabel(Stat.PhysicalResistance, PhysicalResistLabel, data.Stats);
 
-                UndeadIcon.Hint = data.MonsterInfo.Undead ? CEnvir.Language.MonsterDialogUndeadIconHint : CEnvir.Language.MonsterDialogMortalIconHint;
+                UndeadIcon.Hint = data.MonsterInfo.Undead ? "亡灵" : "生物";
                 UndeadIcon.Index = data.MonsterInfo.Undead ? 635 : 634;
 
-                TamableIcon.Hint = data.MonsterInfo.CanTame ? CEnvir.Language.MonsterDialogTamableIconHint : CEnvir.Language.MonsterDialogUntamableIconHint;
+                TamableIcon.Hint = data.MonsterInfo.CanTame ? "可驯服" : "不可驯服";
                 TamableIcon.Index = data.MonsterInfo.CanTame ? 631 : 632;
 
                 if (Monster.GrowthLevel > 0)
                 {
-                    GrowthIcon.Hint = string.Format(CEnvir.Language.MonsterDialogGrowthIconHint, Monster.GrowthLevel);
+                    GrowthIcon.Hint = string.Format("进化等级 {0}", Monster.GrowthLevel);
                     GrowthIcon.Visible = true;
                 }
                 else
@@ -669,35 +669,35 @@ namespace Client.Scenes.Views
                 switch (data.MonsterInfo.AttackDelay)
                 {
                     case int n when (n == 0):
-                        AttackSpeedIcon.Hint = CEnvir.Language.MonsterDialogAttackSpeedIconAttackingNonHint;
+                        AttackSpeedIcon.Hint = "不攻击";
                         AttackSpeedIcon.Index = 630;
                         break;
                     case int n when (n >= 2500):
-                        AttackSpeedIcon.Hint = CEnvir.Language.MonsterDialogAttackSpeedIconAttackingVerySlowHint;
+                        AttackSpeedIcon.Hint = "攻速: 非常慢";
                         AttackSpeedIcon.Index = 590;
                         break;
                     case int n when (n >= 2000 && n < 2500):
-                        AttackSpeedIcon.Hint = CEnvir.Language.MonsterDialogAttackSpeedIconAttackingSlowHint;
+                        AttackSpeedIcon.Hint = "攻速: 慢";
                         AttackSpeedIcon.Index = 591;
                         break;
                     case int n when (n >= 1750 && n < 2000):
-                        AttackSpeedIcon.Hint = CEnvir.Language.MonsterDialogAttackSpeedIconAttackingSomewhatSlowHint;
+                        AttackSpeedIcon.Hint = "攻速攻速: 比较慢";
                         AttackSpeedIcon.Index = 592;
                         break;
                     case int n when (n >= 1500 && n < 1750):
-                        AttackSpeedIcon.Hint = CEnvir.Language.MonsterDialogAttackSpeedIconAttackingModerateHint;
+                        AttackSpeedIcon.Hint = "攻速: 普通";
                         AttackSpeedIcon.Index = 593;
                         break;
                     case int n when (n >= 1250 && n < 1500):
-                        AttackSpeedIcon.Hint = CEnvir.Language.MonsterDialogAttackSpeedIconAttackingSomewhatFastHint;
+                        AttackSpeedIcon.Hint = "攻速: 比较快";
                         AttackSpeedIcon.Index = 594;
                         break;
                     case int n when (n >= 1000 && n < 1250):
-                        AttackSpeedIcon.Hint = CEnvir.Language.MonsterDialogAttackSpeedIconAttackingFastHint;
+                        AttackSpeedIcon.Hint = "攻速: 快";
                         AttackSpeedIcon.Index = 595;
                         break;
                     case int n when (n > 0 && n < 1000):
-                        AttackSpeedIcon.Hint = CEnvir.Language.MonsterDialogAttackSpeedIconAttackingVeryFastHint;
+                        AttackSpeedIcon.Hint = "攻速: 非常快";
                         AttackSpeedIcon.Index = 596;
                         break;
                 }
@@ -705,35 +705,35 @@ namespace Client.Scenes.Views
                 switch (data.MonsterInfo.MoveDelay)
                 {
                     case int n when (n == 0):
-                        MovementSpeedIcon.Hint = CEnvir.Language.MonsterDialogMovementSpeedIconMovingNonHint;
+                        MovementSpeedIcon.Hint = "不移动";
                         MovementSpeedIcon.Index = 620;
                         break;
                     case int n when (n >= 2500):
-                        MovementSpeedIcon.Hint = CEnvir.Language.MonsterDialogMovementSpeedIconMovingVerySlowHint;
+                        MovementSpeedIcon.Hint = "移速: 非常慢";
                         MovementSpeedIcon.Index = 621;
                         break;
                     case int n when (n >= 1500 && n < 2500):
-                        MovementSpeedIcon.Hint = CEnvir.Language.MonsterDialogMovementSpeedIconMovingSlowHint;
+                        MovementSpeedIcon.Hint = "移速: 慢";
                         MovementSpeedIcon.Index = 622;
                         break;
                     case int n when (n >= 1000 && n < 1500):
-                        MovementSpeedIcon.Hint = CEnvir.Language.MonsterDialogMovementSpeedIconMovingSomewhatSlowHint;
+                        MovementSpeedIcon.Hint = "移速: 有点慢";
                         MovementSpeedIcon.Index = 623;
                         break;
                     case int n when (n >= 900 && n < 1000):
-                        MovementSpeedIcon.Hint = CEnvir.Language.MonsterDialogMovementSpeedIconMovingModerateHint;
+                        MovementSpeedIcon.Hint = "移速: 普通";
                         MovementSpeedIcon.Index = 624;
                         break;
                     case int n when (n >= 800 && n < 900):
-                        MovementSpeedIcon.Hint = CEnvir.Language.MonsterDialogMovementSpeedIconMovingSomewhatFastHint;
+                        MovementSpeedIcon.Hint = "移速: 有点快";
                         MovementSpeedIcon.Index = 625;
                         break;
                     case int n when (n >= 700 && n < 800):
-                        MovementSpeedIcon.Hint = CEnvir.Language.MonsterDialogMovementSpeedIconMovingFastHint;
+                        MovementSpeedIcon.Hint = "移速: 快";
                         MovementSpeedIcon.Index = 626;
                         break;
                     case int n when (n > 0 && n < 700):
-                        MovementSpeedIcon.Hint = CEnvir.Language.MonsterDialogMovementSpeedIconMovingVeryFastHint;
+                        MovementSpeedIcon.Hint = "移速: 非常快";
                         MovementSpeedIcon.Index = 627;
                         break;
                 }

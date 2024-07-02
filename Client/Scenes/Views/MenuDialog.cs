@@ -97,7 +97,7 @@ namespace Client.Scenes.Views
 
             TitleLabel = new DXLabel
             {
-                Text = CEnvir.Language.MenuDialogTitle,
+                Text = "菜单",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -112,7 +112,7 @@ namespace Client.Scenes.Views
                 Location = new Point(26, 40),
                 Size = new Size(100, DefaultHeight),
                 Parent = this,
-                Label = { Text = CEnvir.Language.MenuDialogSettingsButtonLabel },
+                Label = { Text = "设置" },
                 //Hint = CEnvir.Language.MenuDialogSettingsButtonHint
             };
             SettingsButton.MouseClick += (o, e) => GameScene.Game.ConfigBox.Visible = !GameScene.Game.ConfigBox.Visible;
@@ -122,7 +122,7 @@ namespace Client.Scenes.Views
                 Location = new Point(26, 70),
                 Size = new Size(100, DefaultHeight),
                 Parent = this,
-                Label = { Text = CEnvir.Language.MenuDialogGuildButtonLabel },
+                Label = { Text = "行会" },
                 //Hint = CEnvir.Language.MenuDialogGuildButtonHint
             };
             GuildButton.MouseClick += (o, e) => GameScene.Game.GuildBox.Visible = !GameScene.Game.GuildBox.Visible;
@@ -132,7 +132,7 @@ namespace Client.Scenes.Views
                 Location = new Point(26, 100),
                 Size = new Size(100, DefaultHeight),
                 Parent = this,
-                Label = { Text = CEnvir.Language.MenuDialogStorageButtonLabel },
+                Label = { Text = "仓库" },
                 //Hint = CEnvir.Language.MenuDialogStorageButtonHint
             };
             StorageButton.MouseClick += (o, e) => GameScene.Game.StorageBox.Visible = !GameScene.Game.StorageBox.Visible;
@@ -142,7 +142,7 @@ namespace Client.Scenes.Views
                 Location = new Point(26, 130),
                 Size = new Size(100, DefaultHeight),
                 Parent = this,
-                Label = { Text = CEnvir.Language.MenuDialogRankingButtonLabel },
+                Label = { Text = "排行" },
                 //Hint = CEnvir.Language.MenuDialogRankingButtonHint
             };
             RankingButton.MouseClick += (o, e) => GameScene.Game.RankingBox.Visible = !GameScene.Game.RankingBox.Visible;
@@ -152,7 +152,7 @@ namespace Client.Scenes.Views
                 Location = new Point(26, 160),
                 Size = new Size(100, DefaultHeight),
                 Parent = this,
-                Label = { Text = CEnvir.Language.MenuDialogCompanionButtonLabel },
+                Label = { Text = "宠物" },
                 //Hint = CEnvir.Language.MenuDialogCompanionButtonHint
             };
             CompanionButton.MouseClick += (o, e) => GameScene.Game.CompanionBox.Visible = !GameScene.Game.CompanionBox.Visible;
@@ -162,7 +162,7 @@ namespace Client.Scenes.Views
                 Location = new Point(26, 190),
                 Size = new Size(100, DefaultHeight),
                 Parent = this,
-                Label = { Text = CEnvir.Language.MenuDialogLeaveButtonLabel },
+                Label = { Text = "退出" },
                 //Hint = CEnvir.Language.MenuDialogLeaveButtonHint
             };
             LeaveButton.MouseClick += (o, e) => GameScene.Game.ExitBox.Visible = true;

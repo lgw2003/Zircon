@@ -42,11 +42,11 @@ namespace Client.Scenes.Views
 
             if (AllowGroup)
             {
-                AllowGroupBox.Label.Text = CEnvir.Language.GroupDialogAllowGroupButtonAllowingHint;
+                AllowGroupBox.Label.Text = "组队状态: 允许";
             }
             else
             {
-                AllowGroupBox.Label.Text = CEnvir.Language.GroupDialogAllowGroupButtonNotAllowingHint;
+                AllowGroupBox.Label.Text = "组队状态: 不允许";
             }
 
             AllowGroupBox.SetSilentState(AllowGroup);
@@ -182,7 +182,7 @@ namespace Client.Scenes.Views
 
             TitleLabel = new DXLabel
             {
-                Text = CEnvir.Language.GroupDialogTitle,
+                Text = "组队",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -203,7 +203,7 @@ namespace Client.Scenes.Views
 
             AllowGroupBox = new DXCheckBox
             {
-                Label = { Text = CEnvir.Language.GroupDialogAllowGroupButtonNotAllowingHint },
+                Label = { Text = "组队状态: 不允许" },
                 Parent = this,
                 Checked = Config.QuestTrackerVisible,
             };
@@ -228,7 +228,7 @@ namespace Client.Scenes.Views
                 {
                     Label =
                     {
-                        Text = CEnvir.Language.GroupDialogMemberTabLabel
+                        Text = "成员"
                     },
 
                     IsControl = false,
@@ -244,7 +244,7 @@ namespace Client.Scenes.Views
                 ButtonType = ButtonType.AddButton,
                 Location = new Point(30, 217),
                 Parent = this,
-                Hint = CEnvir.Language.GroupDialogAddButtonHint
+                Hint = "邀请"
             };
             AddButton.MouseClick += (o, e) =>
             {
@@ -252,17 +252,17 @@ namespace Client.Scenes.Views
 
                 if (Members.Count >= Globals.GroupLimit)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.GroupMemberLimit, MessageType.System);
+                    GameScene.Game.ReceiveChat("组队人数已达到上限", MessageType.System);
                     return;
                 }
 
                 if (Members.Count >= Globals.GroupLimit)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.GroupNotLeader, MessageType.System);
+                    GameScene.Game.ReceiveChat("你不是队长，无权限操作.", MessageType.System);
                     return;
                 }
 
-                DXInputWindow window = new DXInputWindow(CEnvir.Language.GroupDialogAddButtonConfirmMessage, CEnvir.Language.GroupDialogAddButtonConfirmCaption)
+                DXInputWindow window = new DXInputWindow("请输入你要组队的人的名字.", "邀请组队")
                 {
                     ConfirmButton = { Enabled = false },
                     Modal = true
@@ -284,7 +284,7 @@ namespace Client.Scenes.Views
                 Location = new Point(174, 217),
                 Parent = this,
                 Enabled = false,
-                Hint = CEnvir.Language.GroupDialogRemoveButtonHint
+                Hint = "移除"
             };
             RemoveButton.MouseClick += (o, e) =>
             {

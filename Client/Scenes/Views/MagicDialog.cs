@@ -137,7 +137,7 @@ namespace Client.Scenes.Views
 
             TitleLabel = new DXLabel
             {
-                Text = CEnvir.Language.MagicDialogTitle,
+                Text = "技能",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -858,7 +858,7 @@ namespace Client.Scenes.Views
                 ExperienceLabel.Opacity = opacity;
 
                 Image.IsEnabled = true;
-                LevelLabel.Text = $"Level: {magic.Level}";
+                LevelLabel.Text = $"等级: {magic.Level}";
                 LevelLabel.ForeColour = Color.FromArgb(198, 166, 99);
                 LevelLabel.Location = new Point(57, 30);
 

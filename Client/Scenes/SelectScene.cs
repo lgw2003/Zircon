@@ -809,7 +809,7 @@ namespace Client.Scenes
                         break;
                 }
 
-                SelectedClassLabel.Text = SelectedClass.ToString();
+                SelectedClassLabel.Text = EnumService.GetDescription(SelectedClass);
             }
 
             #endregion
@@ -861,7 +861,7 @@ namespace Client.Scenes
                         break;
 
                 }
-                SelectedGenderLabel.Text = SelectedGender.ToString();
+                SelectedGenderLabel.Text = EnumService.GetDescription(SelectedGender);
             }
 
             #endregion
@@ -1608,9 +1608,9 @@ namespace Client.Scenes
                 Visible = true;
                 ClassIcon.Index = 27 + (int) SelectInfo.Class;
                 NameLabel.Text = SelectInfo.CharacterName;
-                ClassLabel.Text = SelectInfo.Class.ToString();
+                ClassLabel.Text = EnumService.GetDescription(SelectInfo.Class);
                 LevelLabel.Text = SelectInfo.Level.ToString();
-                LocationLabel.Text = Globals.MapInfoList.Binding.FirstOrDefault(x => x.Index == SelectInfo.Location)?.Description ?? "New Character";
+                LocationLabel.Text = Globals.MapInfoList.Binding.FirstOrDefault(x => x.Index == SelectInfo.Location)?.Description ?? "新建角色";
             }
 
             #endregion

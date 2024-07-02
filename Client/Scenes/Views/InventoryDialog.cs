@@ -190,7 +190,7 @@ namespace Client.Scenes.Views
 
             TitleLabel = new DXLabel
             {
-                Text = CEnvir.Language.InventoryDialogTitle,
+                Text = "背包",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -263,7 +263,7 @@ namespace Client.Scenes.Views
                 Parent = this,
                 Location = new Point(55, 381),
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Bold),
-                Text = CEnvir.Language.InventoryDialogPrimaryCurrencyTitle,
+                Text = "金币",
                 Size = new Size(97, 20)
             };
 
@@ -287,7 +287,7 @@ namespace Client.Scenes.Views
                 Parent = this,
                 Location = new Point(55, 400),
                 Font = new Font(Config.FontName, CEnvir.FontSize(8F), FontStyle.Bold),
-                Text = CEnvir.Language.InventoryDialogSecondaryCurrencyTitle,
+                Text = "元宝",
                 Size = new Size(97, 20)
             };
 
@@ -309,7 +309,7 @@ namespace Client.Scenes.Views
                 Index = 364,
                 Parent = this,
                 Location = new Point(180, 384),
-                Hint = CEnvir.Language.InventoryDialogSortButtonHint
+                Hint = "整理"
             };
             SortButton.MouseClick += SortButton_MouseClick;
 
@@ -319,7 +319,7 @@ namespace Client.Scenes.Views
                 Index = 358,
                 Parent = this,
                 Location = new Point(218, 384),
-                Hint = CEnvir.Language.InventoryDialogTrashButtonHint
+                Hint = "垃圾"
             };
             TrashButton.MouseClick += TrashButton_MouseClick;
 
@@ -329,7 +329,7 @@ namespace Client.Scenes.Views
                 Index = 354,
                 Parent = this,
                 Location = new Point(218, 384),
-                Hint = "Sell",
+                Hint = "出售",
                 Enabled = false,
                 Visible = false
             };
@@ -339,7 +339,7 @@ namespace Client.Scenes.Views
             {
                 Parent = this,
                 Location = new Point(8, 380),
-                Hint = CEnvir.Language.InventoryDialogWalletLabelHint,
+                Hint = "钱包 [Ctrl + C]",
                 Size = new Size(45, 40),
                 Sound = SoundIndex.GoldPickUp
             };
@@ -387,7 +387,7 @@ namespace Client.Scenes.Views
                     {
                         if (!SellableItemTypes.Contains(cell.Item.Info.ItemType))
                         {
-                            GameScene.Game.ReceiveChat(string.Format(CEnvir.Language.UnableToSellHere, cell.Item.Info.ItemName), MessageType.System);
+                            GameScene.Game.ReceiveChat(string.Format("无法在这里出售{0}.", cell.Item.Info.ItemName), MessageType.System);
                             cell.Selected = false;
                             return;
                         }
@@ -560,7 +560,7 @@ namespace Client.Scenes.Views
 
                         TrashButton.Visible = true;
 
-                        TitleLabel.Text = CEnvir.Language.InventoryDialogTitle;
+                        TitleLabel.Text = "背包";
                         TitleLabel.Location = new Point((DisplayArea.Width - TitleLabel.Size.Width) / 2, 8);
                     }
                     break;
@@ -572,7 +572,7 @@ namespace Client.Scenes.Views
 
                         SellButton.Visible = true;
 
-                        TitleLabel.Text = CEnvir.Language.InventoryDialogTitle + " [Sell]";
+                        TitleLabel.Text = "背包" + " [出售]";
                         TitleLabel.Location = new Point((DisplayArea.Width - TitleLabel.Size.Width) / 2, 8);
                     }
                     break;

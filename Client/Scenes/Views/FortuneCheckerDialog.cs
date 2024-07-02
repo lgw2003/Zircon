@@ -50,7 +50,7 @@ namespace Client.Scenes.Views
             {
                 Parent = filterPanel,
                 Location = new Point(5, 5),
-                Text = "Name:",
+                Text = "名称:",
             };
 
             ItemNameBox = new DXTextBox
@@ -67,7 +67,7 @@ namespace Client.Scenes.Views
             {
                 Parent = filterPanel,
                 Location = new Point(ItemNameBox.Location.X + ItemNameBox.Size.Width + 10, 5),
-                Text = "Item:",
+                Text = "分类:",
             };
 
 
@@ -84,7 +84,7 @@ namespace Client.Scenes.Views
             new DXListBoxItem
             {
                 Parent = ItemTypeBox.ListBox,
-                Label = { Text = $"All" },
+                Label = { Text = $"所有" },
                 Item = null
             };
 
@@ -112,7 +112,7 @@ namespace Client.Scenes.Views
                 Location = new Point(ItemTypeBox.Location.X + ItemTypeBox.Size.Width + 15, label.Location.Y - 1),
                 Parent = filterPanel,
                 ButtonType = ButtonType.SmallButton,
-                Label = { Text = "Search" }
+                Label = { Text = "搜索" }
             };
             SearchButton.MouseClick += (o, e) => Search();
         
@@ -282,9 +282,9 @@ namespace Client.Scenes.Views
         {
             if (Fortune == null)
             {
-                CountLabel.Text = "Not Checked";
-                ProgressLabel.Text = "Not Checked";
-                DateLabel.Text = "Not Checked";
+                CountLabel.Text = "未知";
+                ProgressLabel.Text = "未知";
+                DateLabel.Text = "未知";
                 return;
             }
             

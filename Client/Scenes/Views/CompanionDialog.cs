@@ -597,7 +597,7 @@ namespace Client.Scenes.Views
                 ForeColour = Color.FromArgb(198, 166, 99),
                 OutlineColour = Color.Black,
                 IsControl = false,
-                Text = "Class",
+                Text = "职业",
             };
             label.Location = new Point(10, 10);
 
@@ -611,7 +611,7 @@ namespace Client.Scenes.Views
                 ForeColour = Color.FromArgb(198, 166, 99),
                 OutlineColour = Color.Black,
                 IsControl = false,
-                Text = "Rarity Type",
+                Text = "稀有度",
             };
             label.Location = new Point(10, 70);
 
@@ -625,7 +625,7 @@ namespace Client.Scenes.Views
                 ForeColour = Color.FromArgb(198, 166, 99),
                 OutlineColour = Color.Black,
                 IsControl = false,
-                Text = "Item Type",
+                Text = "物品类型",
             };
             label.Location = new Point(10, 130);
 
@@ -634,7 +634,7 @@ namespace Client.Scenes.Views
             SaveFilterButton = new DXButton
             {
                 Parent = this,
-                Label = { Text = "Save settings", },
+                Label = { Text = "保存配置", },
                 ButtonType = ButtonType.SmallButton,
                 Size = new Size(80, SmallButtonHeight)
             };
@@ -933,7 +933,7 @@ namespace Client.Scenes.Views
                 FilterType[itemType] = new DXCheckBox
                 {
                     Parent = FilterControl,
-                    Hint = "Pick " + item.ToLower() + " items",
+                    Hint = "拾取 " + EnumService.GetDescription(itemType) + " 物品",
                 };
                 FilterType[itemType].Location = new Point(10 + (110 * index), 150 + (18 * row));
 
@@ -944,7 +944,7 @@ namespace Client.Scenes.Views
                     ForeColour = Color.AntiqueWhite,
                     OutlineColour = Color.Black,
                     IsControl = false,
-                    Text = char.ToUpper(item[0]) + item.Substring(1)
+                    Text = EnumService.GetDescription(itemType)
                 };
                 label.Location = new Point(25 + (110 * index++), 150 + (18 * row));
                 if (index % 2 == 0)
@@ -965,7 +965,7 @@ namespace Client.Scenes.Views
                 FilterClass[mirClass] = new DXCheckBox
                 {
                     Parent = FilterControl,
-                    Hint = "Pick " + mirClass.ToString().ToLower() + " items",
+                    Hint = "拾取 " + EnumService.GetDescription(mirClass) + " 物品",
                 };
                 FilterClass[mirClass].Location = new Point(10 + (110 * index), 30 + (18 * row));
 
@@ -976,7 +976,7 @@ namespace Client.Scenes.Views
                     ForeColour = Color.AntiqueWhite,
                     OutlineColour = Color.Black,
                     IsControl = false,
-                    Text = char.ToUpper(mirClass.ToString()[0]) + mirClass.ToString().Substring(1)
+                    Text = EnumService.GetDescription(mirClass)
                 };
                 label.Location = new Point(25 + (110 * index++), 30 + (18 * row));
 
@@ -998,7 +998,7 @@ namespace Client.Scenes.Views
                 FilterRarity[rarity] = new DXCheckBox
                 {
                     Parent = FilterControl,
-                    Hint = "Pick " + rarity.ToString().ToLower() + " items",
+                    Hint = "拾取 " + EnumService.GetDescription(rarity) + " 物品",
                 };
                 FilterRarity[rarity].Location = new Point(10 + (110 * index), 90 + (18 * row));
 
@@ -1019,7 +1019,7 @@ namespace Client.Scenes.Views
                     ForeColour = rarityLabelColor,
                     OutlineColour = Color.Black,
                     IsControl = false,
-                    Text = char.ToUpper(rarity.ToString()[0]) + rarity.ToString().Substring(1)
+                    Text = EnumService.GetDescription(rarity)
                 };
                 label.Location = new Point(25 + (110 * index++), 90 + (18 * row));
 

@@ -257,7 +257,7 @@ namespace Client.Scenes.Views
         public MarketPlaceDialog()
         {
             //HasFooter = true;
-            TitleLabel.Text = CEnvir.Language.MarketPlaceDialogTitle;
+            TitleLabel.Text = "元宝商城";
             SetClientSize(new Size(740, 461));
 
 
@@ -275,7 +275,7 @@ namespace Client.Scenes.Views
             SearchTab = new DXTab
             {
                 Parent = TabControl,
-                TabButton = { Label = { Text = CEnvir.Language.MarketPlaceDialogSearchTabLabel } },
+                TabButton = { Label = { Text = "搜索" } },
                 Border = true,
             };
 
@@ -293,7 +293,7 @@ namespace Client.Scenes.Views
             {
                 Parent = filterPanel,
                 Location = new Point(5, 5),
-                Text = CEnvir.Language.MarketPlaceDialogSearchTabNameLabel,
+                Text = "名字:",
             };
 
             ItemNameBox = new DXTextBox
@@ -310,7 +310,7 @@ namespace Client.Scenes.Views
             {
                 Parent = filterPanel,
                 Location = new Point(ItemNameBox.Location.X + ItemNameBox.Size.Width + 10, 5),
-                Text = CEnvir.Language.MarketPlaceDialogSearchTabItemLabel,
+                Text = "物品:",
             };
 
 
@@ -354,7 +354,7 @@ namespace Client.Scenes.Views
             {
                 Parent = filterPanel,
                 Location = new Point(ItemTypeBox.Location.X + ItemTypeBox.Size.Width + 10, 5),
-                Text = CEnvir.Language.MarketPlaceDialogSearchTabSortLabel,
+                Text = "筛选:",
             };
 
             SortBox = new DXComboBox
@@ -388,7 +388,7 @@ namespace Client.Scenes.Views
                 Location = new Point(SortBox.Location.X + SortBox.Size.Width + 25, label.Location.Y - 1),
                 Parent = filterPanel,
                 ButtonType = ButtonType.SmallButton,
-                Label = { Text = CEnvir.Language.MarketPlaceDialogSearchTabSearchButtonLabel }
+                Label = { Text = "搜索" }
             };
             SearchButton.MouseClick += (o, e) => Search();
 
@@ -398,7 +398,7 @@ namespace Client.Scenes.Views
                 Location = new Point(SearchButton.Location.X + SearchButton.Size.Width + 40, label.Location.Y - 1),
                 Parent = filterPanel,
                 ButtonType = ButtonType.SmallButton,
-                Label = { Text = CEnvir.Language.MarketPlaceDialogSearchTabClearButtonLabel }
+                Label = { Text = "清空" }
             };
             ClearButton.MouseClick += (o, e) =>
             {
@@ -445,7 +445,7 @@ namespace Client.Scenes.Views
 
             new DXLabel
             {
-                Text = CEnvir.Language.MarketPlaceDialogSearchTabSaleHistoryLabel,
+                Text = "销售历史",
                 ForeColour = Color.White,
                 AutoSize = false,
                 DrawFormat = TextFormatFlags.HorizontalCenter,
@@ -456,7 +456,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = HistoryPanel,
-                Text = CEnvir.Language.MarketPlaceDialogSearchTabSaleHistoryNumberSoldLabel,
+                Text = "销售数量:",
             };
             label.Location = new Point(80 - label.Size.Width, 25);
 
@@ -472,7 +472,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = HistoryPanel,
-                Text = CEnvir.Language.MarketPlaceDialogSearchTabSaleHistoryLastPriceLabel,
+                Text = "最后售价:",
             };
             label.Location = new Point(80 - label.Size.Width, 45);
 
@@ -488,7 +488,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = HistoryPanel,
-                Text = CEnvir.Language.MarketPlaceDialogSearchTabSaleHistoryAvgPriceLabel,
+                Text = "平均售价:",
             };
             label.Location = new Point(80 - label.Size.Width, 65);
 
@@ -515,7 +515,7 @@ namespace Client.Scenes.Views
             new DXLabel
             {
                 Parent = MessagePanel,
-                Text = CEnvir.Language.MarketPlaceDialogSearchTabMessageLabel,
+                Text = "消息",
                 ForeColour = Color.White,
                 AutoSize = false,
                 DrawFormat = TextFormatFlags.HorizontalCenter,
@@ -544,7 +544,7 @@ namespace Client.Scenes.Views
             new DXLabel
             {
                 Parent = BuyPanel,
-                Text = CEnvir.Language.MarketPlaceDialogSearchTabBuyingLabel,
+                Text = "购买",
                 ForeColour = Color.White,
                 AutoSize = false,
                 DrawFormat = TextFormatFlags.HorizontalCenter,
@@ -555,7 +555,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = BuyPanel,
-                Text = CEnvir.Language.MarketPlaceDialogSearchTabBuyingCountLabel,
+                Text = "数量:",
                 ForeColour = Color.White,
             };
             label.Location = new Point(50 - label.Size.Width, 20);
@@ -576,7 +576,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = BuyPanel,
-                Text = CEnvir.Language.MarketPlaceDialogSearchTabBuyingPriceLabel,
+                Text = "价格:",
                 ForeColour = Color.White,
             };
             label.Location = new Point(50 - label.Size.Width, 40);
@@ -607,7 +607,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = BuyPanel,
-                Text = CEnvir.Language.MarketPlaceDialogSearchTabBuyingTotalLabel,
+                Text = "总价:",
                 ForeColour = Color.White,
             };
             label.Location = new Point(50 - label.Size.Width, 60);
@@ -626,7 +626,7 @@ namespace Client.Scenes.Views
             BuyGuildBox = new DXCheckBox
             {
                 Parent = BuyPanel,
-                Label = { Text = CEnvir.Language.MarketPlaceDialogSearchTabBuyingGuildLabel },
+                Label = { Text = "使用行会基金:" },
                 Enabled = false,
             };
             BuyGuildBox.Location = new Point(158 - BuyGuildBox.Size.Width, 101);
@@ -635,7 +635,7 @@ namespace Client.Scenes.Views
             {
                 Size = new Size(85, SmallButtonHeight),
                 Location = new Point(69, 124),
-                Label = { Text = CEnvir.Language.MarketPlaceDialogSearchTabBuyingBuyButtonLabel },
+                Label = { Text = "购买" },
                 ButtonType = ButtonType.SmallButton,
                 Parent = BuyPanel,
             };
@@ -648,7 +648,7 @@ namespace Client.Scenes.Views
             ConsignTab = new DXTab
             {
                 Parent = TabControl,
-                TabButton = { Label = { Text = CEnvir.Language.MarketPlaceDialogConsignTabLabel } },
+                TabButton = { Label = { Text = "寄售" } },
                 Border = true,
             };
             DXControl consignPanel = new DXControl
@@ -664,7 +664,7 @@ namespace Client.Scenes.Views
             new DXLabel
             {
                 Parent = consignPanel,
-                Text = CEnvir.Language.MarketPlaceDialogConsignTabStep1Label,
+                Text = "第一步",
                 ForeColour = Color.White,
                 AutoSize = false,
                 DrawFormat = TextFormatFlags.HorizontalCenter,
@@ -675,7 +675,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = consignPanel,
-                Text = CEnvir.Language.MarketPlaceDialogConsignTabStep1SelectItemLabel,
+                Text = "选择物品:",
             };
             label.Location = new Point(80 - label.Size.Width, 30);
 
@@ -700,9 +700,9 @@ namespace Client.Scenes.Views
                 }
                 else
                 {
-                    NumberSoldBox.TextBox.Text = CEnvir.Language.MarketPlaceDialogConsignTabSearchingLabel;
-                    LastPriceBox.TextBox.Text = CEnvir.Language.MarketPlaceDialogConsignTabSearchingLabel;
-                    AveragePriceBox.TextBox.Text = CEnvir.Language.MarketPlaceDialogConsignTabSearchingLabel;
+                    NumberSoldBox.TextBox.Text = "搜索中...";
+                    LastPriceBox.TextBox.Text = "搜索中...";
+                    AveragePriceBox.TextBox.Text = "搜索中...";
 
                     CEnvir.Enqueue(new C.MarketPlaceHistory { Index = ConsignGrid.Grid[0].Item.Info.Index, PartIndex = ConsignGrid.Grid[0].Item.AddedStats[Stat.ItemIndex], Display = 2 });
                 }
@@ -713,7 +713,7 @@ namespace Client.Scenes.Views
             new DXLabel
             {
                 Parent = consignPanel,
-                Text = CEnvir.Language.MarketPlaceDialogConsignTabStep1SaleHistoryLabel,
+                Text = "销售历史",
                 ForeColour = Color.White,
                 AutoSize = false,
                 DrawFormat = TextFormatFlags.HorizontalCenter,
@@ -726,7 +726,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = consignPanel,
-                Text = CEnvir.Language.MarketPlaceDialogConsignTabStep1NumberSoldLabel,
+                Text = "销售数量:",
             };
             label.Location = new Point(80 - label.Size.Width, 80);
 
@@ -742,7 +742,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = consignPanel,
-                Text = CEnvir.Language.MarketPlaceDialogConsignTabStep1LastPriceLabel,
+                Text = "最后售价:",
             };
             label.Location = new Point(80 - label.Size.Width, 100);
 
@@ -758,7 +758,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = consignPanel,
-                Text = CEnvir.Language.MarketPlaceDialogConsignTabStep1AvgPriceLabel,
+                Text = "平均售价:"
             };
             label.Location = new Point(80 - label.Size.Width, 120);
 
@@ -783,7 +783,7 @@ namespace Client.Scenes.Views
             new DXLabel
             {
                 Parent = ConsignBuyPanel,
-                Text = CEnvir.Language.MarketPlaceDialogConsignTabStep2Label,
+                Text = "第二步",
                 ForeColour = Color.White,
                 AutoSize = false,
                 DrawFormat = TextFormatFlags.HorizontalCenter,
@@ -794,7 +794,7 @@ namespace Client.Scenes.Views
             ConsignPriceLabel = new DXLabel
             {
                 Parent = ConsignBuyPanel,
-                Text = CEnvir.Language.MarketPlaceDialogConsignTabStep2PriceLabel,
+                Text = "价格",
             };
             ConsignPriceLabel.Location = new Point(80 - ConsignPriceLabel.Size.Width, 25);
 
@@ -825,7 +825,7 @@ namespace Client.Scenes.Views
             new DXLabel
             {
                 Parent = ConsignMesagePanel,
-                Text = CEnvir.Language.MarketPlaceDialogConsignTabStep3Label,
+                Text = "第三步 - 消息",
                 ForeColour = Color.White,
                 AutoSize = false,
                 DrawFormat = TextFormatFlags.HorizontalCenter,
@@ -854,7 +854,7 @@ namespace Client.Scenes.Views
             new DXLabel
             {
                 Parent = ConsignConfirmPanel,
-                Text = CEnvir.Language.MarketPlaceDialogConsignTabStep4Label,
+                Text = "第四步",
                 ForeColour = Color.White,
                 AutoSize = false,
                 DrawFormat = TextFormatFlags.HorizontalCenter,
@@ -865,7 +865,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = ConsignConfirmPanel,
-                Text = CEnvir.Language.MarketPlaceDialogConsignTabStep4ConsignCostLabel,
+                Text = "寄售费用:",
             };
             label.Location = new Point(80 - label.Size.Width, 25);
 
@@ -881,7 +881,7 @@ namespace Client.Scenes.Views
             ConsignGuildBox = new DXCheckBox
             {
                 Parent = ConsignConfirmPanel,
-                Label = { Text = CEnvir.Language.MarketPlaceDialogConsignTabStep4ConsignGuildLabel },
+                Label = { Text = "使用行会基金:" },
                 Enabled = false,
             };
             ConsignGuildBox.Location = new Point(169 - ConsignGuildBox.Size.Width, 45);
@@ -890,7 +890,7 @@ namespace Client.Scenes.Views
             {
                 Size = new Size(85, SmallButtonHeight),
                 Location = new Point(80, 65),
-                Label = { Text = CEnvir.Language.MarketPlaceDialogConsignTabStep4ConsignButtonLabel },
+                Label = { Text = "寄售" },
                 ButtonType = ButtonType.SmallButton,
                 Parent = ConsignConfirmPanel,
             };
@@ -910,7 +910,7 @@ namespace Client.Scenes.Views
                     ClientMarketPlaceInfo info = ConsignRows[index].MarketInfo;
                     if (info == null) return;
 
-                    DXItemAmountWindow window = new DXItemAmountWindow(CEnvir.Language.MarketPlaceDialogConsignTabCancelListingCaption, info.Item);
+                    DXItemAmountWindow window = new DXItemAmountWindow("取消寄售", info.Item);
 
                     window.ConfirmButton.MouseClick += (o1, e1) =>
                     {
@@ -939,7 +939,7 @@ namespace Client.Scenes.Views
             StoreTab = new DXTab
             {
                 Parent = TabControl,
-                TabButton = { Label = { Text = CEnvir.Language.MarketPlaceDialogGameStoreTabLabel }, Size = new Size(120, TabHeight), RightAligned = true },
+                TabButton = { Label = { Text = "元宝商城" }, Size = new Size(120, TabHeight), RightAligned = true },
                 Border = true,
             };
             StoreTab.IsVisibleChanged += (o, e) => SelectedStoreRow = null;
@@ -956,7 +956,7 @@ namespace Client.Scenes.Views
             {
                 Parent = filterPanel,
                 Location = new Point(5, 5),
-                Text = CEnvir.Language.MarketPlaceDialogGameStoreTabNameLabel,
+                Text = "名字",
             };
 
             StoreItemNameBox = new DXTextBox
@@ -973,7 +973,7 @@ namespace Client.Scenes.Views
             {
                 Parent = filterPanel,
                 Location = new Point(StoreItemNameBox.Location.X + StoreItemNameBox.Size.Width + 10, 5),
-                Text = CEnvir.Language.MarketPlaceDialogGameStoreTabItemLabel,
+                Text = "物品",
             };
 
 
@@ -990,7 +990,7 @@ namespace Client.Scenes.Views
             new DXListBoxItem
             {
                 Parent = StoreItemTypeBox.ListBox,
-                Label = { Text = $"All" },
+                Label = { Text = $"所有" },
                 Item = null
             };
 
@@ -1025,7 +1025,7 @@ namespace Client.Scenes.Views
             {
                 Parent = filterPanel,
                 Location = new Point(StoreItemTypeBox.Location.X + StoreItemTypeBox.Size.Width + 10, 5),
-                Text = CEnvir.Language.MarketPlaceDialogGameStoreTabSortLabel,
+                Text = "排序",
             };
 
             StoreSortBox = new DXComboBox
@@ -1059,7 +1059,7 @@ namespace Client.Scenes.Views
                 Location = new Point(StoreSortBox.Location.X + StoreSortBox.Size.Width + 25, label.Location.Y - 1),
                 Parent = filterPanel,
                 ButtonType = ButtonType.SmallButton,
-                Label = { Text = CEnvir.Language.MarketPlaceDialogGameStoreTabSearchButtonLabel }
+                Label = { Text = "搜索" }
             };
             StoreSearchButton.MouseClick += (o, e) => StoreSearch();
 
@@ -1069,7 +1069,7 @@ namespace Client.Scenes.Views
                 Location = new Point(SearchButton.Location.X + SearchButton.Size.Width + 40, label.Location.Y - 1),
                 Parent = filterPanel,
                 ButtonType = ButtonType.SmallButton,
-                Label = { Text = CEnvir.Language.MarketPlaceDialogGameStoreTabClearButtonLabel }
+                Label = { Text = "清空" }
             };
             ClearButton.MouseClick += (o, e) =>
             {
@@ -1114,7 +1114,7 @@ namespace Client.Scenes.Views
             new DXLabel
             {
                 Parent = HuntGoldPanel,
-                Text = CEnvir.Language.MarketPlaceDialogGameStoreTabHuntGoldLabel,
+                Text = "赏金",
                 ForeColour = Color.White,
                 AutoSize = false,
                 DrawFormat = TextFormatFlags.HorizontalCenter,
@@ -1125,7 +1125,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = HuntGoldPanel,
-                Text = CEnvir.Language.MarketPlaceDialogGameStoreTabHuntGoldAmountLabel,
+                Text = "数量:",
                 ForeColour = Color.White,
             };
             label.Location = new Point(50 - label.Size.Width, 20);
@@ -1154,7 +1154,7 @@ namespace Client.Scenes.Views
             new DXLabel
             {
                 Parent = AddGameGoldPanel,
-                Text = CEnvir.Language.MarketPlaceDialogGameStoreTabGameGoldLabel,
+                Text = "元宝",
                 ForeColour = Color.White,
                 AutoSize = false,
                 DrawFormat = TextFormatFlags.HorizontalCenter,
@@ -1165,7 +1165,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = AddGameGoldPanel,
-                Text = CEnvir.Language.MarketPlaceDialogGameStoreTabGameGoldAmountLabel,
+                Text = "数量:",
                 ForeColour = Color.White,
             };
             label.Location = new Point(50 - label.Size.Width, 20);
@@ -1185,7 +1185,7 @@ namespace Client.Scenes.Views
             {
                 Size = new Size(85, SmallButtonHeight),
                 Location = new Point(69, 45),
-                Label = { Text = CEnvir.Language.MarketPlaceDialogGameStoreTabGameGoldRechargeButtonLabel },
+                Label = { Text = "购买元宝" },
                 ButtonType = ButtonType.SmallButton,
                 Parent = AddGameGoldPanel,
                 Enabled = !CEnvir.TestServer
@@ -1194,7 +1194,7 @@ namespace Client.Scenes.Views
             {
                 if (GameScene.Game.Observer) return;
 
-                DXMessageBox box = new DXMessageBox(CEnvir.Language.MarketPlaceDialogGameStoreTabGameGoldRechargeButtonConfirmMessage, CEnvir.Language.MarketPlaceDialogGameStoreTabGameGoldRechargeButtonConfirmCaption, DXMessageBoxButtons.YesNo);
+                DXMessageBox box = new DXMessageBox("你将离开游戏并打开一个网页,\n要继续吗?", "购买元宝", DXMessageBoxButtons.YesNo);
 
                 box.YesButton.MouseClick += (o1, e1) =>
                 {
@@ -1221,7 +1221,7 @@ namespace Client.Scenes.Views
             new DXLabel
             {
                 Parent = StoreBuyPanel,
-                Text = CEnvir.Language.MarketPlaceDialogGameStoreTabBuyingLabel,
+                Text = "购买",
                 ForeColour = Color.White,
                 AutoSize = false,
                 DrawFormat = TextFormatFlags.HorizontalCenter,
@@ -1232,7 +1232,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StoreBuyPanel,
-                Text = CEnvir.Language.MarketPlaceDialogGameStoreTabBuyingCountLabel,
+                Text = "数量:",
                 ForeColour = Color.White,
             };
             label.Location = new Point(50 - label.Size.Width, 20);
@@ -1253,7 +1253,7 @@ namespace Client.Scenes.Views
             StoreBuyPriceLabel = new DXLabel
             {
                 Parent = StoreBuyPanel,
-                Text = CEnvir.Language.MarketPlaceDialogGameStoreTabBuyingPriceLabel,
+                Text = "元宝:",
                 ForeColour = Color.White,
             };
             StoreBuyPriceLabel.Location = new Point(50 - StoreBuyPriceLabel.Size.Width, 40);
@@ -1284,7 +1284,7 @@ namespace Client.Scenes.Views
             label = new DXLabel
             {
                 Parent = StoreBuyPanel,
-                Text = CEnvir.Language.MarketPlaceDialogGameStoreTabBuyingTotalLabel,
+                Text = "总价:",
                 ForeColour = Color.White,
             };
             label.Location = new Point(50 - label.Size.Width, 60);
@@ -1302,7 +1302,7 @@ namespace Client.Scenes.Views
             UseHuntGoldBox = new DXCheckBox
             {
                 Parent = StoreBuyPanel,
-                Label = { Text = CEnvir.Language.MarketPlaceDialogGameStoreTabBuyingUseHuntGoldLabel },
+                Label = { Text = "使用赏金:" },
             };
             UseHuntGoldBox.Location = new Point(158 - UseHuntGoldBox.Size.Width, 101);
             UseHuntGoldBox.CheckedChanged += UpdateStoreBuyTotal;
@@ -1312,7 +1312,7 @@ namespace Client.Scenes.Views
             {
                 Size = new Size(85, SmallButtonHeight),
                 Location = new Point(69, 124),
-                Label = { Text = CEnvir.Language.MarketPlaceDialogGameStoreTabBuyingBuyButtonLabel },
+                Label = { Text = "购买" },
                 ButtonType = ButtonType.SmallButton,
                 Parent = StoreBuyPanel,
             };
@@ -1475,10 +1475,10 @@ namespace Client.Scenes.Views
                 displayInfo = Globals.ItemInfoList.Binding.First(x => x.Index == SelectedRow.MarketInfo.Item.AddedStats[Stat.ItemIndex]);
 
 
-            message.Append($"Item: {displayInfo.ItemName}");
+            message.Append($"名称: {displayInfo.ItemName}");
 
             if (SelectedRow.MarketInfo.Item.Info.ItemEffect == ItemEffect.ItemPart)
-                message.Append(" - [Part]");
+                message.Append(" - [碎片]");
 
 
             if (BuyCountBox.Value > 1)
@@ -1486,20 +1486,20 @@ namespace Client.Scenes.Views
 
             message.Append("\n\n");
 
-            message.Append($"Price: {BuyPriceBox.Value:#,##0}");
+            message.Append($"价格: {BuyPriceBox.Value:#,##0}");
 
             if (BuyCountBox.Value > 1)
-                message.Append(" (Each)");
+                message.Append(" (每个)");
 
             message.Append("\n\n");
 
-            message.Append($"Total Cost: {BuyTotalBox.TextBox.Text}");
+            message.Append($"总价格: {BuyTotalBox.TextBox.Text}");
 
             if (BuyGuildBox.Checked)
-                message.Append(" (Using Guild Funds)");
+                message.Append(" (使用行会基金)");
 
 
-            DXMessageBox box = new DXMessageBox(message.ToString(), "Buy Confirmation", DXMessageBoxButtons.YesNo);
+            DXMessageBox box = new DXMessageBox(message.ToString(), "购买确认", DXMessageBoxButtons.YesNo);
 
             box.YesButton.MouseClick += (o1, e1) =>
             {
@@ -1515,23 +1515,23 @@ namespace Client.Scenes.Views
 
             StringBuilder message = new StringBuilder();
             
-            message.Append($"Item: {SelectedStoreRow.StoreInfo.Item.ItemName}");
+            message.Append($"名称: {SelectedStoreRow.StoreInfo.Item.ItemName}");
 
             if (StoreBuyCountBox.Value > 1)
                 message.Append($" x{StoreBuyCountBox.Value:#,##0}");
 
             message.Append("\n\n");
 
-            message.Append($"Price: {StoreBuyPriceBox.Value:#,##0}");
+            message.Append($"价格: {StoreBuyPriceBox.Value:#,##0}");
 
             if (StoreBuyCountBox.Value > 1)
                 message.Append(" (Each)");
 
             message.Append("\n\n");
 
-            message.Append($"Total Cost: {StoreBuyTotalBox.TextBox.Text} ({(UseHuntGoldBox.Checked ? "Hunt" : "Game")} Gold)");
+            message.Append($"总价格: {StoreBuyTotalBox.TextBox.Text} ({(UseHuntGoldBox.Checked ? "赏金" : "元宝")})");
 
-            DXMessageBox box = new DXMessageBox(message.ToString(), "Buy Confirmation", DXMessageBoxButtons.YesNo);
+            DXMessageBox box = new DXMessageBox(message.ToString(), "购买确认", DXMessageBoxButtons.YesNo);
 
             box.YesButton.MouseClick += (o1, e1) =>
             {
@@ -1555,14 +1555,14 @@ namespace Client.Scenes.Views
                 if (info != null)
                     StoreBuyPriceBox.Value = info.HuntGoldPrice == 0 ? info.Price : info.HuntGoldPrice;
 
-                StoreBuyPriceLabel.Text = "H. Gold:";
+                StoreBuyPriceLabel.Text = "赏金:";
             }
             else
             {
                 if (info != null)
                     StoreBuyPriceBox.Value = info.Price;
 
-                StoreBuyPriceLabel.Text = "G. Gold:";
+                StoreBuyPriceLabel.Text = "元宝:";
             }
 
             StoreBuyTotalBox.TextBox.Text = (StoreBuyCountBox.Value * StoreBuyPriceBox.Value).ToString("#,##0");
@@ -1581,13 +1581,13 @@ namespace Client.Scenes.Views
 
             if (cell.Item == null)
             {
-                GameScene.Game.ReceiveChat(CEnvir.Language.MarketNoItemSelected, MessageType.System);
+                GameScene.Game.ReceiveChat("错误: 没有选择物品.", MessageType.System);
                 return;
             }
 
             if (Price <= 0)
             {
-                GameScene.Game.ReceiveChat(CEnvir.Language.MarketInvalidPrice, MessageType.System);
+                GameScene.Game.ReceiveChat("错误: 无效价格.", MessageType.System);
                 return;
             }
             
@@ -1599,10 +1599,10 @@ namespace Client.Scenes.Views
                 displayInfo = Globals.ItemInfoList.Binding.First(x => x.Index == cell.Item.AddedStats[Stat.ItemIndex]);
 
 
-            message.Append($"Item: {displayInfo.ItemName}");
+            message.Append($"物品: {displayInfo.ItemName}");
 
             if (cell.Item.Info.ItemEffect == ItemEffect.ItemPart)
-                message.Append(" - [Part]");
+                message.Append(" - [碎片]");
 
 
             if (cell.LinkedCount > 1)
@@ -1610,19 +1610,19 @@ namespace Client.Scenes.Views
 
             message.Append("\n\n");
 
-            message.Append($"Price: {Price:#,##0}");
+            message.Append($"价格: {Price:#,##0}");
 
             if (cell.LinkedCount > 1)
-                message.Append(" (Each)");
+                message.Append(" (每个)");
 
             message.Append("\n\n");
 
-            message.Append($"Consign Cost: {Cost:#,##0}");
+            message.Append($"寄售花费: {Cost:#,##0}");
 
             if (ConsignGuildBox.Checked)
-                message.Append(" (Using Guild Funds)");
+                message.Append(" (使用行会基金)");
 
-            DXMessageBox box = new DXMessageBox(message.ToString(), "Consign Confirmation", DXMessageBoxButtons.YesNo);
+            DXMessageBox box = new DXMessageBox(message.ToString(), "寄售确认", DXMessageBoxButtons.YesNo);
 
             box.YesButton.MouseClick += (o1, e1) =>
             {
@@ -2202,10 +2202,10 @@ namespace Client.Scenes.Views
             if (MarketInfo.Item != null && MarketInfo.Item.Info.ItemEffect == ItemEffect.ItemPart)
                 displayInfo = Globals.ItemInfoList.Binding.First(x => x.Index == MarketInfo.Item.AddedStats[Stat.ItemIndex]);
 
-            string name = displayInfo?.ItemName ?? "Item has been Sold.";
+            string name = displayInfo?.ItemName ?? "物品已售出.";
 
             if (MarketInfo.Item != null && MarketInfo.Item.Info.ItemEffect == ItemEffect.ItemPart)
-                name += " - [Part]";
+                name += " - [碎片]";
 
             NameLabel.Text = name;
 
@@ -2308,7 +2308,7 @@ namespace Client.Scenes.Views
             PriceLabelLabel = new DXLabel
             {
                 Parent = this,
-                Text = "Price:",
+                Text = "价格:",
                 ForeColour = Color.White,
                 IsControl = false,
 
@@ -2325,7 +2325,7 @@ namespace Client.Scenes.Views
             SellerLabelLabel = new DXLabel
             {
                 Parent = this,
-                Text = "Seller:",
+                Text = "卖家:",
                 ForeColour = Color.White,
                 IsControl = false,
 
@@ -2556,7 +2556,7 @@ namespace Client.Scenes.Views
             PriceLabelLabel = new DXLabel
             {
                 Parent = this,
-                Text = "Game Gold:",
+                Text = "元宝:",
                 ForeColour = Color.White,
                 IsControl = false,
 
@@ -2574,7 +2574,7 @@ namespace Client.Scenes.Views
             HuntPriceLabelLabel = new DXLabel
             {
                 Parent = this,
-                Text = "Hunt Gold:",
+                Text = "赏金:",
                 ForeColour = Color.White,
                 IsControl = false,
 
@@ -2587,7 +2587,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.GameInter,
                 Index = 6570,
                 Parent = this,
-                Hint = "Favourite (NOT YET ENABLED)",
+                Hint = "收藏 (NOT YET ENABLED)",
                 Enabled = false,
                 Visible =  false,
             };

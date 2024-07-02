@@ -355,7 +355,7 @@ namespace Client.Scenes.Views
 
             TitleLabel = new DXLabel
             {
-                Text = CEnvir.Language.RankingDialogTitle,
+                Text = "排行榜玩家(观战)",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -387,7 +387,7 @@ namespace Client.Scenes.Views
                 GlobalTab = new DXTab
                 {
                     Parent = TabControl,
-                    TabButton = { Label = { Text = CEnvir.Language.RankingDialogGlobalTabLabel } },
+                    TabButton = { Label = { Text = "全局" } },
                     BackColour = Color.Empty,
                     Location = new Point(0, 25)
                 };
@@ -743,7 +743,7 @@ namespace Client.Scenes.Views
                 ButtonType = ButtonType.SmallButton,
                 Size = new Size(60, SmallButtonHeight),
                 Parent = RankPanel,
-                Label = { Text = CEnvir.Language.RankingDialogSearchButtonLabel },
+                Label = { Text = "查询" },
                 Visible = true,
                 Location = new Point(164, 66),
                 Enabled = false
@@ -758,7 +758,7 @@ namespace Client.Scenes.Views
                 ButtonType = ButtonType.SmallButton,
                 Size = new Size(60, SmallButtonHeight),
                 Parent = RankPanel,
-                Label = { Text = CEnvir.Language.RankingDialogObserveButtonLabel },
+                Label = { Text = "观战" },
                 Visible = false,
                 Enabled = false,
                 Location = new Point(SearchButton.Location.X + SearchButton.Size.Width + 5, 66)
@@ -770,7 +770,7 @@ namespace Client.Scenes.Views
 
                 if (GameScene.Game != null && CEnvir.Now < GameScene.Game.User.CombatTime.AddSeconds(10) && !GameScene.Game.Observer)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.SpectatorModeWarningInCombat, MessageType.System);
+                    GameScene.Game.ReceiveChat("战斗状态下无法观战.", MessageType.System);
                     return;
                 }
 
@@ -844,33 +844,33 @@ namespace Client.Scenes.Views
             new DXListBoxItem
             {
                 Parent = RequiredClassBox.ListBox,
-                Label = { Text = $"{RequiredClass.All}" },
+                Label = { Text = "无限制" },
                 Item = RequiredClass.All
             };
 
             new DXListBoxItem
             {
                 Parent = RequiredClassBox.ListBox,
-                Label = { Text = $"{RequiredClass.Warrior}" },
+                Label = { Text = "战士" },
                 Item = RequiredClass.Warrior
             };
             new DXListBoxItem
             {
                 Parent = RequiredClassBox.ListBox,
-                Label = { Text = $"{RequiredClass.Wizard}" },
+                Label = { Text = "法师" },
                 Item = RequiredClass.Wizard
             };
             new DXListBoxItem
             {
                 Parent = RequiredClassBox.ListBox,
-                Label = { Text = $"{RequiredClass.Taoist}" },
+                Label = { Text = "道士" },
                 Item = RequiredClass.Taoist
             };
 
             new DXListBoxItem
             {
                 Parent = RequiredClassBox.ListBox,
-                Label = { Text = $"{RequiredClass.Assassin}" },
+                Label = { Text = "刺客" },
                 Item = RequiredClass.Assassin
             };
 
@@ -879,7 +879,7 @@ namespace Client.Scenes.Views
             OnlineOnlyBox = new DXCheckBox
             {
                 Parent = RankPanel,
-                Label = { Text = CEnvir.Language.RankingDialogOnlineOnlyLabel }
+                Label = { Text = "在线" }
             };
             OnlineOnlyBox.CheckedChanged += (o, e) =>
             {
@@ -894,7 +894,7 @@ namespace Client.Scenes.Views
             {
                 Parent = RankPanel,
                 Visible = false,
-                Label = { Text = CEnvir.Language.RankingDialogObservableLabel }
+                Label = { Text = "允许观战" }
             };
             ObservableBox.CheckedChanged += (o, e) =>
             {
@@ -904,7 +904,7 @@ namespace Client.Scenes.Views
                 if (GameScene.Game.Observer) return;
                 if (!GameScene.Game.User.InSafeZone)
                 {
-                    GameScene.Game.ReceiveChat(CEnvir.Language.SpectatorModeWarningInSafezone, MessageType.System);
+                    GameScene.Game.ReceiveChat("你只能在安全区改变观察者模式.", MessageType.System);
                     return;
                 }
 

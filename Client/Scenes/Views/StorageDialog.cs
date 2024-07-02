@@ -127,7 +127,7 @@ namespace Client.Scenes.Views
 
             TitleLabel = new DXLabel
             {
-                Text = CEnvir.Language.StorageDialogTitle,
+                Text = "个人仓库",
                 Parent = this,
                 Font = new Font(Config.FontName, CEnvir.FontSize(10F), FontStyle.Bold),
                 ForeColour = Color.FromArgb(198, 166, 99),
@@ -142,7 +142,7 @@ namespace Client.Scenes.Views
                 LibraryFile = LibraryFile.GameInter,
                 Index = 364,
                 Parent = this,
-                Hint = CEnvir.Language.StorageDialogSortButtonLabel
+                Hint = "整理"
             };
             SortButton.Location = new Point(DisplayArea.Width - 47, 41);
             SortButton.MouseClick += SortButton_MouseClick;
@@ -172,7 +172,7 @@ namespace Client.Scenes.Views
             {
                 Parent = filterPanel,
                 Location = new Point(5, 5),
-                Text = CEnvir.Language.StorageDialogFilterNameLabel,
+                Text = "名称:",
             };
 
             ItemNameTextBox = new DXTextBox
@@ -187,7 +187,7 @@ namespace Client.Scenes.Views
             {
                 Parent = filterPanel,
                 Location = new Point(ItemNameTextBox.Location.X + ItemNameTextBox.Size.Width + 10, 5),
-                Text = CEnvir.Language.StorageDialogFilterItemLabel,
+                Text = "物品:",
             };
 
             ItemTypeComboBox = new DXComboBox
@@ -230,7 +230,7 @@ namespace Client.Scenes.Views
                 Location = new Point(ItemTypeComboBox.Location.X + ItemTypeComboBox.Size.Width + 17, label.Location.Y - 1),
                 Parent = filterPanel,
                 ButtonType = ButtonType.SmallButton,
-                Label = { Text = CEnvir.Language.StorageDialogFilterClearButtonLabel }
+                Label = { Text = "清空" }
             };
             ClearButton.MouseClick += (o, e) =>
             {
@@ -242,7 +242,7 @@ namespace Client.Scenes.Views
             StorageTab = new DXTab
             {
                 Parent = TabControl,
-                TabButton = { Label = { Text = CEnvir.Language.StorageDialogStorageTab } },
+                TabButton = { Label = { Text = "通用" } },
                 Visible = true,
                 BackColour = Color.Empty,
                 Border = false,
@@ -252,7 +252,7 @@ namespace Client.Scenes.Views
             {
                 Parent = TabControl,
                 Border = false,
-                TabButton = { Label = { Text = CEnvir.Language.StorageDialogPartsTab } },
+                TabButton = { Label = { Text = "碎片" } },
                 Visible = false,
                 BackColour = Color.Empty
             };
