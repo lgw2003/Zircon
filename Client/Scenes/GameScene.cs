@@ -39,7 +39,7 @@ namespace Client.Scenes
             }
         }
         private DXItemCell _SelectedCell;
-        
+
         #region User
 
         public UserObject User
@@ -87,7 +87,7 @@ namespace Client.Scenes
 
         public MapObject MagicObject, MouseObject, TargetObject, FocusObject;
         public DXControl ItemLabel, MagicLabel;
-        
+
         #region MouseItem
 
         public ClientUserItem MouseItem
@@ -229,7 +229,7 @@ namespace Client.Scenes
             {
                 if (_AutoRun == value) return;
                 _AutoRun = value;
-                
+
                 ReceiveChat(value ? "[自动跑步: 开]" : "[自动跑步: 关]", MessageType.Hint);
             }
         }
@@ -265,7 +265,7 @@ namespace Client.Scenes
 
         #endregion
 
-        
+
 
         #region NPCID
 
@@ -298,7 +298,7 @@ namespace Client.Scenes
             set
             {
                 if (_Companion == value) return;
-                
+
                 _Companion = value;
 
                 CompanionChanged();
@@ -314,14 +314,14 @@ namespace Client.Scenes
             set
             {
                 if (_Partner == value) return;
-                
+
                 _Partner = value;
 
                 MarriageChanged();
             }
         }
         private ClientPlayerInfo _Partner;
-        
+
 
         public uint InspectID;
         public DateTime PickUpTime, UseItemTime, NPCTime, ToggleTime, InspectTime, ItemTime = CEnvir.Now, ReincarnationPillTime, ItemReviveTime;
@@ -340,11 +340,11 @@ namespace Client.Scenes
             }
         }
         private float _DayTime;
-        
+
         public override void OnSizeChanged(Size oValue, Size nValue)
         {
             base.OnSizeChanged(oValue, nValue);
-            
+
             SetDefaultLocations();
 
             foreach (DXWindow window in DXWindow.Windows)
@@ -479,7 +479,7 @@ namespace Client.Scenes
                 Visible = false,
             };
             NPCAdoptCompanionBox = new NPCAdoptCompanionDialog
-            { 
+            {
                 Parent = this,
                 Visible = false,
             };
@@ -722,12 +722,12 @@ namespace Client.Scenes
 
             MenuBox.Location = new Point(Size.Width - MenuBox.Size.Width, Size.Height - MenuBox.Size.Height - MainPanel.Size.Height);
 
-            ConfigBox.Location = new Point((Size.Width - ConfigBox.Size.Width)/2, (Size.Height - ConfigBox.Size.Height)/2);
+            ConfigBox.Location = new Point((Size.Width - ConfigBox.Size.Width) / 2, (Size.Height - ConfigBox.Size.Height) / 2);
 
             CaptionBox.Location = Point.Empty;
 
-            ChatOptionsBox.Location = new Point((Size.Width - ChatOptionsBox.Size.Width)/2, (Size.Height - ChatOptionsBox.Size.Height)/2);
-            
+            ChatOptionsBox.Location = new Point((Size.Width - ChatOptionsBox.Size.Width) / 2, (Size.Height - ChatOptionsBox.Size.Height) / 2);
+
             ExitBox.Location = new Point((Size.Width - ExitBox.Size.Width) / 2, (Size.Height - ExitBox.Size.Height) / 2);
 
             TradeBox.Location = new Point((Size.Width - TradeBox.Size.Width) / 2, (Size.Height - TradeBox.Size.Height) / 2);
@@ -737,17 +737,17 @@ namespace Client.Scenes
             GuildMemberBox.Location = new Point((Size.Width - GuildMemberBox.Size.Width) / 2, (Size.Height - GuildMemberBox.Size.Height) / 2);
 
             InventoryBox.Location = new Point(Size.Width - InventoryBox.Size.Width, MiniMapBox.Size.Height);
-            
+
             CharacterBox.Location = Point.Empty;
 
             MapControl.Size = Size;
 
-            MainPanel.Location = new Point((Size.Width - MainPanel.Size.Width)/2, Size.Height - MainPanel.Size.Height);
+            MainPanel.Location = new Point((Size.Width - MainPanel.Size.Width) / 2, Size.Height - MainPanel.Size.Height);
 
             ChatTextBox.Location = new Point((Size.Width - ChatTextBox.Size.Width) / 2, (Size.Height - ChatTextBox.Size.Height) / 2);
 
             BeltBox.Location = new Point(MainPanel.Location.X + MainPanel.Size.Width - BeltBox.Size.Width, MainPanel.Location.Y - BeltBox.Size.Height);
-            
+
             NPCBox.Location = Point.Empty;
 
             NPCGoodsBox.Location = new Point(0, NPCBox.Size.Height);
@@ -764,11 +764,11 @@ namespace Client.Scenes
 
             MagicBox.Location = new Point(Size.Width - MagicBox.Size.Width, 0);
 
-            GroupBox.Location = new Point((Size.Width - GroupBox.Size.Width)/2, (Size.Height - GroupBox.Size.Height)/2);
+            GroupBox.Location = new Point((Size.Width - GroupBox.Size.Width) / 2, (Size.Height - GroupBox.Size.Height) / 2);
 
             StorageBox.Location = new Point(Size.Width - StorageBox.Size.Width - InventoryBox.Size.Width, 0);
 
-            AutoPotionBox.Location = new Point((Size.Width - AutoPotionBox.Size.Width)/2, (Size.Height - AutoPotionBox.Size.Height)/2);
+            AutoPotionBox.Location = new Point((Size.Width - AutoPotionBox.Size.Width) / 2, (Size.Height - AutoPotionBox.Size.Height) / 2);
 
             InspectBox.Location = new Point(CharacterBox.Size.Width, 0);
 
@@ -939,7 +939,7 @@ namespace Client.Scenes
             if (MouseControl == MapControl)
             {
                 if (CEnvir.Ctrl && MapObject.MouseObject?.Race == ObjectType.Item)
-                    MouseItem = ((ItemObject) MapObject.MouseObject).Item;
+                    MouseItem = ((ItemObject)MapObject.MouseObject).Item;
                 else
                     MouseItem = null;
             }
@@ -1162,8 +1162,8 @@ namespace Client.Scenes
                 ob.Process();
 
             for (int i = MapControl.Effects.Count - 1; i >= 0; i--)
-                    MapControl.Effects[i].Process();
-           
+                MapControl.Effects[i].Process();
+
             for (int i = MapControl.ParticleEffects.Count - 1; i >= 0; i--)
                 MapControl.ParticleEffects[i].Process();
 
@@ -1377,13 +1377,13 @@ namespace Client.Scenes
                         break;
                     case KeyBindAction.ChangeAttackMode:
                         if (Observer) continue;
-                        User.AttackMode = (AttackMode) (((int) User.AttackMode + 1) % 5);
+                        User.AttackMode = (AttackMode)(((int)User.AttackMode + 1) % 5);
                         CEnvir.Enqueue(new C.ChangeAttackMode { Mode = User.AttackMode });
                         break;
                     case KeyBindAction.ChangePetMode:
                         if (Observer) continue;
 
-                        User.PetMode = (PetMode) (((int) User.PetMode + 1) % 5);
+                        User.PetMode = (PetMode)(((int)User.PetMode + 1) % 5);
                         CEnvir.Enqueue(new C.ChangePetMode { Mode = User.PetMode });
                         break;
                     case KeyBindAction.GroupAllowSwitch:
@@ -1724,14 +1724,14 @@ namespace Client.Scenes
 
             if (MouseItem.Info.ItemEffect == ItemEffect.ItemPart)
                 displayInfo = Globals.ItemInfoList.Binding.First(x => x.Index == MouseItem.AddedStats[Stat.ItemIndex]);
-            
+
 
             DXLabel label = new DXLabel
             {
                 ForeColour = Color.Yellow,
                 Location = new Point(4, 4),
                 Parent = ItemLabel,
-                Text = displayInfo.ItemName 
+                Text = displayInfo.ItemName
             };
 
             if (MouseItem.Info.ItemEffect == ItemEffect.ItemPart)
@@ -1774,7 +1774,7 @@ namespace Client.Scenes
                     case ItemType.Weapon:
                     case ItemType.Shield:
                     case ItemType.Torch:
-                        if (User.HandWeight - (Equipment[(int) EquipmentSlot.Weapon]?.Info.Weight ?? 0) + MouseItem.Info.Weight > User.Stats[Stat.HandWeight])
+                        if (User.HandWeight - (Equipment[(int)EquipmentSlot.Weapon]?.Info.Weight ?? 0) + MouseItem.Info.Weight > User.Stats[Stat.HandWeight])
                             label.ForeColour = Color.Red;
                         break;
                     case ItemType.Armour:
@@ -1789,7 +1789,7 @@ namespace Client.Scenes
                             label.ForeColour = Color.Red;
                         break;
                 }
-                
+
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
                     label.DisplayArea.Bottom > ItemLabel.Size.Height ? label.DisplayArea.Bottom : ItemLabel.Size.Height);
                 needSpacer = true;
@@ -1883,7 +1883,7 @@ namespace Client.Scenes
                             ForeColour = MouseItem.CurrentDurability == 0 ? Color.Red : Color.White,
                             Location = new Point(ItemLabel.DisplayArea.Right, 4),
                             Parent = ItemLabel,
-                            Text = $"品质: {Math.Round(MouseItem.CurrentDurability/1000M)}/{Math.Round(MouseItem.MaxDurability/1000M)}",
+                            Text = $"品质: {Math.Round(MouseItem.CurrentDurability / 1000M)}/{Math.Round(MouseItem.MaxDurability / 1000M)}",
                         };
 
                         ItemLabel.Size = new Size(label.DisplayArea.Right + 4, ItemLabel.Size.Height);
@@ -1897,7 +1897,7 @@ namespace Client.Scenes
                             ForeColour = MouseItem.CurrentDurability == 0 ? Color.Red : Color.White,
                             Location = new Point(ItemLabel.DisplayArea.Right, 4),
                             Parent = ItemLabel,
-                            Text = $"纯度: {Math.Round(MouseItem.CurrentDurability/1000M)}",
+                            Text = $"纯度: {Math.Round(MouseItem.CurrentDurability / 1000M)}",
                         };
 
                         ItemLabel.Size = new Size(label.DisplayArea.Right + 4, ItemLabel.Size.Height);
@@ -1965,7 +1965,7 @@ namespace Client.Scenes
                 MemberInfo[] infos = type.GetMember(displayInfo.RequiredClass.ToString());
 
                 DescriptionAttribute description = infos[0].GetCustomAttribute<DescriptionAttribute>();
-                
+
                 label = new DXLabel
                 {
                     ForeColour = colour,
@@ -2152,7 +2152,7 @@ namespace Client.Scenes
                 ItemLabel.Size = new Size(ItemLabel.Size.Width, ItemLabel.Size.Height);
                 spacer = true;
             }
-            
+
             if (!MouseItem.Info.CanTrade || (MouseItem.Flags & UserItemFlags.Bound) == UserItemFlags.Bound)
             {
                 label = new DXLabel
@@ -2316,7 +2316,7 @@ namespace Client.Scenes
                     Text = $"过期时间 {Functions.ToString(MouseItem.ExpireTime, true)}",
                     ForeColour = Color.Chocolate,
                 };
-                
+
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
                     label.DisplayArea.Bottom > ItemLabel.Size.Height ? label.DisplayArea.Bottom : ItemLabel.Size.Height);
@@ -2464,7 +2464,7 @@ namespace Client.Scenes
 
             stats.Add(displayInfo.Stats, displayInfo.ItemType != ItemType.Weapon);
             stats.Add(MouseItem.AddedStats, MouseItem.Info.ItemType != ItemType.Weapon);
-            
+
             if (displayInfo.ItemType == ItemType.Weapon)
             {
                 Stat ele = MouseItem.AddedStats.GetWeaponElement();
@@ -2484,7 +2484,7 @@ namespace Client.Scenes
                     ForeColour = MouseItem.CurrentDurability == 0 ? Color.Red : Color.FromArgb(132, 255, 255),
                     Location = new Point(ItemLabel.DisplayArea.Right, 4),
                     Parent = ItemLabel,
-                    Text = $"耐久: {Math.Round(MouseItem.CurrentDurability/1000M)}/{Math.Round(MouseItem.MaxDurability/1000M)}",
+                    Text = $"耐久: {Math.Round(MouseItem.CurrentDurability / 1000M)}/{Math.Round(MouseItem.MaxDurability / 1000M)}",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4, ItemLabel.Size.Height);
@@ -2651,9 +2651,9 @@ namespace Client.Scenes
             if (MouseItem == null) return;
 
             Stats stats = new Stats();
-            
+
             stats.Add(MouseItem.Info.Stats);
-            
+
 
             DXLabel label;
             foreach (KeyValuePair<Stat, int> pair in stats.Values)
@@ -2696,7 +2696,7 @@ namespace Client.Scenes
                     ForeColour = Color.White,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = $"冷却CD: {MouseItem.Info.Durability/1000M:#,##0.#} 秒"
+                    Text = $"冷却CD: {MouseItem.Info.Durability / 1000M:#,##0.#} 秒"
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2824,7 +2824,7 @@ namespace Client.Scenes
             label = new DXLabel
             {
                 ForeColour = Color.White,
-                Location = new Point(width , MagicLabel.DisplayArea.Bottom),
+                Location = new Point(width, MagicLabel.DisplayArea.Bottom),
                 Parent = MagicLabel,
                 Text = $"经验: {MouseMagic.Experience2:#,##0}",
             };
@@ -2897,7 +2897,7 @@ namespace Client.Scenes
 
             ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
                 label.DisplayArea.Bottom > ItemLabel.Size.Height ? label.DisplayArea.Bottom : ItemLabel.Size.Height);
-            
+
             label = new DXLabel
             {
                 ForeColour = Color.LimeGreen,
@@ -2941,7 +2941,7 @@ namespace Client.Scenes
                     if (equip[j] == null) continue;
                     if (equip[j].Info != info) continue;
                     if (equip[j].CurrentDurability == 0 && equip[j].Info.Durability > 0) continue;
-                    
+
                     counted.Add(j);
 
                     hasPart = true;
@@ -3739,14 +3739,6 @@ namespace Client.Scenes
                 case MagicType.IceRain:
 
                 case MagicType.PoisonDust:
-                    ReceiveChat("施毒术", MessageType.Hint);
-                    ClientUserItem poison = Equipment[(int)EquipmentSlot.Poison];
-                    if (poison == null || poison.Info.ItemType != ItemType.Poison)
-                    {
-                        ReceiveChat("没有毒药", MessageType.Hint);
-                        return;
-                    }
-                    break;
                 case MagicType.ExplosiveTalisman:
                 case MagicType.EvilSlayer:
                 case MagicType.GreaterEvilSlayer:
@@ -3974,6 +3966,43 @@ namespace Client.Scenes
 
             if (MouseObject != null && MouseObject.Race == ObjectType.Monster)
                 FocusObject = (MonsterObject) MouseObject;
+
+            //施毒术 自动换毒
+            if (magic.Info.Magic == MagicType.PoisonDust || magic.Info.Magic == MagicType.AugmentPoisonDust)
+            {
+                ReceiveChat("施毒术", MessageType.Hint);
+                ClientUserItem equipmentPoison = Equipment[(int)EquipmentSlot.Poison];
+                DXItemCell greenPoisonCell = InventoryBox.Grid.Grid.FirstOrDefault(x => x.Item?.Info.ItemName == "绿毒");
+                DXItemCell redPoisonCell = InventoryBox.Grid.Grid.FirstOrDefault(x => x.Item?.Info.ItemName == "红毒");
+                if (equipmentPoison != null)
+                {
+                    if (equipmentPoison.Info.ItemName == "绿毒")
+                    {
+                        if (redPoisonCell != null)
+                        {
+                            redPoisonCell.UseItem();
+                        }
+                    }
+                    else
+                    {
+                        if (greenPoisonCell != null)
+                        {
+                            greenPoisonCell.UseItem();
+                        }
+                    }
+
+                }
+                else
+                {
+                    if (greenPoisonCell != null)
+                    {
+                        greenPoisonCell.UseItem();
+                    }else if (redPoisonCell != null)
+                    {
+                        redPoisonCell.UseItem();
+                    }
+                }
+            }
 
             User.MagicAction = new ObjectAction(MirAction.Spell, direction, MapObject.User.CurrentLocation, magic.Info.Magic, new List<uint> { targetID }, new List<Point> { targetLocation }, false, Element.None);
         }

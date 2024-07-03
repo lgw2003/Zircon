@@ -6188,7 +6188,7 @@ namespace Server.Models
                         }
                     }
 
-                    if (SEnvir.Random.Next(100) >= item.CurrentDurability)
+                    if (magicObject != null && SEnvir.Random.Next(100) >= item.CurrentDurability)
                     {
                         Connection.ReceiveChat(Connection.Language.LearnBookFailed, MessageType.System);
 
