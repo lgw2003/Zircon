@@ -2350,22 +2350,32 @@ namespace Server.Models
                     break;
                 case Stat.WeaponElement:
 
-                    if (Character.SpentPoints >= 20) return;
+                    //if (Character.SpentPoints >= 20) return;
 
                     int count = 2 + Character.SpentPoints / 10;
 
                     List<Stat> Elements = new List<Stat>();
 
-                    if (Stats[Stat.FireAttack] > 0) Elements.Add(Stat.FireAttack);
-                    if (Stats[Stat.IceAttack] > 0) Elements.Add(Stat.IceAttack);
-                    if (Stats[Stat.LightningAttack] > 0) Elements.Add(Stat.LightningAttack);
-                    if (Stats[Stat.WindAttack] > 0) Elements.Add(Stat.WindAttack);
-                    if (Stats[Stat.HolyAttack] > 0) Elements.Add(Stat.HolyAttack);
-                    if (Stats[Stat.DarkAttack] > 0) Elements.Add(Stat.DarkAttack);
-                    if (Stats[Stat.PhantomAttack] > 0) Elements.Add(Stat.PhantomAttack);
+                    //if (Stats[Stat.FireAttack] > 0) Elements.Add(Stat.FireAttack);
+                    //if (Stats[Stat.IceAttack] > 0) Elements.Add(Stat.IceAttack);
+                    //if (Stats[Stat.LightningAttack] > 0) Elements.Add(Stat.LightningAttack);
+                    //if (Stats[Stat.WindAttack] > 0) Elements.Add(Stat.WindAttack);
+                    //if (Stats[Stat.HolyAttack] > 0) Elements.Add(Stat.HolyAttack);
+                    //if (Stats[Stat.DarkAttack] > 0) Elements.Add(Stat.DarkAttack);
+                    //if (Stats[Stat.PhantomAttack] > 0) Elements.Add(Stat.PhantomAttack);
 
-                    if (Elements.Count == 0)
-                        Elements.AddRange(new[]
+                    //if (Elements.Count == 0)
+                    //    Elements.AddRange(new[]
+                    //    {
+                    //        Stat.FireAttack,
+                    //        Stat.IceAttack,
+                    //        Stat.LightningAttack,
+                    //        Stat.WindAttack,
+                    //        Stat.HolyAttack,
+                    //        Stat.DarkAttack,
+                    //        Stat.PhantomAttack,
+                    //    });
+                    Elements.AddRange(new[]
                         {
                             Stat.FireAttack,
                             Stat.IceAttack,

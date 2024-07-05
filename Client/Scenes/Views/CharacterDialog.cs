@@ -1193,7 +1193,6 @@ namespace Client.Scenes.Views
                 Index = 600,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "火",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1221,7 +1220,6 @@ namespace Client.Scenes.Views
                 Index = 601,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "冰",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1249,7 +1247,6 @@ namespace Client.Scenes.Views
                 Index = 602,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "电",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1277,7 +1274,6 @@ namespace Client.Scenes.Views
                 Index = 603,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "风",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1307,7 +1303,6 @@ namespace Client.Scenes.Views
                 Index = 604,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "神圣",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1335,7 +1330,6 @@ namespace Client.Scenes.Views
                 Index = 605,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "暗黑",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1363,7 +1357,6 @@ namespace Client.Scenes.Views
                 Index = 606,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "幻影",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1397,7 +1390,6 @@ namespace Client.Scenes.Views
                 Index = 600,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "火",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1425,7 +1417,6 @@ namespace Client.Scenes.Views
                 Index = 601,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "冰",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1453,7 +1444,6 @@ namespace Client.Scenes.Views
                 Index = 602,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "电",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1481,7 +1471,6 @@ namespace Client.Scenes.Views
                 Index = 603,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "风",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1511,7 +1500,6 @@ namespace Client.Scenes.Views
                 Index = 604,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "神圣",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1539,7 +1527,6 @@ namespace Client.Scenes.Views
                 Index = 605,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "暗黑",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1567,7 +1554,6 @@ namespace Client.Scenes.Views
                 Index = 606,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "幻影",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1595,7 +1581,6 @@ namespace Client.Scenes.Views
                 Index = 1517,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "物理",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1629,7 +1614,6 @@ namespace Client.Scenes.Views
                 Index = 600,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "火",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1657,7 +1641,6 @@ namespace Client.Scenes.Views
                 Index = 601,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "冰",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1685,7 +1668,6 @@ namespace Client.Scenes.Views
                 Index = 602,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "电",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1713,7 +1695,6 @@ namespace Client.Scenes.Views
                 Index = 603,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "风",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1743,7 +1724,6 @@ namespace Client.Scenes.Views
                 Index = 604,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "神圣",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1771,7 +1751,6 @@ namespace Client.Scenes.Views
                 Index = 605,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "暗黑",
-                Visible = false
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1799,7 +1778,6 @@ namespace Client.Scenes.Views
                 Index = 606,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "幻影",
-                Visible = false,
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 
@@ -1827,7 +1805,6 @@ namespace Client.Scenes.Views
                 Index = 1517,
                 ForeColour = Color.FromArgb(60, 60, 60),
                 Hint = "物理",
-                Visible = false,
             };
             icon.Location = new Point(label.Location.X + 75, y - 3);
 

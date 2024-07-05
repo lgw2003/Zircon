@@ -322,7 +322,6 @@ namespace Library
                 case MagicType.SeismicSlam:
                 case MagicType.CrushingWave:
                     return MirAnimation.Combat3;
-
                 default:
                     throw new NotImplementedException();
             }
