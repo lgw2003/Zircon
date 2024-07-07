@@ -12,7 +12,7 @@ namespace Server.Views
             InitializeComponent();
 
             MapRegionGridControl.DataSource = SMain.Session.GetCollection<MapRegion>().Binding;
-            MapLookUpEdit.DataSource =  SMain.Session.GetCollection<MapInfo>().Binding;
+            MapLookUpEdit.DataSource = SMain.Session.GetCollection<MapInfo>().Binding;
         }
 
         protected override void OnLoad(EventArgs e)

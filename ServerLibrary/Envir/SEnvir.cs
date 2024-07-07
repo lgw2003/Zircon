@@ -2935,6 +2935,7 @@ namespace Server.Envir
             account.Referral = refferal;
             account.CreationIP = con.IPAddress;
             account.CreationDate = Now;
+            account.Activated = true;
 
             if (refferal != null)
             {
@@ -2949,7 +2950,7 @@ namespace Server.Envir
 
 
 
-            EmailService.SendActivationEmail(account);
+            //EmailService.SendActivationEmail(account);
 
             con.Enqueue(new S.NewAccount { Result = NewAccountResult.Success });
 

@@ -58,7 +58,7 @@ namespace Client.Envir
                 }
                 else
                 {
-                    DXMessageBox.Show("Disconnected from server\nReason: Connection timed out.", "Disconnected", DialogAction.ReturnToLogin);
+                    DXMessageBox.Show("与服务器失去连接\n原因: 连接超时.", "失去连接", DialogAction.ReturnToLogin);
                 }
             }
 
@@ -82,7 +82,7 @@ namespace Client.Envir
                 {
                     CEnvir.WrongVersion = true;
 
-                    DXMessageBox.Show("Disconnected from server\nReason: Wrong Version.", "Disconnected", DialogAction.Close).Modal = false;
+                    DXMessageBox.Show("与服务器失去连接\n原因: 版本校验失败.", "失去连接", DialogAction.Close).Modal = false;
                 }
 
                 scene.Disconnected();
@@ -93,25 +93,25 @@ namespace Client.Envir
             switch (p.Reason)
             {
                 case DisconnectReason.Unknown:
-                    DXMessageBox.Show("Disconnected from server\nReason: Unknown", "Disconnected", DialogAction.ReturnToLogin);
+                    DXMessageBox.Show("与服务器失去连接\n原因: 未知", "失去连接", DialogAction.ReturnToLogin);
                     break;
                 case DisconnectReason.TimedOut:
-                    DXMessageBox.Show("Disconnected from server\nReason: Connection Timed out.", "Disconnected", DialogAction.ReturnToLogin);
+                    DXMessageBox.Show("与服务器失去连接\n原因: 连接超时.", "失去连接", DialogAction.ReturnToLogin);
                     break;
                 case DisconnectReason.ServerClosing:
-                    DXMessageBox.Show("Disconnected from server\nReason: Server shutting down.", "Disconnected", DialogAction.ReturnToLogin);
+                    DXMessageBox.Show("与服务器失去连接\n原因: 服务器主动关闭.", "失去连接", DialogAction.ReturnToLogin);
                     break;
                 case DisconnectReason.AnotherUser:
-                    DXMessageBox.Show("Disconnected from server\nReason: Another user logged onto your account.", "Disconnected", DialogAction.ReturnToLogin);
+                    DXMessageBox.Show("与服务器失去连接\n原因: 其他人正在登陆你的账号.", "失去连接", DialogAction.ReturnToLogin);
                     break;
                 case DisconnectReason.AnotherUserAdmin:
-                    DXMessageBox.Show("Disconnected from server\nReason: An admin logged onto your account.", "Disconnected", DialogAction.ReturnToLogin);
+                    DXMessageBox.Show("与服务器失去连接\n原因: 管理员登陆了你的账号.", "失去连接", DialogAction.ReturnToLogin);
                     break;
                 case DisconnectReason.Banned:
-                    DXMessageBox.Show("Disconnected from server\nReason: You have been banned.", "Disconnected", DialogAction.ReturnToLogin);
+                    DXMessageBox.Show("与服务器失去连接\n原因: 你被封号了.", "失去连接", DialogAction.ReturnToLogin);
                     break;
                 case DisconnectReason.Crashed:
-                    DXMessageBox.Show("Disconnected from server\nReason: Server Crashed.", "Disconnected", DialogAction.ReturnToLogin);
+                    DXMessageBox.Show("与服务器失去连接\n原因: 服务器崩溃.", "失去连接", DialogAction.ReturnToLogin);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -168,43 +168,43 @@ namespace Client.Envir
             {
                 case NewAccountResult.Disabled:
                     login.AccountBox.Clear();
-                    DXMessageBox.Show("Account Creation is currently disabled.", "Account Creation");
+                    DXMessageBox.Show("系统禁止创建账号.", "账号创建");
                     break;
                 case NewAccountResult.BadEMail:
                     login.AccountBox.EMailTextBox.SetFocus();
-                    DXMessageBox.Show("E-Mail address is not acceptable.", "Account Creation");
+                    DXMessageBox.Show("E-Mail地址不合法.", "账号创建");
                     break;
                 case NewAccountResult.BadPassword:
                     login.AccountBox.Password1TextBox.SetFocus();
-                    DXMessageBox.Show("Password is not acceptable.", "Account Creation");
+                    DXMessageBox.Show("密码不合法.", "账号创建");
                     break;
                 case NewAccountResult.BadRealName:
                     login.AccountBox.RealNameTextBox.SetFocus();
-                    DXMessageBox.Show("Real Name is not acceptable.", "Account Creation");
+                    DXMessageBox.Show("真实姓名不合法.", "账号创建");
                     break;
                 case NewAccountResult.AlreadyExists:
                     login.AccountBox.EMailTextBox.TextBox.Text = string.Empty;
                     login.AccountBox.EMailTextBox.SetFocus();
-                    DXMessageBox.Show("E-Mail address already in use.", "Account Creation");
+                    DXMessageBox.Show("E-Mail地址已经被使用.", "账号创建");
                     break;
                 case NewAccountResult.BadReferral:
                     login.AccountBox.ReferralTextBox.SetFocus();
-                    DXMessageBox.Show("Referral's E-Mail address is not acceptable.", "Account Creation");
+                    DXMessageBox.Show("推荐人E-Mail地址不合法.", "账号创建");
                     break;
                 case NewAccountResult.ReferralNotFound:
                     login.AccountBox.ReferralTextBox.SetFocus();
-                    DXMessageBox.Show("Referral's E-Mail address was not found.", "Account Creation");
+                    DXMessageBox.Show("推荐人E-Mail地址不存在.", "账号创建");
                     break;
                 case NewAccountResult.ReferralNotActivated:
                     login.AccountBox.EMailTextBox.SetFocus();
-                    DXMessageBox.Show("Referral's E-Mail address has not been activated.", "Account Creation");
+                    DXMessageBox.Show("推荐人E-Mail账号尚未激活.", "账号创建");
                     break;
                 case NewAccountResult.Success:
                     login.LoginBox.EMailTextBox.TextBox.Text = login.AccountBox.EMailTextBox.TextBox.Text;
                     login.LoginBox.PasswordTextBox.TextBox.Text = login.AccountBox.Password1TextBox.TextBox.Text;
                     login.AccountBox.Clear();
-                    DXMessageBox.Show("Your account was created successfully.\n" +
-                                      "Please follow the instructions sent to your E-Mail to activate.", "Account Creation");
+                    DXMessageBox.Show("你的账号已经成功创建.\n" +
+                                      "无需激活，请直接登录.", "账号创建");
                     break;
             }
 
@@ -220,36 +220,36 @@ namespace Client.Envir
             {
                 case ChangePasswordResult.Disabled:
                     login.ChangeBox.Clear();
-                    DXMessageBox.Show("Change Password is currently disabled.", "Change Password");
+                    DXMessageBox.Show("系统禁止修改密码.", "修改密码");
                     break;
                 case ChangePasswordResult.BadEMail:
                     login.ChangeBox.EMailTextBox.SetFocus();
-                    DXMessageBox.Show("E-Mail is not acceptable.", "Change Password");
+                    DXMessageBox.Show("E-Mail地址不合法.", "修改密码");
                     break;
                 case ChangePasswordResult.BadCurrentPassword:
                     login.ChangeBox.CurrentPasswordTextBox.SetFocus();
-                    DXMessageBox.Show("Current Password is not acceptable.", "Change Password");
+                    DXMessageBox.Show("当前密码不合法.", "修改密码");
                     break;
                 case ChangePasswordResult.BadNewPassword:
                     login.ChangeBox.NewPassword1TextBox.SetFocus();
-                    DXMessageBox.Show("New Password is not acceptable.", "Change Password");
+                    DXMessageBox.Show("新密码不合法.", "修改密码");
                     break;
                 case ChangePasswordResult.AccountNotFound:
                     login.ChangeBox.EMailTextBox.SetFocus();
-                    DXMessageBox.Show("Account does not exist.", "Change Password");
+                    DXMessageBox.Show("账号不存在.", "修改密码");
                     break;
                 case ChangePasswordResult.AccountNotActivated:
                     login.ShowActivationBox(login.ChangeBox);
                     break;
                 case ChangePasswordResult.WrongPassword:
                     login.ChangeBox.CurrentPasswordTextBox.SetFocus();
-                    DXMessageBox.Show("Incorrect Password.", "Change Password");
+                    DXMessageBox.Show("密码错误.", "修改密码");
                     break;
                 case ChangePasswordResult.Banned:
                     DateTime expiry = CEnvir.Now.Add(p.Duration);
-                    DXMessageBox box = DXMessageBox.Show($"This account is banned.\n\nReason: {p.Message}\n" +
+                    DXMessageBox box = DXMessageBox.Show($"这个账号已经被管理员禁止了.\n\nReason: {p.Message}\n" +
                                                          $"Expiary Date: {expiry}\n" +
-                                                         $"Duration: {Math.Floor(p.Duration.TotalHours):#,##0} Hours, {p.Duration.Minutes} Minutes, {p.Duration.Seconds} Seconds", "Change Password");
+                                                         $"持续: {Math.Floor(p.Duration.TotalHours):#,##0} 小时, {p.Duration.Minutes} 分钟, {p.Duration.Seconds} 秒", "修改密码");
 
                     box.ProcessAction = () =>
                     {
@@ -263,15 +263,15 @@ namespace Client.Envir
 
                         TimeSpan remaining = expiry - CEnvir.Now;
 
-                        box.Label.Text = $"This account is banned.\n\n" +
+                        box.Label.Text = $"这个账号已经被管理员禁止了.\n\n" +
                                          $"Reason: {p.Message}\n" +
                                          $"Expiary Date: {expiry}\n" +
-                                         $"Duration: {Math.Floor(remaining.TotalHours):#,##0} Hours, {remaining.Minutes} Minutes, {remaining.Seconds} Seconds";
+                                         $"持续: {Math.Floor(remaining.TotalHours):#,##0} 小时, {remaining.Minutes} 分钟, {remaining.Seconds} 秒";
                     };
                     break;
                 case ChangePasswordResult.Success:
                     login.ChangeBox.Clear();
-                    DXMessageBox.Show("Password changed successfully.", "Change Password");
+                    DXMessageBox.Show("修改密码成功.", "修改密码");
                     break;
             }
 
@@ -289,15 +289,15 @@ namespace Client.Envir
             {
                 case RequestPasswordResetResult.Disabled:
                     login.RequestPasswordBox.Clear();
-                    DXMessageBox.Show("Password Reset is currently disabled.", "Reset Password");
+                    DXMessageBox.Show("系统禁止重置密码.", "重置密码");
                     break;
                 case RequestPasswordResetResult.BadEMail:
                     login.RequestPasswordBox.EMailTextBox.SetFocus();
-                    DXMessageBox.Show("E-Mail is not acceptable.", "Reset Password");
+                    DXMessageBox.Show("E-Mail地址不合法.", "重置密码");
                     break;
                 case RequestPasswordResetResult.AccountNotFound:
                     login.RequestPasswordBox.EMailTextBox.SetFocus();
-                    DXMessageBox.Show("Account does not exist.", "Reset Password");
+                    DXMessageBox.Show("账号不存在.", "重置密码");
                     break;
                 case RequestPasswordResetResult.AccountNotActivated:
                     login.ShowActivationBox(login.RequestPasswordBox);
@@ -306,8 +306,7 @@ namespace Client.Envir
                     expiry = CEnvir.Now.Add(p.Duration);
                     box = DXMessageBox.Show($"You cannot request another password reset so soon.\n" +
                                             $"Next available Reset: {expiry}\n" +
-                                            $"Duration: {Math.Floor(p.Duration.TotalHours):#,##0} Hours, {p.Duration.Minutes} Minutes, {p.Duration.Seconds} Seconds", "Reset Password");
-
+                                            $"持续: {Math.Floor(p.Duration.TotalHours):#,##0} 小时, {p.Duration.Minutes} 分钟, {p.Duration.Seconds} 秒", "重置密码");
                     box.ProcessAction = () =>
                     {
                         if (CEnvir.Now > expiry)
@@ -322,14 +321,14 @@ namespace Client.Envir
 
                         box.Label.Text = $"You cannot request another password reset so soon.\n" +
                                          $"Next Possible Reset: {expiry}\n" +
-                                         $"Duration: {Math.Floor(remaining.TotalHours):#,##0} Hours, {remaining.Minutes} Minutes, {remaining.Seconds} Seconds";
+                                        $"持续: {Math.Floor(remaining.TotalHours):#,##0} 小时, {remaining.Minutes} 分钟, {remaining.Seconds} 秒";
                     };
                     break;
                 case RequestPasswordResetResult.Banned:
                     expiry = CEnvir.Now.Add(p.Duration);
-                    box = DXMessageBox.Show($"This account is banned.\n\nReason: {p.Message}\n" +
+                    box = DXMessageBox.Show($"这个账号已经被禁止了.\n\nReason: {p.Message}\n" +
                                             $"Expiary Date: {expiry}\n" +
-                                            $"Duration: {Math.Floor(p.Duration.TotalHours):#,##0} Hours, {p.Duration.Minutes} Minutes, {p.Duration.Seconds} Seconds", "Reset Password");
+                                            $"持续: {Math.Floor(p.Duration.TotalHours):#,##0} 小时, {p.Duration.Minutes} 分钟, {p.Duration.Seconds} 秒", "重置密码");
 
                     box.ProcessAction = () =>
                     {
@@ -343,16 +342,16 @@ namespace Client.Envir
 
                         TimeSpan remaining = expiry - CEnvir.Now;
 
-                        box.Label.Text = $"This account is banned.\n\n" +
+                        box.Label.Text = $"这个账号已经被禁止了.\n\n" +
                                          $"Reason: {p.Message}\n" +
                                          $"Expiary Date: {expiry}\n" +
-                                         $"Duration: {Math.Floor(remaining.TotalHours):#,##0} Hours, {remaining.Minutes} Minutes, {remaining.Seconds} Seconds";
+                                         $"持续: {Math.Floor(remaining.TotalHours):#,##0} 小时, {remaining.Minutes} 分钟, {remaining.Seconds} 秒";
                     };
                     break;
                 case RequestPasswordResetResult.Success:
                     login.RequestPasswordBox.Clear();
-                    DXMessageBox.Show("Password reset request success\n" +
-                                      "Please check your E-Mail for further instructions.", "Reset Password");
+                    DXMessageBox.Show("重置密码成功\n" +
+                                      "Please check your E-Mail for further instructions.", "重置密码");
                     break;
             }
 
@@ -368,19 +367,19 @@ namespace Client.Envir
             {
                 case ResetPasswordResult.Disabled:
                     login.ResetBox.Clear();
-                    DXMessageBox.Show("Manual password reset is currently disabled.", "Reset Password");
+                    DXMessageBox.Show("系统禁止手工重置密码.", "重置密码");
                     break;
                 case ResetPasswordResult.BadNewPassword:
                     login.ResetBox.NewPassword1TextBox.SetFocus();
-                    DXMessageBox.Show("New Password is not acceptable.", "Reset Password");
+                    DXMessageBox.Show("新密码不合法.", "重置密码");
                     break;
                 case ResetPasswordResult.AccountNotFound:
                     login.ResetBox.ResetKeyTextBox.SetFocus();
-                    DXMessageBox.Show("Account could not be found.", "Reset Password");
+                    DXMessageBox.Show("找不到账号.", "重置密码");
                     break;
                 case ResetPasswordResult.Success:
                     login.ResetBox.Clear();
-                    DXMessageBox.Show("Password changed successfully.", "Reset Password");
+                    DXMessageBox.Show("密码修改成功.", "重置密码");
                     break;
             }
 
@@ -478,34 +477,34 @@ namespace Client.Envir
             switch (p.Result)
             {
                 case LoginResult.Disabled:
-                    DXMessageBox.Show("Logging in is currently disabled.", "Log In");
+                    DXMessageBox.Show("系统当前禁止账号登陆.", "账号登陆");
                     break;
                 case LoginResult.BadEMail:
                     login.LoginBox.EMailTextBox.SetFocus();
-                    DXMessageBox.Show("Username is not acceptable.", "Log In");
+                    DXMessageBox.Show("用户名不合法.", "账号登陆");
                     break;
                 case LoginResult.BadPassword:
                     login.LoginBox.PasswordTextBox.SetFocus();
-                    DXMessageBox.Show("Current Password is not acceptable.", "Log In");
+                    DXMessageBox.Show("密码不合法.", "账号登陆");
                     break;
                 case LoginResult.AccountNotExists:
                     login.LoginBox.EMailTextBox.SetFocus();
-                    DXMessageBox.Show("Account does not exist.", "Log In");
+                    DXMessageBox.Show("账号不存在.", "账号登陆");
                     break;
                 case LoginResult.AccountNotActivated:
                     login.ShowActivationBox(login.LoginBox);
                     break;
                 case LoginResult.WrongPassword:
                     login.LoginBox.PasswordTextBox.SetFocus();
-                    DXMessageBox.Show("Incorrect Password.", "Log In");
+                    DXMessageBox.Show("密码错误.", "账号登陆");
                     break;
                 case LoginResult.Banned:
                     DateTime expiry = CEnvir.Now.Add(p.Duration);
 
-                    DXMessageBox box = DXMessageBox.Show($"This account is banned.\n\n" +
+                    DXMessageBox box = DXMessageBox.Show($"这个账号已经被禁止了.\n\n" +
                                                          $"Reason: {p.Message}\n" +
                                                          $"Expiary Date: {expiry}\n" +
-                                                         $"Duration: {Math.Floor(p.Duration.TotalHours):#,##0} Hours, {p.Duration.Minutes} Minutes, {p.Duration.Seconds} Seconds", "Log In");
+                                                         $"持续: {Math.Floor(p.Duration.TotalHours):#,##0} 小时, {p.Duration.Minutes} 分钟, {p.Duration.Seconds} 秒", "账号登陆");
 
                     box.ProcessAction = () =>
                     {
@@ -519,24 +518,24 @@ namespace Client.Envir
 
                         TimeSpan remaining = expiry - CEnvir.Now;
 
-                        box.Label.Text = $"This account is banned.\n\n" +
+                        box.Label.Text = $"这个账号已经被禁止了.\n\n" +
                                          $"Reason: {p.Message}\n" +
                                          $"Expiary Date: {expiry}\n" +
-                                         $"Duration: {Math.Floor(remaining.TotalHours):#,##0} Hours, {remaining.Minutes} Minutes, {remaining.Seconds} Seconds";
+                                         $"持续: {Math.Floor(remaining.TotalHours):#,##0} 小时, {remaining.Minutes} 分钟, {remaining.Seconds} 秒";
                     };
                     break;
                 case LoginResult.AlreadyLoggedIn:
                     login.LoginBox.EMailTextBox.SetFocus();
-                    DXMessageBox.Show("Account is currently in use, please try again later.", "Log In");
+                    DXMessageBox.Show("账号正在使用，请稍后重试.", "账号登陆");
                     break;
                 case LoginResult.AlreadyLoggedInPassword:
                     login.LoginBox.EMailTextBox.SetFocus();
-                    DXMessageBox.Show("Account is currently in use\n" +
-                                      "New Password has been sent to the E-Mail Addresss..", "Log In");
+                    DXMessageBox.Show("账号正在使用\n" +
+                                      "New Password has been sent to the E-Mail Addresss..", "账号登陆");
                     break;
                 case LoginResult.AlreadyLoggedInAdmin:
                     login.LoginBox.EMailTextBox.SetFocus();
-                    DXMessageBox.Show("Account is currently in use by an admin", "Log In");
+                    DXMessageBox.Show("账号正在被管理员使用", "账号登陆");
                     break;
                 case LoginResult.Success:
                     login.LoginBox.Visible = false;
@@ -573,7 +572,7 @@ namespace Client.Envir
 
                     CEnvir.BlockList = p.BlockList;
 
-                    if (!string.IsNullOrEmpty(p.Message)) DXMessageBox.Show(p.Message, "Login Message");
+                    if (!string.IsNullOrEmpty(p.Message)) DXMessageBox.Show(p.Message, "登陆信息");
 
                     break;
                 default:
@@ -619,40 +618,40 @@ namespace Client.Envir
             {
                 case NewCharacterResult.Disabled:
                     select.CharacterBox.Clear();
-                    DXMessageBox.Show("Character creation is currently disabled.", "Character Creation");
+                    DXMessageBox.Show("角色创建功能目前被禁用。", "账号创建");
                     break;
                 case NewCharacterResult.BadCharacterName:
                     select.CharacterBox.CharacterNameTextBox.SetFocus();
-                    DXMessageBox.Show("Character Name is not acceptable.", "Character Creation");
+                    DXMessageBox.Show("角色名称不被接受。", "账号创建");
                     break;
                 case NewCharacterResult.BadHairType:
                     select.CharacterBox.HairNumberBox.Value = 1;
-                    DXMessageBox.Show("Error: Invalid Hair Type.", "Character Creation");
+                    DXMessageBox.Show("错误:无效的头发类型。", "账号创建");
                     break;
                 case NewCharacterResult.BadHairColour:
-                    DXMessageBox.Show("Error: Invalid Hair Colour.", "Character Creation");
+                    DXMessageBox.Show("错误:无效的头发颜色。", "账号创建");
                     break;
                 case NewCharacterResult.BadArmourColour:
-                    DXMessageBox.Show("Error: Invalid Armour Colour.", "Character Creation");
+                    DXMessageBox.Show("错误:无效的护甲颜色。", "账号创建");
                     break;
                 case NewCharacterResult.BadGender:
                     select.CharacterBox.SelectedGender = MirGender.Male;
-                    DXMessageBox.Show("Error: Invalid gender selected.", "Character Creation");
+                    DXMessageBox.Show("错误:选择的性别无效。", "账号创建");
                     break;
                 case NewCharacterResult.BadClass:
                     select.CharacterBox.SelectedClass = MirClass.Warrior;
-                    DXMessageBox.Show("Error: Invalid class selected.", "Character Creation");
+                    DXMessageBox.Show("错误:选择的职业无效。", "账号创建");
                     break;
                 case NewCharacterResult.ClassDisabled:
-                    DXMessageBox.Show("The selected class is currently not available.", "Character Creation");
+                    DXMessageBox.Show("所选的职业目前不可用。.", "账号创建");
                     break;
                 case NewCharacterResult.MaxCharacters:
                     select.CharacterBox.Clear();
-                    DXMessageBox.Show("Character limit already reached.", "Character Creation");
+                    DXMessageBox.Show("已达到角色数量限制。", "账号创建");
                     break;
                 case NewCharacterResult.AlreadyExists:
                     select.CharacterBox.CharacterNameTextBox.SetFocus();
-                    DXMessageBox.Show("Character already exists.", "Character Creation");
+                    DXMessageBox.Show("角色已经存在了。", "账号创建");
                     break;
                 case NewCharacterResult.Success:
                     select.CharacterBox.Clear();
@@ -661,7 +660,7 @@ namespace Client.Envir
                     select.SelectBox.UpdateCharacters();
                     select.SelectBox.SelectedButton = select.SelectBox.SelectButtons[select.SelectBox.CharacterList.Count - 1];
 
-                    DXMessageBox.Show("Character has been created.", "Character Creation");
+                    DXMessageBox.Show("角色创建成功。", "账号创建");
                     break;
             }
         }
@@ -673,13 +672,13 @@ namespace Client.Envir
             switch (p.Result)
             {
                 case DeleteCharacterResult.Disabled:
-                    DXMessageBox.Show("Character deletion is currently disabled.", "Delete Character");
+                    DXMessageBox.Show("角色删除功能目前被禁用。", "删除角色");
                     break;
                 case DeleteCharacterResult.AlreadyDeleted:
-                    DXMessageBox.Show("Character has already been deleted.", "Delete Character");
+                    DXMessageBox.Show("角色已被删除。", "删除角色");
                     break;
                 case DeleteCharacterResult.NotFound:
-                    DXMessageBox.Show("Character was not found.", "Delete Character");
+                    DXMessageBox.Show("没有找到角色。", "删除角色");
                     break;
                 case DeleteCharacterResult.Success:
                     for (int i = select.SelectBox.CharacterList.Count - 1; i >= 0; i--)
@@ -690,7 +689,7 @@ namespace Client.Envir
                         break;
                     }
                     select.SelectBox.UpdateCharacters();
-                    DXMessageBox.Show("Character has been deleted.", "Delete Character");
+                    DXMessageBox.Show("角色删除成功。", "删除角色");
                     break;
             }
         }
@@ -710,16 +709,16 @@ namespace Client.Envir
                 switch (p.Result)
                 {
                     case StartGameResult.Disabled:
-                        DXMessageBox.Show("Starting the game is currently disabled.", "Start Game");
+                        DXMessageBox.Show("目前无法启动游戏。", "开始游戏");
                         break;
                     case StartGameResult.Deleted:
-                        DXMessageBox.Show("You cannot start the game on a deleted character.", "Start Game");
+                        DXMessageBox.Show("你不能在一个被删除的角色上开始游戏。", "开始游戏");
                         break;
                     case StartGameResult.Delayed:
                         expiry = CEnvir.Now.Add(p.Duration);
 
-                        box = DXMessageBox.Show($"This character has recently logged out please wait.\n" +
-                                                $"Duration: {Math.Floor(p.Duration.TotalHours):#,##0} Hours, {p.Duration.Minutes} Minutes, {p.Duration.Seconds} Seconds", "Start Game");
+                        box = DXMessageBox.Show($"此角色最近已登出，请稍候。\n" +
+                                                $"持续: {Math.Floor(p.Duration.TotalHours):#,##0} 小时, {p.Duration.Minutes} 分, {p.Duration.Seconds} 秒", "开始游戏");
 
                         box.ProcessAction = () =>
                         {
@@ -733,15 +732,15 @@ namespace Client.Envir
 
                             TimeSpan remaining = expiry - CEnvir.Now;
 
-                            box.Label.Text = $"This character has recently logged out please wait.\n" +
-                                             $"Duration: {Math.Floor(remaining.TotalHours):#,##0} Hours, {remaining.Minutes:#,##0} Minutes, {remaining.Seconds} Seconds";
+                            box.Label.Text = $"此角色最近已登出，请稍候。\n" +
+                                             $"持续: {Math.Floor(remaining.TotalHours):#,##0} 小时, {remaining.Minutes:#,##0} 分, {remaining.Seconds} 秒";
                         };
                         break;
                     case StartGameResult.UnableToSpawn:
-                        DXMessageBox.Show("Unable to start the game, failed to spawn character.", "Start Game");
+                        DXMessageBox.Show("无法开始游戏，无法生成角色。", "开始游戏");
                         break;
                     case StartGameResult.NotFound:
-                        DXMessageBox.Show("Unable to start the game, character not found.", "Start Game");
+                        DXMessageBox.Show("无法开始游戏，找不到角色。", "开始游戏");
                         break;
                     case StartGameResult.Success:
                         select.Dispose();
@@ -770,7 +769,7 @@ namespace Client.Envir
 
                         GameScene.Game.StorageSize = p.StartInformation.StorageSize;
 
-                        if (!string.IsNullOrEmpty(p.Message)) DXMessageBox.Show(p.Message, "Start Game");
+                        if (!string.IsNullOrEmpty(p.Message)) DXMessageBox.Show(p.Message, "开始游戏");
 
                         GameScene.Game.CompanionBox.RefreshFilter();
 
@@ -3252,7 +3251,7 @@ namespace Client.Envir
         {
 
 
-            DXMessageBox messageBox = new DXMessageBox($"Do you want to group with {p.Name}?", "Group Invitation", DXMessageBoxButtons.YesNo);
+            DXMessageBox messageBox = new DXMessageBox($"你想与 {p.Name} 组队吗?", "组队邀请", DXMessageBoxButtons.YesNo);
 
             messageBox.YesButton.MouseClick += (o, e) => CEnvir.Enqueue(new C.GroupResponse { Accept = true });
             messageBox.NoButton.MouseClick += (o, e) => CEnvir.Enqueue(new C.GroupResponse { Accept = false });
@@ -3556,7 +3555,7 @@ namespace Client.Envir
 
         public void Process(S.TradeRequest p)
         {
-            DXMessageBox messageBox = new DXMessageBox($"{p.Name} wishes to trade with you, Do you want to accept?", "Trade Request", DXMessageBoxButtons.YesNo);
+            DXMessageBox messageBox = new DXMessageBox($"{p.Name} 想要与你交易，你接受吗?", "交易请求", DXMessageBoxButtons.YesNo);
 
             messageBox.YesButton.MouseClick += (o, e) => CEnvir.Enqueue(new C.TradeRequestResponse { Accept = true });
             messageBox.NoButton.MouseClick += (o, e) => CEnvir.Enqueue(new C.TradeRequestResponse { Accept = false });
@@ -3838,8 +3837,8 @@ namespace Client.Envir
         }
         public void Process(S.GuildInvite p)
         {
-            DXMessageBox messageBox = new DXMessageBox($"{p.Name} has invited you to the guild {p.GuildName}\n" +
-                                                       $"Do you want to join the guild?", "Guild Invitation", DXMessageBoxButtons.YesNo);
+            DXMessageBox messageBox = new DXMessageBox($"{p.Name} 邀请你加入行会 {p.GuildName}\n" +
+                                                       $"你要接受加入行会吗?", "行会邀请", DXMessageBoxButtons.YesNo);
 
             messageBox.YesButton.MouseClick += (o, e) => CEnvir.Enqueue(new C.GuildResponse { Accept = true });
             messageBox.NoButton.MouseClick += (o, e) => CEnvir.Enqueue(new C.GuildResponse { Accept = false });
@@ -4085,10 +4084,10 @@ namespace Client.Envir
                 string text = item.Count > 1 ? string.Format(CEnvir.Language.CompanionItemsGained, displayInfo.ItemName, item.Count) : string.Format(CEnvir.Language.CompanionItemGained, displayInfo.ItemName);
 
                 if ((item.Flags & UserItemFlags.QuestItem) == UserItemFlags.QuestItem)
-                    text += " (Quest)";
+                    text += " (任务)";
 
                 if (item.Info.ItemEffect == ItemEffect.ItemPart)
-                    text += " [Part]";
+                    text += " [碎片]";
 
                 GameScene.Game.ReceiveChat(text, MessageType.Combat);
             }
@@ -4110,8 +4109,8 @@ namespace Client.Envir
 
         public void Process(S.MarriageInvite p)
         {
-            DXMessageBox messageBox = new DXMessageBox($"{p.Name} proposed to you.\n" +
-                                                       $"Do you want to marry them?", "Marraige Proposal", DXMessageBoxButtons.YesNo);
+            DXMessageBox messageBox = new DXMessageBox($"{p.Name} 向你求婚.\n" +
+                                                       $"你要接受吗?", "求婚请求", DXMessageBoxButtons.YesNo);
 
             messageBox.YesButton.MouseClick += (o, e) => CEnvir.Enqueue(new C.MarriageResponse { Accept = true });
             messageBox.NoButton.MouseClick += (o, e) => CEnvir.Enqueue(new C.MarriageResponse { Accept = false });

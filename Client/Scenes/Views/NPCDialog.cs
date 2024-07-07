@@ -1114,7 +1114,7 @@ namespace Client.Scenes.Views
                     }
                     else
                     {
-                        RequirementLabel.Text = "可以使用";
+                        RequirementLabel.Text = "不可以使用";
                         RequirementLabel.ForeColour = Color.Red;
                     }
                     break;

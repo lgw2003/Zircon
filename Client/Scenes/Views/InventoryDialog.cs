@@ -566,7 +566,7 @@ namespace Client.Scenes.Views
                     break;
                 case InventoryMode.Sell:
                     {
-                        SecondaryCurrencyTitle.Text = "Total";
+                        SecondaryCurrencyTitle.Text = "合计";
                         SecondaryCurrencyTitle.ForeColour = Color.CornflowerBlue;
                         SecondaryCurrencyLabel.Text = 0.ToString("#,##0");
 

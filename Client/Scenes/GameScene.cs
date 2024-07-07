@@ -1929,7 +1929,7 @@ namespace Client.Scenes
                     ForeColour = colour,
                     Location = new Point(4, ItemLabel.DisplayArea.Bottom),
                     Parent = ItemLabel,
-                    Text = $"需要性别: {MouseItem.Info.RequiredGender}",
+                    Text = $"需要性别: {EnumService.GetDescription(MouseItem.Info.RequiredGender)}",
                 };
 
                 ItemLabel.Size = new Size(label.DisplayArea.Right + 4 > ItemLabel.Size.Width ? label.DisplayArea.Right + 4 : ItemLabel.Size.Width,
@@ -2589,7 +2589,7 @@ namespace Client.Scenes
                         }
                         else
                         {
-                            label.Text = $"{displayInfo.ItemType} 精炼点数: {MouseItem.Experience / Globals.WeaponExperienceList[MouseItem.Level]:0.##%}";
+                            label.Text = $"{EnumService.GetDescription(displayInfo.ItemType)} 精炼点数: {MouseItem.Experience / Globals.WeaponExperienceList[MouseItem.Level]:0.##%}";
                             label.ForeColour = Color.White;
                         }
 
